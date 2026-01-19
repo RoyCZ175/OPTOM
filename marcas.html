@@ -1,105 +1,449 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Representaciones y Marcas - OPTOM</title>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Representaciones y Marcas - OPTOM</title>
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- ✅ Estilos SOLO para esta página (no te borra nada del style.css) -->
+  <style>
+    .brand-card{
+      background:#fff;
+      border:1px solid rgba(0,0,0,.06);
+      border-radius:16px;
+      padding:26px 22px;
+      height:100%;
+      box-shadow:0 10px 30px rgba(0,0,0,.06);
+      transition:.25s ease;
+    }
+    .brand-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 18px 45px rgba(0,0,0,.12);
+    }
+    .brand-logo-box{
+      height:70px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:14px;
+    }
+    .brand-logo-box img{
+      max-height:70px;
+      max-width:100%;
+      object-fit:contain;
+      filter:grayscale(100%);
+      opacity:.75;
+      transition:.25s ease;
+    }
+    .brand-card:hover .brand-logo-box img{
+      filter:grayscale(0%);
+      opacity:1;
+      transform:scale(1.03);
+    }
+    .brand-name{
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-size:.95rem;
+      color:#0f172a;
+      margin-bottom:8px;
+    }
+    .brand-desc{
+      color:#4A4A4A;
+      font-size:.95rem;
+      margin-bottom:14px;
+      min-height:44px;
+    }
+    .brand-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-bottom:16px;
+    }
+    .brand-tag{
+      background:rgba(0,51,102,.08);
+      color:#003366;
+      border-radius:999px;
+      padding:6px 10px;
+      font-weight:700;
+      font-size:.82rem;
+    }
+    .brand-link{
+      font-weight:800;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    .brand-link i{ font-size:.95rem; }
+  </style>
 </head>
+
 <body class="bg-light">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-3">
+  <!-- NAV -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-3">
     <div class="container">
-        <a class="navbar-brand" href="index.html">
-            <img src="img/logos/optom.png" alt="OPTOM" style="height: 60px;">
-        </a>
+      <a class="navbar-brand" href="index.html">
+        <img src="img/logos/optom.png" alt="OPTOM" style="height: 60px;">
+      </a>
 
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navOptom" aria-controls="navOptom" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navOptom" aria-controls="navOptom" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <div class="collapse navbar-collapse" id="navOptom">
-            <ul class="navbar-nav ms-auto align-items-center fw-bold">
-                <li class="nav-item">
-                    <a class="nav-link px-3" href="index.html">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link px-3" href="servicios.html">Servicios</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link px-3" href="marcas.html">Marcas</a>
-                </li>
-                <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
-                    <a class="nav-link btn btn-warning text-dark px-4 shadow-sm w-100" href="contacto.html">
-                        <i class="fas fa-headset me-2"></i>Contacto
-                    </a>
-                </li>
-            </ul>
-        </div>
+      <div class="collapse navbar-collapse" id="navOptom">
+        <ul class="navbar-nav ms-auto align-items-center fw-bold">
+          <li class="nav-item">
+            <a class="nav-link px-3" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-3" href="servicios.html">Servicios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link px-3 active" href="marcas.html">Marcas</a>
+          </li>
+          <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+            <a class="nav-link btn btn-warning text-dark px-4 shadow-sm w-100" href="contacto.html">
+              <i class="fas fa-headset me-2"></i>Contacto
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-</nav>
+  </nav>
 
-<header class="py-5 bg-dark text-white text-center">
+  <!-- HEADER -->
+  <header class="py-5 bg-dark text-white text-center">
     <div class="container" data-aos="zoom-in">
-        <h1 class="display-4 fw-bold">Representaciones Globales</h1>
-        <p class="lead">Importación Directa y Respaldo Técnico de Fábrica</p>
+      <h1 class="display-5 fw-bold mb-2">Marcas y Representaciones</h1>
+      <p class="lead mb-0">Importación Directa • Respaldo Técnico • Soluciones para Misión Crítica</p>
     </div>
-</header>
+  </header>
 
-<section class="py-5">
+  <!-- CONTENT -->
+  <section class="py-5">
     <div class="container">
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-3" data-aos="fade-up">
-                <div class="card h-100 shadow-sm border-0 text-center p-4">
-                    <img src="img/logos/vertiv.png" class="img-fluid mb-3 mx-auto" style="height: 50px; object-fit: contain;">
-                    <h5 class="fw-bold">VERTIV</h5>
-                    <p class="small text-muted">Líder en continuidad y soluciones para Data Centers de misión crítica.</p>
-                </div>
+
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="fw-bold" style="color:#003366;">Alianzas Estratégicas</h2>
+        <p class="text-secondary mb-0">Espacio listo para que subas los logos a <strong>img/logos/</strong> con los nombres sugeridos (.png).</p>
+      </div>
+
+      <!-- GRID -->
+      <div class="row g-4">
+
+        <!-- 1 VERTIV -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up">
+          <div class="brand-card">
+            <div class="brand-logo-box">
+              <img src="img/logos/vertiv.png" alt="Vertiv">
             </div>
-            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
-                <div class="card h-100 shadow-sm border-0 text-center p-4">
-                    <img src="img/logos/eaton.png" class="img-fluid mb-3 mx-auto" style="height: 50px; object-fit: contain;">
-                    <h5 class="fw-bold">EATON</h5>
-                    <p class="small text-muted">Soluciones de gestión de energía eléctrica y protección de potencia.</p>
-                </div>
+            <div class="brand-name">Vertiv</div>
+            <div class="brand-desc">Infraestructura digital crítica: energía, refrigeración e integración para Data Centers.</div>
+            <div class="brand-tags">
+              <span class="brand-tag">Continuidad</span>
+              <span class="brand-tag">Data Center</span>
+              <span class="brand-tag">Enfriamiento</span>
             </div>
-            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
-                <div class="card h-100 shadow-sm border-0 text-center p-4">
-                    <img src="img/logos/kstar.png" class="img-fluid mb-3 mx-auto" style="height: 50px; object-fit: contain;">
-                    <h5 class="fw-bold">KSTAR</h5>
-                    <p class="small text-muted">Especialistas en UPS y sistemas de energía solar fotovoltaica.</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
-                <div class="card h-100 shadow-sm border-0 text-center p-4">
-                    <img src="img/logos/circutor.png" class="img-fluid mb-3 mx-auto" style="height: 50px; object-fit: contain;">
-                    <h5 class="fw-bold">CIRCUTOR</h5>
-                    <p class="small text-muted">Eficiencia energética eléctrica y medición de calidad de energía.</p>
-                </div>
-            </div>
+            <a class="brand-link text-primary" href="https://www.vertiv.com/" target="_blank" rel="noopener">
+              Ver sitio oficial <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
         </div>
 
-        <div class="mt-5 p-5 bg-warning rounded-4 shadow-sm text-center" data-aos="flip-up">
-            <h3 class="fw-bold text-dark">¿Por qué nuestras marcas?</h3>
-            <p class="lead mb-4">Al ser <strong>Importadores Directos</strong>, eliminamos intermediarios, garantizando precios competitivos y repuestos originales con garantía directa de fábrica.</p>
-            <div class="d-flex justify-content-center gap-4 flex-wrap">
-                <span class="badge bg-dark p-2 px-3"><i class="fas fa-ship me-2"></i> Stock Permanente</span>
-                <span class="badge bg-dark p-2 px-3"><i class="fas fa-tools me-2"></i> Soporte de Fábrica</span>
-                <span class="badge bg-dark p-2 px-3"><i class="fas fa-certificate me-2"></i> Garantía Real</span>
+        <!-- 2 EATON -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+          <div class="brand-card">
+            <div class="brand-logo-box">
+              <img src="img/logos/eaton.png" alt="Eaton">
             </div>
+            <div class="brand-name">Eaton</div>
+            <div class="brand-desc">Gestión y protección de energía eléctrica: distribución, respaldo y alta disponibilidad.</div>
+            <div class="brand-tags">
+              <span class="brand-tag">Protección</span>
+              <span class="brand-tag">Distribución</span>
+              <span class="brand-tag">Respaldo</span>
+            </div>
+            <a class="brand-link text-primary" href="https://www.eaton.com/" target="_blank" rel="noopener">
+              Ver sitio oficial <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
         </div>
+
+        <!-- 3 KSTAR -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="brand-card">
+            <div class="brand-logo-box">
+              <img src="img/logos/kstar.png" alt="KSTAR">
+            </div>
+            <div class="brand-name">KSTAR</div>
+            <div class="brand-desc">UPS y soluciones de energía para continuidad operativa y sistemas fotovoltaicos.</div>
+            <div class="brand-tags">
+              <span class="brand-tag">UPS</span>
+              <span class="brand-tag">Energía</span>
+              <span class="brand-tag">Solar</span>
+            </div>
+            <a class="brand-link text-primary" href="https://www.kstar.com/" target="_blank" rel="noopener">
+              Ver sitio oficial <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 4 CIRCUTOR -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up">
+          <div class="brand-card">
+            <div class="brand-logo-box">
+              <img src="img/logos/circutor.png" alt="Circutor">
+            </div>
+            <div class="brand-name">Circutor</div>
+            <div class="brand-desc">Eficiencia energética, medición, calidad de energía y control para instalaciones críticas.</div>
+            <div class="brand-tags">
+              <span class="brand-tag">Medición</span>
+              <span class="brand-tag">Calidad</span>
+              <span class="brand-tag">Eficiencia</span>
+            </div>
+            <a class="brand-link text-primary" href="https://circutor.com/" target="_blank" rel="noopener">
+              Ver sitio oficial <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 5 ATTOM -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+          <div class="brand-card">
+            <div class="brand-logo-box">
+              <!-- ✅ Sube tu logo como: img/logos/attom.png -->
+              <img src="img/logos/attom.png" alt="ATTOM">
+            </div>
+            <div class="brand-name">ATTOM</div>
+            <div class="brand-desc">Micro Data Center “plug & play”: rack + energía + enfriamiento + monitoreo + seguridad.</div>
+            <div class="brand-tags">
+              <span class="brand-tag">Micro DC</span>
+              <span class="brand-tag">Edge</span>
+              <span class="brand-tag">Integrado</span>
+            </div>
+            <a class="brand-link text-primary" href="https://attom.tech/" target="_blank" rel="noopener">
+              Ver sitio / referencia <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 6 FROG ENGINEERING -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="brand-card">
+            <div class="brand-logo-box">
+              <!-- ✅ Sube tu logo como: img/logos/frog.png -->
+              <img src="img/logos/frog.png" alt="Frog Engineering">
+            </div>
+            <div class="brand-name">Frog Engineering</div>
+            <div class="brand-desc">Soluciones para plataformas de telecomunicaciones y Data Centers (micro DC, infraestructura).</div>
+            <div class="brand-tags">
+              <span class="brand-tag">Telecom</span>
+              <span class="brand-tag">Data Center</span>
+              <span class="brand-tag">Integración</span>
+            </div>
+            <a class="brand-link text-primary" href="https://frogengineering.com/" target="_blank" rel="noopener">
+              Ver sitio oficial <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 7 EXAGATE -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up">
+          <div class="brand-card">
+            <div class="brand-logo-box">
+              <!-- ✅ Sube tu logo como: img/logos/exagate.png -->
+              <img src="img/logos/exagate.png" alt="Exagate">
+            </div>
+            <div class="brand-name">Exagate</div>
+            <div class="brand-desc">PDUs, monitoreo ambiental, BMS y soluciones para Smart Data Centers.</div>
+            <div class="brand-tags">
+              <span class="brand-tag">PDU</span>
+              <span class="brand-tag">Monitoreo</span>
+              <span class="brand-tag">Gestión</span>
+            </div>
+            <a class="brand-link text-primary" href="https://www.exagate.com/" target="_blank" rel="noopener">
+              Ver sitio oficial <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 8 SINEXCEL -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+          <div class="brand-card">
+            <div class="brand-logo-box">
+              <!-- ✅ Sube tu logo como: img/logos/sinexcel.png -->
+              <img src="img/logos/sinexcel.png" alt="Sinexcel">
+            </div>
+            <div class="brand-name">Sinexcel</div>
+            <div class="brand-desc">Soluciones de energía y electrónica de potencia para aplicaciones industriales y almacenamiento.</div>
+            <div class="brand-tags">
+              <span class="brand-tag">Energía</span>
+              <span class="brand-tag">Potencia</span>
+              <span class="brand-tag">Storage</span>
+            </div>
+            <a class="brand-link text-primary" href="https://www.sinexcel.us/" target="_blank" rel="noopener">
+              Ver sitio / referencia <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 9 EKKOSENSE -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="brand-card">
+            <div class="brand-logo-box">
+              <!-- ✅ Sube tu logo como: img/logos/ekkosense.png -->
+              <img src="img/logos/ekkosense.png" alt="EkkoSense">
+            </div>
+            <div class="brand-name">EkkoSense</div>
+            <div class="brand-desc">Software de optimización térmica y analítica para reducir riesgos y consumo en Data Centers.</div>
+            <div class="brand-tags">
+              <span class="brand-tag">AI / Analytics</span>
+              <span class="brand-tag">Cooling</span>
+              <span class="brand-tag">Optimización</span>
+            </div>
+            <a class="brand-link text-primary" href="https://www.ekkosense.com/" target="_blank" rel="noopener">
+              Ver sitio oficial <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 10 UPSITE -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up">
+          <div class="brand-card">
+            <div class="brand-logo-box">
+              <!-- ✅ Sube tu logo como: img/logos/upsite.png -->
+              <img src="img/logos/upsite.png" alt="Upsite Technologies">
+            </div>
+            <div class="brand-name">Upsite Technologies</div>
+            <div class="brand-desc">Optimización de enfriamiento y manejo de flujo de aire (blanking panels, contención, grommets).</div>
+            <div class="brand-tags">
+              <span class="brand-tag">Airflow</span>
+              <span class="brand-tag">Cooling</span>
+              <span class="brand-tag">Eficiencia</span>
+            </div>
+            <a class="brand-link text-primary" href="https://www.upsite.com/" target="_blank" rel="noopener">
+              Ver sitio oficial <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 11 BLUESUN SOLAR -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+          <div class="brand-card">
+            <div class="brand-logo-box">
+              <!-- ✅ Sube tu logo como: img/logos/bluesun.png -->
+              <img src="img/logos/bluesun.png" alt="Bluesun Solar">
+            </div>
+            <div class="brand-name">Bluesun Solar</div>
+            <div class="brand-desc">Soluciones fotovoltaicas y almacenamiento de energía (paneles, BESS y sistemas).</div>
+            <div class="brand-tags">
+              <span class="brand-tag">Solar</span>
+              <span class="brand-tag">BESS</span>
+              <span class="brand-tag">Energía</span>
+            </div>
+            <a class="brand-link text-primary" href="https://www.bluesunpv.com/" target="_blank" rel="noopener">
+              Ver sitio oficial <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 12 POWER-SONIC -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="brand-card">
+            <div class="brand-logo-box">
+              <!-- ✅ Sube tu logo como: img/logos/powersonic.png -->
+              <img src="img/logos/powersonic.png" alt="Power-Sonic">
+            </div>
+            <div class="brand-name">Power-Sonic</div>
+            <div class="brand-desc">Baterías y soluciones de energía para aplicaciones críticas (SLA / Lithium / UPS / ESS).</div>
+            <div class="brand-tags">
+              <span class="brand-tag">Baterías</span>
+              <span class="brand-tag">UPS</span>
+              <span class="brand-tag">Energía</span>
+            </div>
+            <a class="brand-link text-primary" href="https://www.power-sonic.com/" target="_blank" rel="noopener">
+              Ver sitio oficial <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 13 CSB BATTERY -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up">
+          <div class="brand-card">
+            <div class="brand-logo-box">
+              <!-- ✅ Sube tu logo como: img/logos/csb.png -->
+              <img src="img/logos/csb.png" alt="CSB Battery">
+            </div>
+            <div class="brand-name">CSB Battery</div>
+            <div class="brand-desc">Baterías VRLA para UPS y aplicaciones estacionarias (incluye Data Center).</div>
+            <div class="brand-tags">
+              <span class="brand-tag">VRLA</span>
+              <span class="brand-tag">UPS</span>
+              <span class="brand-tag">Data Center</span>
+            </div>
+            <a class="brand-link text-primary" href="https://csb-battery.com/" target="_blank" rel="noopener">
+              Ver sitio oficial <i class="fas fa-arrow-up-right-from-square"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- 14 UCELL (placeholder) -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+          <div class="brand-card">
+            <div class="brand-logo-box">
+              <!-- ✅ Sube tu logo como: img/logos/ucell.png -->
+              <img src="img/logos/ucell.png" alt="UCell">
+            </div>
+            <div class="brand-name">UCell</div>
+            <div class="brand-desc">Espacio reservado para tu marca de baterías/energía (según PDF). Ajustamos texto cuando confirmes el proveedor exacto.</div>
+            <div class="brand-tags">
+              <span class="brand-tag">Baterías</span>
+              <span class="brand-tag">Respaldo</span>
+            </div>
+            <a class="brand-link text-primary" href="#" target="_blank" rel="noopener">
+              Agregar link <i class="fas fa-link"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-5 p-5 rounded-4 shadow-sm text-center" style="background:#FFCC00;" data-aos="flip-up">
+        <h3 class="fw-bold text-dark mb-2">¿Por qué nuestras marcas?</h3>
+        <p class="lead mb-4 text-dark">
+          Al ser <strong>importadores directos</strong>, eliminamos intermediarios, garantizando precios competitivos,
+          repuestos originales y respaldo técnico especializado.
+        </p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+          <span class="badge bg-dark p-2 px-3"><i class="fas fa-warehouse me-2"></i>Stock y disponibilidad</span>
+          <span class="badge bg-dark p-2 px-3"><i class="fas fa-screwdriver-wrench me-2"></i>Soporte especializado</span>
+          <span class="badge bg-dark p-2 px-3"><i class="fas fa-certificate me-2"></i>Garantía y respaldo</span>
+        </div>
+      </div>
+
     </div>
-</section>
+  </section>
 
-<footer class="py-4 text-center text-white bg-dark">
-    <p class="small mb-0">© 2025 OPTOM - Representantes Autorizados en Ecuador</p>
-</footer>
+  <!-- FOOTER -->
+  <footer class="py-4 text-center text-white bg-dark">
+    <p class="small mb-0">© 2025 OPTOM - Representaciones y Marcas</p>
+  </footer>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init();</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <a href="https://wa.me/593996956854" class="whatsapp-float shadow-lg d-flex align-items-center" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <span class="ms-2 d-none d-md-inline">Soporte Directo</span>
+  </a>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init({ duration: 900, once: true });</script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
