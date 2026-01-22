@@ -8,13 +8,25 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        .hover-shadow:hover {
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+        .position-absolute {
+            position: absolute;
+        }
+    </style>
 </head>
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-3">
     <div class="container">
         <a class="navbar-brand" href="index.html">
-            <img src="img/logos/optom.png" alt="OPTOM" style="height: 60px;">
+            <img src="img/logos/optom.png" alt="OPTOM" style="height: 120px; width: auto;">
         </a>
 
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navOptom" aria-controls="navOptom" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,7 +79,6 @@
     </div>
 </header>
 
-<!-- ✅ NUEVO: SERVICIOS DESTACADOS -->
 <section class="py-5 bg-white border-top">
     <div class="container">
         <div class="text-center mb-5" data-aos="fade-up">
@@ -131,7 +142,6 @@
                 <p class="lead text-secondary">Garantizamos la continuidad operativa de su infraestructura estratégica.</p>
                 <p>Integramos soluciones de vanguardia en las áreas Eléctrica, Electrónica, Telecomunicaciones y TI en todo el territorio ecuatoriano.</p>
 
-                <!-- ✅ NUEVO: MINI STATS -->
                 <div class="row g-3 mt-4">
                     <div class="col-6" data-aos="fade-up" data-aos-delay="50">
                         <div class="stat-box">
@@ -200,7 +210,6 @@
     </div>
 </section>
 
-<!-- ✅ NUEVO: POR QUÉ OPTOM -->
 <section class="py-5 bg-light border-top">
     <div class="container">
         <div class="row align-items-center g-5">
@@ -225,7 +234,6 @@
     </div>
 </section>
 
-<!-- ✅ NUEVO: SOPORTE 24/7/365 -->
 <section class="py-5 bg-white border-top">
     <div class="container" data-aos="fade-up">
         <div class="support-strip">
@@ -264,7 +272,6 @@
     </div>
 </section>
 
-<!-- ✅ NUEVO: CTA FINAL -->
 <section class="py-5 bg-white border-top">
     <div class="container" data-aos="fade-up">
         <div class="cta-box text-center">
@@ -277,6 +284,24 @@
                 <a href="servicios.html" class="btn btn-outline-light px-5 py-3">
                     <i class="fas fa-layer-group me-2"></i>Ver servicios
                 </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light border-top">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-4 p-3 bg-primary text-white rounded-3 shadow-sm d-inline-block">Encuéntranos</h2>
+        <div class="row justify-content-center mt-4">
+            <div class="col-12 col-md-10">
+                <div class="border rounded-5 shadow-lg overflow-hidden position-relative">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2958.9429733970326!2d-78.47427888429658!3d-0.1806558488262592!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59ac85f7248ef%3A0x7e88d00d62e55cf6!2sOPTOM%20-%20Convergencia%20Tecnol%C3%B3gica!5e0!3m2!1ses!2sec!4v1674132837542!5m2!1ses!2sec" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <div class="position-absolute bottom-0 end-0 p-3">
+                        <a href="https://www.google.com/maps?q=-0.1806558488262592,-78.47427888429658" target="_blank" class="btn btn-info shadow-lg rounded-3 text-white fw-bold">
+                            Fijar Ubicación
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

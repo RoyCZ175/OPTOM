@@ -7,6 +7,9 @@
     --tech-gray: #4A4A4A;       /* Textos técnicos */
     --bg-light: #F8F9FA;        /* Fondos limpios */
     --verde-wa: #25d366;        /* WhatsApp Oficial */
+    --verde-empresa: #A8D713;   /* Verde de la empresa */
+    --rojo-empresa: #FF0000;    /* Rojo de la empresa */
+    --gris-empresa: #4D4D4D;    /* Gris de la empresa */
 }
 
 body { 
@@ -197,14 +200,12 @@ html { scroll-behavior: smooth; }
 /* Ajuste: tu clase "italic" aparece en HTML, pero no existe en tu CSS */
 .italic{ font-style: italic; }
 
-/* Separadores suaves entre secciones */
 .section-divider{
     height: 1px;
     background: rgba(0,0,0,0.06);
     width: 100%;
 }
 
-/* Cards de servicio destacadas (para el index y servicios) */
 .service-card{
     border: none;
     border-left: 6px solid var(--primary-blue);
@@ -220,19 +221,7 @@ html { scroll-behavior: smooth; }
     box-shadow: 0 18px 40px rgba(0,0,0,0.12);
     border-left-color: var(--accent-gold);
 }
-.service-icon{
-    width: 54px;
-    height: 54px;
-    border-radius: 14px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0,51,102,0.08);
-    color: var(--primary-blue);
-    font-size: 22px;
-}
 
-/* Bloque “Por qué OPTOM” */
 .why-card{
     background: white;
     border-radius: 16px;
@@ -240,14 +229,15 @@ html { scroll-behavior: smooth; }
     box-shadow: 0 10px 30px rgba(0,0,0,0.06);
     border: 1px solid rgba(0,0,0,0.06);
 }
+
 .why-list li{
     margin-bottom: 10px;
 }
+
 .why-list i{
     color: var(--accent-gold);
 }
 
-/* Banda de soporte 24/7/365 */
 .support-strip{
     background: var(--primary-blue);
     color: white;
@@ -255,15 +245,16 @@ html { scroll-behavior: smooth; }
     padding: 32px;
     box-shadow: 0 14px 35px rgba(0,0,0,0.12);
 }
+
 .support-strip .badge{
     background: rgba(255,255,255,0.14);
     font-weight: 600;
 }
+
 .support-strip a.btn{
     border-radius: 12px;
 }
 
-/* Mini “stats” */
 .stat-box{
     background: white;
     border-radius: 16px;
@@ -272,18 +263,19 @@ html { scroll-behavior: smooth; }
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     height: 100%;
 }
+
 .stat-box .stat-number{
     font-size: 2rem;
     font-weight: 800;
     color: var(--primary-blue);
     line-height: 1;
 }
+
 .stat-box .stat-label{
     color: var(--tech-gray);
     font-weight: 600;
 }
 
-/* Tabla comparativa “pro” (servicios) */
 .compare-wrap{
     background: white;
     border-radius: 18px;
@@ -291,19 +283,21 @@ html { scroll-behavior: smooth; }
     box-shadow: 0 10px 30px rgba(0,0,0,0.06);
     border: 1px solid rgba(0,0,0,0.06);
 }
+
 .compare-wrap table{
     margin: 0;
 }
+
 .compare-wrap thead th{
     background: var(--primary-blue) !important;
     color: white !important;
     border-color: rgba(255,255,255,0.12) !important;
 }
+
 .compare-wrap td, .compare-wrap th{
     vertical-align: middle;
 }
 
-/* CTA grande (para index y servicios) */
 .cta-box{
     background: linear-gradient(135deg, rgba(0,51,102,1) 0%, rgba(0,51,102,0.92) 60%, rgba(255,204,0,0.22) 100%);
     border-radius: 22px;
@@ -313,25 +307,27 @@ html { scroll-behavior: smooth; }
     overflow: hidden;
     position: relative;
 }
+
 .cta-box p{ color: rgba(255,255,255,0.88); }
+
 .cta-box .btn{
     border-radius: 14px;
     font-weight: 800;
 }
 
-/* Footer más consistente */
 .footer-optom{
     background: #111827;
     color: rgba(255,255,255,0.88);
 }
+
 .footer-optom .text-secondary{
     color: rgba(255,255,255,0.55) !important;
 }
 
-/* Responsive fino */
 @media (max-width: 576px){
     .hero-nuevo{ padding: 65px 0; }
     .section-title{ font-size: 1.7rem; }
     .service-card{ padding: 22px; }
     .support-strip{ padding: 24px; }
 }
+
