@@ -9,78 +9,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/marcas-verified.css">
 
-  <style>
-    .brand-card{
-      background:#fff;
-      border:1px solid rgba(0,0,0,.06);
-      border-radius:16px;
-      padding:26px 22px;
-      height:100%;
-      box-shadow:0 10px 30px rgba(0,0,0,.06);
-      transition:.25s ease;
-    }
-    .brand-card:hover{
-      transform:translateY(-6px);
-      box-shadow:0 18px 45px rgba(0,0,0,.12);
-    }
-    .brand-logo-box{
-      height:70px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      margin-bottom:14px;
-    }
-    .brand-logo-box img{
-      max-height:70px;
-      max-width:100%;
-      object-fit:contain;
-      filter:grayscale(100%);
-      opacity:.75;
-      transition:.25s ease;
-    }
-    .brand-card:hover .brand-logo-box img{
-      filter:grayscale(0%);
-      opacity:1;
-      transform:scale(1.03);
-    }
-    .brand-name{
-      font-weight:800;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      font-size:.95rem;
-      color:#0f172a;
-      margin-bottom:8px;
-    }
-    .brand-desc{
-      color:#4A4A4A;
-      font-size:.95rem;
-      margin-bottom:14px;
-      min-height:44px;
-    }
-    .brand-tags{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-bottom:16px;
-    }
-    .brand-tag{
-      background:rgba(0,51,102,.08);
-      color:#003366;
-      border-radius:999px;
-      padding:6px 10px;
-      font-weight:700;
-      font-size:.82rem;
-    }
-    .brand-link{
-      font-weight:800;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-    }
-    .brand-link i{ font-size:.95rem; }
-  </style>
 </head>
 
 <body class="bg-light">
@@ -123,7 +53,7 @@
         <p class="text-secondary mb-0">Espacio listo para que subas los logos a <strong>img/logos/</strong></p>
       </div>
 
-      <div class="row g-4">
+      <!--<div class="row g-4">
         <div class="col-md-6 col-lg-4" data-aos="fade-up">
           <div class="brand-card">
             <div class="brand-logo-box"><img src="img/logos/vertiv.png" alt="Vertiv"></div>
@@ -132,9 +62,9 @@
             <div class="brand-tags"><span class="brand-tag">Continuidad</span><span class="brand-tag">Data Center</span><span class="brand-tag">Enfriamiento</span></div>
             <a class="brand-link text-primary" href="https://www.vertiv.com/" target="_blank">Ver sitio oficial <i class="fas fa-arrow-up-right-from-square"></i></a>
           </div>
-        </div>
+        </div>-->
 
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+        <!--<div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
           <div class="brand-card">
             <div class="brand-logo-box"><img src="img/logos/eaton.png" alt="Eaton"></div>
             <div class="brand-name">Eaton</div>
@@ -263,7 +193,225 @@
             <a class="brand-link text-primary" href="#">Consultar disponibilidad <i class="fas fa-link"></i></a>
           </div>
         </div>
-      </div>
+      </div>-->
+<div id="marcas-verificadas" class="mt-4">
+  <div class="mv-shell" data-aos="fade-up">
+    <div class="row g-4 align-items-stretch mv-grid">
+
+      <!-- IZQUIERDA: LISTA -->
+      <div class="col-12 col-md-5 col-lg-4">
+        <div class="mv-panel">
+          <button class="mv-panel-header" type="button" aria-expanded="true">
+            <span class="mv-panel-title">Marcas Verificadas</span>
+            <span class="mv-panel-icon" aria-hidden="true"></span>
+          </button>
+
+          <div class="mv-list" role="listbox" aria-label="Marcas verificadas">
+
+            <button class="mv-item" type="button" role="option" aria-selected="false"
+              data-name="Vertiv"
+              data-logo="img/logos/vertiv.png"
+              data-desc="Infraestructura digital crítica: energía, refrigeración e integración para Data Centers."
+              data-site="https://www.vertiv.com/">
+              <span class="mv-item-mini"><img src="img/logos/vertiv.png" alt="Vertiv"></span>
+              <span class="mv-item-text">
+                <span class="mv-item-name">Vertiv</span>
+                <span class="mv-item-sub">Continuidad • DC • Enfriamiento</span>
+              </span>
+            </button>
+
+            <button class="mv-item" type="button" role="option" aria-selected="false"
+              data-name="Eaton"
+              data-logo="img/logos/eaton.png"
+              data-desc="Gestión y protección de energía eléctrica: distribución, respaldo y alta disponibilidad."
+              data-site="https://www.eaton.com/">
+              <span class="mv-item-mini"><img src="img/logos/eaton.png" alt="Eaton"></span>
+              <span class="mv-item-text">
+                <span class="mv-item-name">Eaton</span>
+                <span class="mv-item-sub">Protección • Distribución • Respaldo</span>
+              </span>
+            </button>
+
+            <button class="mv-item" type="button" role="option" aria-selected="false"
+              data-name="KSTAR"
+              data-logo="img/logos/kstar.png"
+              data-desc="UPS y soluciones de energía para continuidad operativa y sistemas fotovoltaicos."
+              data-site="https://www.kstar.com/">
+              <span class="mv-item-mini"><img src="img/logos/kstar.png" alt="KSTAR"></span>
+              <span class="mv-item-text">
+                <span class="mv-item-name">KSTAR</span>
+                <span class="mv-item-sub">UPS • Energía • Solar</span>
+              </span>
+            </button>
+
+            <button class="mv-item" type="button" role="option" aria-selected="false"
+              data-name="Circutor"
+              data-logo="img/logos/circutor.png"
+              data-desc="Eficiencia energética, medición, calidad de energía y control para instalaciones críticas."
+              data-site="https://circutor.com/">
+              <span class="mv-item-mini"><img src="img/logos/circutor.png" alt="Circutor"></span>
+              <span class="mv-item-text">
+                <span class="mv-item-name">Circutor</span>
+                <span class="mv-item-sub">Medición • Calidad • Eficiencia</span>
+              </span>
+            </button>
+
+            <button class="mv-item" type="button" role="option" aria-selected="false"
+              data-name="ATTOM"
+              data-logo="img/logos/attom.png"
+              data-desc="Micro Data Center “plug & play”: rack + energía + enfriamiento + monitoreo + seguridad."
+              data-site="https://attom.tech/">
+              <span class="mv-item-mini"><img src="img/logos/attom.png" alt="ATTOM"></span>
+              <span class="mv-item-text">
+                <span class="mv-item-name">ATTOM</span>
+                <span class="mv-item-sub">Micro DC • Edge • Integrado</span>
+              </span>
+            </button>
+
+            <button class="mv-item" type="button" role="option" aria-selected="false"
+              data-name="Frog Engineering"
+              data-logo="img/logos/frog.png"
+              data-desc="Soluciones para plataformas de telecomunicaciones y Data Centers (micro DC)."
+              data-site="https://frogengineering.com/">
+              <span class="mv-item-mini"><img src="img/logos/frog.png" alt="Frog Engineering"></span>
+              <span class="mv-item-text">
+                <span class="mv-item-name">Frog Engineering</span>
+                <span class="mv-item-sub">Telecom • DC • Integración</span>
+              </span>
+            </button>
+
+            <button class="mv-item" type="button" role="option" aria-selected="false"
+              data-name="Exagate"
+              data-logo="img/logos/exagate.png"
+              data-desc="PDUs, monitoreo ambiental, BMS y soluciones para Smart Data Centers."
+              data-site="https://www.exagate.com/">
+              <span class="mv-item-mini"><img src="img/logos/exagate.png" alt="Exagate"></span>
+              <span class="mv-item-text">
+                <span class="mv-item-name">Exagate</span>
+                <span class="mv-item-sub">PDU • Monitoreo • Gestión</span>
+              </span>
+            </button>
+
+            <button class="mv-item" type="button" role="option" aria-selected="false"
+              data-name="Sinexcel"
+              data-logo="img/logos/sinexcel.png"
+              data-desc="Soluciones de energía y electrónica de potencia para aplicaciones industriales."
+              data-site="https://www.sinexcel.us/">
+              <span class="mv-item-mini"><img src="img/logos/sinexcel.png" alt="Sinexcel"></span>
+              <span class="mv-item-text">
+                <span class="mv-item-name">Sinexcel</span>
+                <span class="mv-item-sub">Energía • Potencia • Storage</span>
+              </span>
+            </button>
+
+            <button class="mv-item" type="button" role="option" aria-selected="false"
+              data-name="EkkoSense"
+              data-logo="img/logos/ekkosense.png"
+              data-desc="Software de optimización térmica y analítica para reducir riesgos y consumo."
+              data-site="https://www.ekkosense.com/">
+              <span class="mv-item-mini"><img src="img/logos/ekkosense.png" alt="EkkoSense"></span>
+              <span class="mv-item-text">
+                <span class="mv-item-name">EkkoSense</span>
+                <span class="mv-item-sub">AI / Analytics • Cooling</span>
+              </span>
+            </button>
+
+            <button class="mv-item" type="button" role="option" aria-selected="false"
+              data-name="Upsite Technologies"
+              data-logo="img/logos/upsite.png"
+              data-desc="Optimización de enfriamiento y manejo de flujo de aire (blanking panels)."
+              data-site="https://www.upsite.com/">
+              <span class="mv-item-mini"><img src="img/logos/upsite.png" alt="Upsite Technologies"></span>
+              <span class="mv-item-text">
+                <span class="mv-item-name">Upsite</span>
+                <span class="mv-item-sub">Airflow • Cooling • Eficiencia</span>
+              </span>
+            </button>
+
+            <button class="mv-item" type="button" role="option" aria-selected="false"
+              data-name="Bluesun Solar"
+              data-logo="img/logos/bluesun.png"
+              data-desc="Soluciones fotovoltaicas y almacenamiento de energía (paneles y BESS)."
+              data-site="https://www.bluesunpv.com/">
+              <span class="mv-item-mini"><img src="img/logos/bluesun.png" alt="Bluesun Solar"></span>
+              <span class="mv-item-text">
+                <span class="mv-item-name">Bluesun Solar</span>
+                <span class="mv-item-sub">Solar • BESS • Energía</span>
+              </span>
+            </button>
+
+            <button class="mv-item" type="button" role="option" aria-selected="false"
+              data-name="Power-Sonic"
+              data-logo="img/logos/powersonic.png"
+              data-desc="Baterías y soluciones de energía para aplicaciones críticas (Lithium / UPS)."
+              data-site="https://www.power-sonic.com/">
+              <span class="mv-item-mini"><img src="img/logos/powersonic.png" alt="Power-Sonic"></span>
+              <span class="mv-item-text">
+                <span class="mv-item-name">Power-Sonic</span>
+                <span class="mv-item-sub">Baterías • UPS • Energía</span>
+              </span>
+            </button>
+
+            <button class="mv-item" type="button" role="option" aria-selected="false"
+              data-name="CSB Battery"
+              data-logo="img/logos/csb.png"
+              data-desc="Baterías VRLA para UPS y aplicaciones estacionarias industriales."
+              data-site="https://csb-battery.com/">
+              <span class="mv-item-mini"><img src="img/logos/csb.png" alt="CSB Battery"></span>
+              <span class="mv-item-text">
+                <span class="mv-item-name">CSB Battery</span>
+                <span class="mv-item-sub">VRLA • UPS • Data Center</span>
+              </span>
+            </button>
+
+            <button class="mv-item" type="button" role="option" aria-selected="false"
+              data-name="UCell"
+              data-logo="img/logos/ucell.png"
+              data-desc="Sistemas de respaldo de energía y baterías de alta eficiencia."
+              data-site="#">
+              <span class="mv-item-mini"><img src="img/logos/ucell.png" alt="UCell"></span>
+              <span class="mv-item-text">
+                <span class="mv-item-name">UCell</span>
+                <span class="mv-item-sub">Baterías • Respaldo • Energía</span>
+              </span>
+            </button>
+
+          </div><!-- /.mv-list -->
+        </div><!-- /.mv-panel -->
+      </div><!-- /.col -->
+
+      <!-- DERECHA: PREVIEW GRANDE -->
+      <div class="col-12 col-md-7 col-lg-8">
+        <div class="mv-preview">
+          <div class="mv-preview-top">
+            <div class="mv-preview-badge">Logo verificado</div>
+          </div>
+
+          <div class="mv-preview-body">
+            <div class="mv-preview-logo">
+              <img id="mvPreviewImg" src="img/logos/vertiv.png" alt="Logo" loading="lazy">
+            </div>
+
+            <div class="mv-preview-info">
+              <h3 id="mvPreviewName" class="mv-preview-name">Vertiv</h3>
+              <p id="mvPreviewDesc" class="mv-preview-desc">
+                Infraestructura digital crítica: energía, refrigeración e integración para Data Centers.
+              </p>
+
+              <a id="mvPreviewLink" class="mv-preview-link" href="https://www.vertiv.com/" target="_blank" rel="noopener">
+                Ver sitio oficial <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /.col -->
+
+    </div><!-- /.row -->
+  </div><!-- /.mv-shell -->
+</div><!-- /#marcas-verificadas -->
+
+
 
       <div class="mt-5 p-5 rounded-4 shadow-sm text-center" style="background:#FFCC00;" data-aos="flip-up">
         <h3 class="fw-bold text-dark mb-2">¿Por qué nuestras marcas?</h3>
@@ -300,5 +448,7 @@
   <script>AOS.init({ duration: 900, once: true });</script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/marcas-verified.js"></script>
+
 </body>
 </html>

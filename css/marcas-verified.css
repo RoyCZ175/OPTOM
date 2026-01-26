@@ -1,0 +1,258 @@
+/* =========================
+   Marcas Verificadas (Apple-like)
+   Depurado + Opción 1 (logo arriba, texto abajo)
+   ========================= */
+
+:root{
+  --mv-ink: #0f172a;
+  --mv-muted: #64748b;
+  --mv-border: rgba(15, 23, 42, .12);
+  --mv-soft: rgba(15, 23, 42, .06);
+  --mv-card: #ffffff;
+  --mv-primary: #003366; /* tu azul */
+  --mv-accent: #FFCC00;  /* tu amarillo */
+}
+
+/* Contenedor general */
+.mv-shell{
+  border: 1px solid var(--mv-border);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.95));
+  box-shadow: 0 16px 48px rgba(0,0,0,.08);
+  overflow: hidden;
+}
+
+/* Columna izquierda */
+.mv-panel{
+  height: 100%;
+  background: var(--mv-card);
+  border-right: 1px solid var(--mv-border);
+  min-width: 0; /* evita que empuje el layout */
+}
+
+.mv-panel-header{
+  width: 100%;
+  border: 0;
+  background: var(--mv-card);
+  padding: 18px 18px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mv-panel-title{
+  font-weight: 800;
+  color: var(--mv-ink);
+  letter-spacing: .2px;
+}
+
+.mv-panel-icon{
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid var(--mv-muted);
+  border-bottom: 2px solid var(--mv-muted);
+  transform: rotate(45deg);
+  margin-left: 12px;
+  opacity: .7;
+}
+
+/* Lista con scroll */
+.mv-list{
+  padding: 10px;
+  display: grid;
+  gap: 10px;
+
+  max-height: 520px;
+  overflow: auto;
+  padding-right: 6px;
+}
+
+/* Scrollbar (Chromium) */
+.mv-list::-webkit-scrollbar{ width: 10px; }
+.mv-list::-webkit-scrollbar-thumb{
+  background: rgba(15,23,42,.16);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.mv-list::-webkit-scrollbar-track{ background: transparent; }
+
+/* Item de marca */
+.mv-item{
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--mv-border);
+  background: #fff;
+  border-radius: 14px;
+  padding: 10px 12px;
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 12px;
+  align-items: center;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+  cursor: pointer;
+}
+
+.mv-item:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(0,0,0,.08);
+}
+
+.mv-item:focus{
+  outline: 3px solid rgba(0, 51, 102, .25);
+  outline-offset: 2px;
+}
+
+.mv-item.is-active{
+  border-color: rgba(0, 51, 102, .45);
+  box-shadow: 0 14px 26px rgba(0,0,0,.10);
+}
+
+.mv-item-mini{
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--mv-soft);
+  border: 1px solid var(--mv-border);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.mv-item-mini img{
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+  display: block;
+}
+
+.mv-item-text{
+  display: grid;
+  gap: 2px;
+}
+
+.mv-item-name{
+  font-weight: 800;
+  color: var(--mv-ink);
+  line-height: 1.2;
+}
+
+.mv-item-sub{
+  font-size: .88rem;
+  color: var(--mv-muted);
+}
+
+/* Columna derecha (preview) */
+.mv-grid{ align-items: stretch; }
+
+.mv-preview{
+  height: 100%;
+  padding: 18px;
+  min-width: 0; /* evita que empuje el layout */
+  background:
+    radial-gradient(1200px 500px at 70% 10%, rgba(0, 51, 102, .10), transparent 55%),
+    radial-gradient(800px 400px at 20% 80%, rgba(255, 204, 0, .12), transparent 55%),
+    #fff;
+}
+
+.mv-preview-top{
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.mv-preview-badge{
+  font-size: .85rem;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 204, 0, .25);
+  color: #1f2937;
+  border: 1px solid rgba(255, 204, 0, .45);
+}
+
+/* =========================
+   OPCIÓN 1: Logo arriba, texto abajo
+   ========================= */
+.mv-preview-body{
+  display: grid;
+  grid-template-columns: 1fr; /* una sola columna */
+  gap: 18px;
+  align-items: start;
+}
+
+.mv-preview-logo{
+  border: 1px solid var(--mv-border);
+  border-radius: 18px;
+  background: rgba(15, 23, 42, .03);
+  min-height: 360px;          /* logo protagonista */
+  display: grid;
+  place-items: center;
+  padding: 18px;
+}
+
+.mv-preview-logo img{
+  width: 100%;
+  height: 320px;
+  object-fit: contain;
+  padding: 20px;
+  display: block;
+  transition: opacity .18s ease, transform .18s ease;
+}
+
+.mv-preview-info{
+  max-width: 620px;
+}
+
+.mv-preview-name{
+  font-weight: 900;
+  color: var(--mv-ink);
+  margin: 0 0 8px;
+}
+
+.mv-preview-desc{
+  color: var(--mv-muted);
+  margin: 0 0 12px;
+  max-width: 56ch;
+}
+
+.mv-preview-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 800;
+  text-decoration: none;
+  color: var(--mv-primary);
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 51, 102, .22);
+  background: rgba(0, 51, 102, .06);
+}
+
+.mv-preview-link:hover{
+  background: rgba(0, 51, 102, .10);
+}
+
+.mv-preview-footer{
+  margin-top: 14px;
+  color: var(--mv-muted);
+  border-top: 1px solid var(--mv-border);
+  padding-top: 12px;
+  opacity: .75; /* más discreto */
+}
+
+/* Responsive */
+@media (max-width: 991px){
+  .mv-panel{
+    border-right: 0;
+    border-bottom: 1px solid var(--mv-border);
+  }
+  .mv-list{ max-height: 380px; }
+  .mv-preview-logo{
+    min-height: 240px;
+  }
+  .mv-preview-logo img{
+    height: 200px;
+    padding: 16px;
+  }
+}
