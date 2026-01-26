@@ -1,0 +1,34 @@
+/* Estilos para el Carrusel Infinito */
+.apple-carousel {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.apple-track {
+    display: flex;
+    width: calc(300px * 10); /* Ajusta según el ancho del slide x total de slides */
+    animation: scroll-apple 25s linear infinite;
+}
+
+.apple-slide {
+    width: 300px;
+    padding: 0 15px;
+}
+
+.apple-slide img {
+    width: 100%;
+    border-radius: 20px;
+    filter: grayscale(20%);
+    transition: transform 0.3s;
+}
+
+.apple-slide img:hover {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+}
+
+@keyframes scroll-apple {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-300px * 5)); } /* La mitad del total de slides */
+}
