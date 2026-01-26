@@ -1,231 +1,566 @@
 /* =========================================================
    1) CONFIGURACIÓN / VARIABLES
    ========================================================= */
-:root {
-  --primary-blue: #003366;   /* Azul Misión Crítica */
-  --accent-gold: #FFCC00;    /* Oro para botones y realces */
-  --tech-gray: #4A4A4A;      /* Textos técnicos */
-  --bg-light: #F8F9FA;       /* Fondos limpios */
-  --verde-wa: #25d366;       /* WhatsApp Oficial */
+:root{
+  --primary-blue:#003366;
+  --accent-gold:#FFCC00;
+  --tech-gray:#4A4A4A;
+  --bg-light:#F8F9FA;
+  --verde-wa:#25d366;
 
-  /* Transiciones base */
-  --t-fast: 200ms;
-  --t-base: 300ms;
-  --ease: ease;
+  --t-fast:200ms;
+  --t-base:300ms;
+  --ease:ease;
 }
 
 /* =========================================================
-   2) BASE (TIPOGRAFÍA / DOCUMENTO)
+   2) BASE
    ========================================================= */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: var(--tech-gray);
-  overflow-x: hidden;
-  line-height: 1.6;
+body{
+  font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+  color:var(--tech-gray);
+  overflow-x:hidden;
+  line-height:1.6;
 }
 
 /* =========================================================
-   3) COMPONENTES REUTILIZABLES
+   3) COMPONENTES
    ========================================================= */
-.section-title {
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--primary-blue);
-  text-transform: uppercase;
-  margin-bottom: 2.5rem;
-  text-align: center;
+.section-title{
+  font-size:2.2rem;
+  font-weight:700;
+  color:var(--primary-blue);
+  text-transform:uppercase;
+  margin-bottom:2.5rem;
+  text-align:center;
 }
 
-.badge {
-  font-size: 0.9rem;
-  font-weight: 500;
-  background-color: var(--primary-blue);
-  padding: 8px 15px;
-  color: white;
+.badge{
+  font-size:.9rem;
+  font-weight:500;
+  background-color:var(--primary-blue);
+  padding:8px 15px;
+  color:#fff;
 }
 
 /* =========================================================
    4) SECCIONES
    ========================================================= */
-.hero-nuevo {
-  background: #FFFFFF;
-  padding: 100px 0;
-}
+.hero-nuevo{ background:#fff; padding:100px 0; }
 
-.card-mision-pro {
-  border: 1px solid #eee;
-  border-left: 8px solid var(--primary-blue);
-  padding: 30px;
-  background: white;
+.card-mision-pro{
+  border:1px solid #eee;
+  border-left:8px solid var(--primary-blue);
+  padding:30px;
+  background:#fff;
 }
 
 /* =========================================================
    5) MARCAS
    ========================================================= */
-.brand-logo {
-  filter: grayscale(100%);
-  opacity: 0.6;
-  max-height: 65px;
-
-  /* Transición base */
-  transition: filter var(--t-base) var(--ease),
-              opacity var(--t-base) var(--ease),
-              transform var(--t-base) var(--ease);
+.brand-logo{
+  filter:grayscale(100%);
+  opacity:.6;
+  max-height:65px;
+  transition:filter var(--t-base) var(--ease),
+             opacity var(--t-base) var(--ease),
+             transform var(--t-base) var(--ease);
 }
-
-.brand-logo:hover {
-  filter: grayscale(0%);
-  opacity: 1;
-  transform: scale(1.1);
+.brand-logo:hover{
+  filter:grayscale(0%);
+  opacity:1;
+  transform:scale(1.1);
 }
 
 /* =========================================================
-   6) FLOTANTES (ESTÁTICO + CLASES CONTROLADAS POR JS)
+   6) FLOTANTES
    ========================================================= */
-.social-float-container {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 12px;
-  z-index: 10000;
-  align-items: flex-end;
+.social-float-container{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  display:flex;
+  flex-direction:column-reverse;
+  gap:12px;
+  z-index:10000;
+  align-items:flex-end;
 }
-
-.social-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  color: white;
-  font-size: 22px;
-  text-decoration: none;
-  overflow: hidden;
-
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-
-  /* Transición base */
-  transition: transform var(--t-base) cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.social-icon{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#fff;
+  font-size:22px;
+  text-decoration:none;
+  overflow:hidden;
+  box-shadow:0 5px 15px rgba(0,0,0,.3);
+  transition:transform var(--t-base) cubic-bezier(.175,.885,.32,1.275);
 }
+.social-icon:hover{ transform:scale(1.05); color:#fff; }
+.social-icon.facebook{ background:#3b5998; }
+.social-icon.instagram{ background:#e4405f; }
+.social-icon.twitter{ background:#000; }
 
-.social-icon:hover {
-  transform: scale(1.05);
-  color: white;
+.social-icon.whatsapp{
+  background:var(--verde-wa);
+  width:50px;
+  border-radius:50%;
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  padding:0;
+  transition:width var(--t-base) var(--ease),
+             border-radius var(--t-base) var(--ease),
+             padding var(--t-base) var(--ease),
+             justify-content var(--t-base) var(--ease);
 }
-
-.social-icon.facebook { background-color: #3b5998; }
-.social-icon.instagram { background-color: #e4405f; }
-.social-icon.twitter { background-color: #000000; }
-
-/* WhatsApp: el estado expandido lo controlará JS con .is-open */
-.social-icon.whatsapp {
-  background-color: var(--verde-wa);
-
-  /* Mantiene forma/tamaño por defecto */
-  width: 50px;
-  border-radius: 50%;
-
-  /* Layout base */
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding: 0;
-
-  /* Transición base (la animación “importante” la dispara JS con clase) */
-  transition: width var(--t-base) var(--ease),
-              border-radius var(--t-base) var(--ease),
-              padding var(--t-base) var(--ease),
-              justify-content var(--t-base) var(--ease);
+.whatsapp-text{
+  max-width:0;
+  opacity:0;
+  overflow:hidden;
+  white-space:nowrap;
+  color:#fff;
+  font-size:15px;
+  font-weight:700;
+  transition:max-width var(--t-base) var(--ease),
+             opacity var(--t-fast) var(--ease),
+             margin var(--t-base) var(--ease);
 }
-
-.whatsapp-text {
-  max-width: 0;
-  opacity: 0;
-  overflow: hidden;
-  white-space: nowrap;
-
-  color: white;
-  font-size: 15px;
-  font-weight: bold;
-
-  transition: max-width var(--t-base) var(--ease),
-              opacity var(--t-fast) var(--ease),
-              margin var(--t-base) var(--ease);
+.social-icon.whatsapp i{ font-size:24px; flex-shrink:0; }
+.social-icon.whatsapp.is-open{
+  width:160px;
+  border-radius:30px;
+  justify-content:center;
+  padding:0 15px;
 }
-
-.social-icon.whatsapp i {
-  font-size: 24px;
-  flex-shrink: 0;
-}
-
-/* Estado expandido (JS agrega/quita .is-open) */
-.social-icon.whatsapp.is-open {
-  width: 160px;
-  border-radius: 30px;
-  justify-content: center;
-  padding: 0 15px;
-}
-
-.social-icon.whatsapp.is-open .whatsapp-text {
-  max-width: 100px;
-  opacity: 1;
-  margin-right: 10px;
+.social-icon.whatsapp.is-open .whatsapp-text{
+  max-width:120px;
+  opacity:1;
+  margin-right:10px;
 }
 
 /* =========================================================
    7) CARDS / FOOTER / STATS
    ========================================================= */
-.service-card {
-  border-left: 6px solid var(--primary-blue);
-  background: white;
-  padding: 28px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+.service-card{
+  border-left:6px solid var(--primary-blue);
+  background:#fff;
+  padding:28px;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.06);
+  transition:transform var(--t-base) var(--ease),
+             border-left-color var(--t-base) var(--ease);
+}
+.service-card:hover{
+  transform:translateY(-7px);
+  border-left-color:var(--accent-gold);
+}
+.footer-optom{ background:#111827; }
 
-  /* Transición base */
-  transition: transform var(--t-base) var(--ease),
-              border-left-color var(--t-base) var(--ease);
+.stat-box{
+  padding:20px;
+  background:var(--bg-light);
+  border-radius:10px;
+  text-align:center;
+  border-bottom:4px solid var(--primary-blue);
+}
+.stat-number{
+  font-size:1.5rem;
+  font-weight:800;
+  color:var(--primary-blue);
+}
+.stat-label{
+  font-size:.8rem;
+  text-transform:uppercase;
+  color:var(--tech-gray);
 }
 
-.service-card:hover {
-  transform: translateY(-7px);
-  border-left-color: var(--accent-gold);
+.hover-shadow:hover{ box-shadow:0 4px 15px rgba(0,0,0,.2); }
+.transition-all{ transition:all .3s ease; }
+
+/* =========================================================
+   ÁREAS DE SOLUCIÓN (tiles)
+   ========================================================= */
+.solution-tile{
+  position:relative;
+  display:block;
+  height:240px;
+  border-radius:14px;
+  overflow:hidden;
+  text-decoration:none;
+  outline:none;
+  box-shadow:0 10px 24px rgba(0,0,0,.10);
+  transform:translateZ(0);
+}
+.solution-tile__bg{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  transform:scale(1);
+  transition:transform 450ms ease;
+}
+.solution-tile__overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,.10) 0%, rgba(0,0,0,.55) 60%, rgba(0,0,0,.70) 100%);
+  transition:opacity 300ms ease;
+  opacity:1;
+}
+.solution-tile__content{
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:16px;
+  color:#fff;
+}
+.solution-tile__title{
+  font-weight:700;
+  margin:0 0 6px 0;
+  letter-spacing:.2px;
+}
+.solution-tile__desc{
+  font-size:.95rem;
+  color:rgba(255,255,255,.88);
+  line-height:1.35;
+}
+.solution-tile:hover .solution-tile__bg{ transform:scale(1.08); }
+.solution-tile:hover .solution-tile__overlay{ opacity:.95; }
+.solution-tile:focus-visible{
+  box-shadow:0 0 0 4px rgba(0,51,102,.25), 0 12px 28px rgba(0,0,0,.14);
 }
 
-.footer-optom {
-  background: #111827;
+/* =========================================================
+   HERO SLIDER (SERVICIOS) - BLOQUE ÚNICO (SIN DUPLICADOS)
+   ========================================================= */
+.hero-slider{ position:relative; }
+
+.hero-slider .carousel,
+.hero-slider .carousel-inner,
+.hero-slider .carousel-item{
+  height:clamp(420px, 70vh, 640px);
 }
 
-.stat-box {
-  padding: 20px;
-  background: var(--bg-light);
-  border-radius: 10px;
-  text-align: center;
-  border-bottom: 4px solid var(--primary-blue);
+.hero-slider .carousel-item{ position:relative; }
+
+/* Fondo del slide (sin franjas feas) */
+.hero-slide{
+  height:100%;
+  background-size:cover;            /* llena el espacio */
+  background-position:center;       /* cambia por slide si lo necesitas */
+  background-repeat:no-repeat;
+  background-color:#0b0f14;         /* respaldo si alguna imagen es rara */
 }
 
-.stat-number {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--primary-blue);
+/* Oscurece un poco para que el texto se lea bien (sin cajas) */
+.hero-slide-overlay{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  background:linear-gradient(180deg,
+    rgba(0,0,0,.15) 0%,
+    rgba(0,0,0,.45) 55%,
+    rgba(0,0,0,.65) 100%
+  );
+  pointer-events:none;
 }
 
-.stat-label {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  color: var(--tech-gray);
+/* Texto por slide (SIN cuadro) */
+.hero-slide-caption{
+  position:absolute;
+  inset:0;
+  z-index:3;
+  display:grid;
+  align-items:end;
+  padding:26px 0;
+  pointer-events:none;
+}
+.hero-slide-caption__box{
+  max-width:980px;
+  margin:0 auto;
+  padding:0 18px;
+}
+@media (min-width:768px){
+  .hero-slide-caption__box{ margin:0; padding-left:0; }
 }
 
-/* Utilidades que tenías inline en el HTML */
-.hover-shadow:hover {
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+.hero-slide-caption__title{
+  color:#fff;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.6px;
+  font-size:clamp(1.6rem, 3vw, 2.6rem);
+  text-shadow:0 12px 30px rgba(0,0,0,.6);
+  margin:0 0 8px 0;
+}
+.hero-slide-caption__desc{
+  color:rgba(255,255,255,.92);
+  font-size:clamp(1rem, 1.2vw, 1.15rem);
+  max-width:780px;
+  margin:0;
+  text-shadow:0 10px 22px rgba(0,0,0,.55);
 }
 
-.transition-all {
-  transition: all 0.3s ease;
+/* Click del slide (sin bloquear flechas/puntos) */
+.hero-slide-link{
+  position:absolute;
+  inset:0;
+  z-index:1;
 }
+
+/* Controles siempre por encima (clickeables) */
+.hero-slider .carousel-control-prev,
+.hero-slider .carousel-control-next,
+.hero-slider .carousel-indicators{
+  z-index:10;
+}
+
+.hero-slider .carousel-control-prev-icon,
+.hero-slider .carousel-control-next-icon{
+  filter:drop-shadow(0 8px 20px rgba(0,0,0,.35));
+}
+
+.hero-slider .carousel-indicators [data-bs-target]{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+}
+
+/* Zoom suave */
+.carousel-item.active .hero-slide{
+  animation:heroZoom 6s ease-in-out both;
+}
+@keyframes heroZoom{
+  from{ transform:scale(1.02); }
+  to{ transform:scale(1.08); }
+}
+
+/* =========================================================
+   TÍTULO “SERVICIOS Y SOLUCIONES” DEBAJO DEL SLIDER
+   (para evitar que se vea feo pegado a la navbar)
+   ========================================================= */
+.hero-below-title{
+  padding:34px 0 22px;
+  background:#f2f2f2;
+}
+.hero-below-title__h1{
+  color:#5b5b5b;
+  letter-spacing:.12em;
+  font-weight:300;
+}
+.hero-below-title__p{
+  color:#6b6b6b;
+  max-width:900px;
+  margin:0 auto;
+}
+
+/* =========================================================
+   NAVBAR TRANSPARENTE EN HERO + BLANCA AL BAJAR
+   ========================================================= */
+.navbar.nav-transparent{
+  background:transparent !important;
+  box-shadow:none !important;
+}
+.navbar.nav-transparent .nav-link,
+.navbar.nav-transparent .navbar-brand,
+.navbar.nav-transparent .navbar-toggler{
+  color:#fff !important;
+}
+.navbar.nav-transparent .nav-link.active{
+  color:#fff !important;
+  text-decoration:underline;
+  text-underline-offset:6px;
+}
+.navbar.nav-transparent .navbar-toggler{
+  border-color:rgba(255,255,255,.25) !important;
+}
+.navbar.nav-transparent .navbar-toggler-icon{
+  filter:invert(1) brightness(2);
+}
+
+.navbar.nav-scrolled{
+  background:#fff !important;
+  box-shadow:0 10px 30px rgba(0,0,0,.10) !important;
+}
+.navbar.nav-scrolled .nav-link,
+.navbar.nav-scrolled .navbar-brand,
+.navbar.nav-scrolled .navbar-toggler{
+  color:var(--tech-gray) !important;
+}
+.navbar.nav-scrolled .navbar-toggler-icon{ filter:none; }
+
+/* El hero detrás del navbar (ajusta si tu navbar cambia de alto) */
+.hero-slider{ margin-top:-92px; }
+@media (max-width:992px){
+  .hero-slider{ margin-top:-78px; }
+}
+
+/* =========================
+   HERO SLIDER – OPCIÓN A
+   Imagen centrada + fondo oscuro
+   ========================= */
+
+/* FIX: base de posicionamiento para z-index/indicators */
+.hero-slider .carousel{ position: relative; }
+
+.hero-slider .carousel,
+.hero-slider .carousel-inner,
+.hero-slider .carousel-item {
+  height: clamp(420px, 65vh, 620px);
+}
+
+/* Marco del slide */
+.hero-slide {
+  position: relative;
+  height: 100%;
+  background: #0b0f14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Imagen del slide (menos “gigante” + más aire) */
+.hero-slide img,
+.hero-slide .hero-img {
+  max-width: min(980px, 82%);
+  max-height: 88%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Evita que Bootstrap o animaciones la inflen */
+.carousel-item.active img,
+.carousel-item.active .hero-img {
+  animation: none !important;
+  transform: none !important;
+}
+
+/* Overlay mantiene lectura */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,.65) 0%,
+    rgba(0,0,0,.25) 45%,
+    rgba(0,0,0,.65) 100%
+  );
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* Texto SIEMPRE arriba */
+.hero-caption {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  display: grid;
+  align-items: end;
+
+  /* FIX: espacio real para indicadores (sin exagerar) */
+  padding: 0 0 4.6rem 0;
+
+  pointer-events: none;
+}
+
+.hero-caption a { pointer-events: auto; }
+
+/* FIX: si tienes link invisible para que todo el slide sea clickeable,
+   debe quedar debajo de indicadores y debajo del caption */
+.hero-slide-link{
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+/* FIX: indicadores al fondo, por encima de todo */
+.hero-slider .carousel-indicators{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 18px !important;
+  margin-bottom: 0 !important;
+  z-index: 12 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-slide img,
+  .hero-slide .hero-img {
+    max-width: 92%;
+    max-height: 86%;
+  }
+
+  .hero-slider .carousel,
+  .hero-slider .carousel-inner,
+  .hero-slider .carousel-item {
+    height: 480px;
+  }
+
+  /* En móvil, un poquito menos de padding para que no tape */
+  .hero-caption{ padding-bottom: 4.2rem; }
+}
+
+/* Reduce altura de la descripción para que no invada */
+.hero-caption__desc{
+  max-width: 620px;
+  line-height: 1.35;
+  font-size: 1rem;
+  margin-bottom: .6rem;
+}
+
+/* quita borde/espacio blanco del navegador */
+body{ margin:0; }
+
+/* orden de capas: link debajo de indicadores/controles */
+.hero-slider .carousel{ position:relative; }
+.hero-slide-link{ z-index:2; }
+.hero-slide-overlay{ z-index:4; }
+.hero-slide-caption{ z-index:6; }
+.hero-slider .carousel-indicators,
+.hero-slider .carousel-control-prev,
+.hero-slider .carousel-control-next{ z-index:12; }
+
+#mainNav{
+  transition: background-color .25s ease, box-shadow .25s ease, padding .25s ease;
+}
+
+#mainNav.nav-transparent{
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+#mainNav.nav-transparent .nav-link,
+#mainNav.nav-transparent .navbar-brand{
+  color:#fff !important;
+}
+
+#mainNav.nav-transparent .navbar-toggler{
+  border-color: rgba(255,255,255,.25) !important;
+}
+
+#mainNav.nav-transparent .navbar-toggler-icon{
+  filter: invert(1) brightness(2);
+}
+
+#mainNav.nav-scrolled{
+  background:#fff !important;
+  box-shadow:0 10px 30px rgba(0,0,0,.10) !important;
+}
+
+#mainNav.nav-scrolled .nav-link,
+#mainNav.nav-scrolled .navbar-brand{
+  color: var(--tech-gray) !important;
+}
+
+#mainNav.nav-scrolled .navbar-toggler-icon{
+  filter:none;
+}
+
+html, body { margin: 0; padding: 0; }
+

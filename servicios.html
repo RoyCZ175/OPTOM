@@ -11,7 +11,7 @@
 </head>
 <body class="bg-light">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-3">
+<nav id="mainNav" class="navbar navbar-expand-lg navbar-light fixed-top py-3 nav-transparent">
     <div class="container">
         <a class="navbar-brand" href="index.html">
             <img src="img/logos/optom.png" alt="OPTOM" style="height: 60px;">
@@ -37,13 +37,23 @@
     </div>
 </nav>
 
-<header id="servicios" class="py-5 bg-dark text-white">
-    <div class="container text-center" data-aos="zoom-in">
-        <h1 class="display-5 fw-bold mb-2">Servicios y Soluciones</h1>
-        <p class="lead mb-3">Infraestructura de Misión Crítica para continuidad operativa, eficiencia y crecimiento.</p>
-        <a href="nosotros.html#nosotros" class="btn btn-warning fw-bold mt-2">Ver Nosotros</a>
-    </div>
+
+<header id="servicios" class="hero-slider text-white">
+  <div id="serviciosHeroMount"></div>
 </header>
+
+<section class="hero-intro">
+  <div class="container text-center">
+    <h1 class="hero-intro__h1 mb-2">SERVICIOS Y SOLUCIONES</h1>
+    <p class="hero-intro__p mb-0">
+      Infraestructura de Misión Crítica para continuidad operativa, eficiencia y crecimiento.
+    </p>
+  </div>
+</section>
+
+<div class="hero-spacer"></div>
+
+
 
 <section class="py-5 bg-light">
     <div class="container">
@@ -145,58 +155,85 @@
     </div>
 </section>
 
-<section class="py-5 bg-white border-top">
-    <div class="container">
-        <div class="text-center mb-5" data-aos="fade-up">
-            <h2 class="section-title mb-3">Áreas de Solución</h2>
-            <p class="lead text-secondary mb-0">Explora nuestras líneas principales. Diseñamos, implementamos y soportamos proyectos end-to-end.</p>
-        </div>
-
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-4" data-aos="fade-up">
-                <div class="service-card h-100 p-4 border rounded">
-                    <div class="service-icon mb-3 text-primary fs-2"><i class="fas fa-database"></i></div>
-                    <h5 class="fw-bold text-dark">Data Center</h5>
-                    <p class="text-secondary mb-0">Micro Data Center, soluciones modulares y expansión escalable según demanda.</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="service-card h-100 p-4 border rounded">
-                    <div class="service-icon mb-3 text-primary fs-2"><i class="fas fa-snowflake"></i></div>
-                    <h5 class="fw-bold text-dark">Climatización de Precisión</h5>
-                    <p class="text-secondary mb-0">Control térmico para equipos críticos: estabilidad, eficiencia y operación continua.</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="service-card h-100 p-4 border rounded">
-                    <div class="service-icon mb-3 text-primary fs-2"><i class="fas fa-bolt"></i></div>
-                    <h5 class="fw-bold text-dark">Energía y Respaldo</h5>
-                    <p class="text-secondary mb-0">UPS, bancos de baterías, distribución y protección eléctrica para alta disponibilidad.</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4" data-aos="fade-up">
-                <div class="service-card h-100 p-4 border rounded">
-                    <div class="service-icon mb-3 text-primary fs-2"><i class="fas fa-solar-panel"></i></div>
-                    <h5 class="fw-bold text-dark">Energía Solar</h5>
-                    <p class="text-secondary mb-0">Soluciones fotovoltaicas con gestión inteligente y enfoque en eficiencia.</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="service-card h-100 p-4 border rounded">
-                    <div class="service-icon mb-3 text-primary fs-2"><i class="fas fa-shield-halved"></i></div>
-                    <h5 class="fw-bold text-dark">Seguridad y Monitoreo</h5>
-                    <p class="text-secondary mb-0">Monitoreo y control para infraestructura crítica (operación y continuidad).</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="service-card h-100 p-4 border rounded">
-                    <div class="service-icon mb-3 text-primary fs-2"><i class="fas fa-screwdriver-wrench"></i></div>
-                    <h5 class="fw-bold text-dark">Soporte y Mantenimiento</h5>
-                    <p class="text-secondary mb-0">Planes preventivos, correctivos y predictivos con soporte especializado.</p>
-                </div>
-            </div>
-        </div>
+<section class="py-5 bg-white border-top" id="areas-solucion">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <h2 class="section-title mb-3">Áreas de Solución</h2>
+      <p class="lead text-secondary mb-0">
+        Explora nuestras líneas principales. Diseñamos, implementamos y soportamos proyectos end-to-end.
+      </p>
     </div>
+
+    <div class="row g-4">
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up">
+        <a href="data-center.html" class="solution-tile">
+          <div class="solution-tile__bg" style="background-image:url('img/servicios/data-center.jpg');"></div>
+          <div class="solution-tile__overlay"></div>
+          <div class="solution-tile__content">
+            <h5 class="solution-tile__title">Data Centers</h5>
+            <p class="solution-tile__desc mb-0">Micro Data Center, soluciones modulares y expansión escalable según demanda.</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <a href="climatizacion.html" class="solution-tile">
+          <div class="solution-tile__bg" style="background-image:url('img/servicios/climatizacion.jpg');"></div>
+          <div class="solution-tile__overlay"></div>
+          <div class="solution-tile__content">
+            <h5 class="solution-tile__title">Climatización de Precisión</h5>
+            <p class="solution-tile__desc mb-0">Control térmico para equipos críticos: estabilidad, eficiencia y operación continua.</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <a href="energia-respaldo.html" class="solution-tile">
+          <div class="solution-tile__bg" style="background-image:url('img/servicios/energia-respaldo.jpg');"></div>
+          <div class="solution-tile__overlay"></div>
+          <div class="solution-tile__content">
+            <h5 class="solution-tile__title">Energía y Respaldo</h5>
+            <p class="solution-tile__desc mb-0">UPS, bancos de baterías, distribución y protección eléctrica para alta disponibilidad.</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up">
+        <a href="energia-solar.html" class="solution-tile">
+          <div class="solution-tile__bg" style="background-image:url('img/servicios/energia-solar.jpg');"></div>
+          <div class="solution-tile__overlay"></div>
+          <div class="solution-tile__content">
+            <h5 class="solution-tile__title">Energía Solar</h5>
+            <p class="solution-tile__desc mb-0">Soluciones fotovoltaicas con gestión inteligente y enfoque en eficiencia.</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <a href="seguridad-monitoreo.html" class="solution-tile">
+          <div class="solution-tile__bg" style="background-image:url('img/servicios/seguridad.jpg');"></div>
+          <div class="solution-tile__overlay"></div>
+          <div class="solution-tile__content">
+            <h5 class="solution-tile__title">Seguridad y Monitoreo</h5>
+            <p class="solution-tile__desc mb-0">Monitoreo y control para infraestructura crítica (operación y continuidad).</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <a href="soporte-mantenimiento.html" class="solution-tile">
+          <div class="solution-tile__bg" style="background-image:url('img/servicios/soporte.jpg');"></div>
+          <div class="solution-tile__overlay"></div>
+          <div class="solution-tile__content">
+            <h5 class="solution-tile__title">Soporte y Mantenimiento</h5>
+            <p class="solution-tile__desc mb-0">Planes preventivos, correctivos y predictivos con soporte especializado.</p>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
 </section>
 
 <section class="py-5 bg-light border-top">
@@ -302,7 +339,6 @@
                 <p class="small">Quito - Ecuador</p>
             </div>
         </div>
-        <img src="img/logos/optom.png" alt="Logo" style="height: 40px; filter: brightness(0) invert(1);" class="mb-3">
         <p class="small text-secondary mb-0">© 2026 OPTOM - Todos los derechos reservados.</p>
     </div>
 </footer>
@@ -323,10 +359,16 @@
     </a>
   </div>
 
+<!-- ✅ SCRIPTS CORREGIDOS: SIN DUPLICADOS -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 1000, once: true });
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>AOS.init({ duration: 1000, once: true });</script>
+
 <script src="js/main.js"></script>
+<script src="js/hero-servicios.js"></script>
 
 </body>
 </html>
