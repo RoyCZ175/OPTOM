@@ -1,13 +1,17 @@
 /* =========================================================
-   HERO-SERVICIOS.JS - Carousel + Navbar transparente
+   HERO-SERVICIOS.JS
+   - Carousel auto + controles
+   - Navbar transparente arriba / blanca al bajar
    ========================================================= */
 document.addEventListener("DOMContentLoaded", () => {
   "use strict";
 
   // =========================
-  // 1) HERO CAROUSEL
+  // Config
   // =========================
-  const mount = document.getElementById("serviciosHeroMount");
+  const CAROUSEL_ID = "serviciosHeroCarousel";
+  const INTERVAL_MS = 4500;
+
   const slides = [
     { img: "img/servicios/data-center.jpg", href: "data-center.html", title: "Data Centers" },
     { img: "img/servicios/climatizacion.jpg", href: "climatizacion.html", title: "Climatización de Precisión" },
@@ -17,12 +21,15 @@ document.addEventListener("DOMContentLoaded", () => {
     { img: "img/servicios/soporte.jpg", href: "soporte-mantenimiento.html", title: "Soporte y Mantenimiento" },
   ];
 
-  const id = "serviciosHeroCarousel";
+  // =========================
+  // 1) HERO CAROUSEL (render)
+  // =========================
+  const mount = document.getElementById("serviciosHeroMount");
 
   if (mount) {
     const indicators = slides.map((s, i) => `
       <button type="button"
-        data-bs-target="#${id}"
+        data-bs-target="#${CAROUSEL_ID}"
         data-bs-slide-to="${i}"
         class="${i === 0 ? "active" : ""}"
         ${i === 0 ? 'aria-current="true"' : ""}
@@ -46,45 +53,44 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </div>
 
-        <!-- Click en todo el slide => baja a Áreas (SIN tapar flechas/puntitos) -->
         <a class="hero-slide-link" href="#areas-solucion" aria-label="Ir a Áreas de Solución"></a>
       </div>
     `).join("");
 
     mount.innerHTML = `
-      <div id="${id}" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4500">
+      <div id="${CAROUSEL_ID}" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-indicators">${indicators}</div>
         <div class="carousel-inner">${items}</div>
 
-        <button class="carousel-control-prev" type="button" data-bs-target="#${id}" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#${CAROUSEL_ID}" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Anterior</span>
         </button>
 
-        <button class="carousel-control-next" type="button" data-bs-target="#${id}" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#${CAROUSEL_ID}" data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Siguiente</span>
         </button>
       </div>
     `;
 
-    const el = document.getElementById(id);
+    const el = document.getElementById(CAROUSEL_ID);
     if (window.bootstrap?.Carousel && el) {
       bootstrap.Carousel.getOrCreateInstance(el, {
-        interval: 4500,
-        pause: "hover",
+        interval: INTERVAL_MS,
+        pause: false,     // ✅ NO se pausa al hover
         touch: true,
-        wrap: true
+        wrap: true,
+        keyboard: true
       }).cycle();
     }
 
-    // Scroll suave al dar click en el slide (opcional, pero se ve pro)
+    // Scroll suave al dar click en el slide
     mount.addEventListener("click", (e) => {
       const link = e.target.closest('a.hero-slide-link[href^="#"]');
       if (!link) return;
 
-      const targetId = link.getAttribute("href");
-      const target = document.querySelector(targetId);
+      const target = document.querySelector(link.getAttribute("href"));
       if (!target) return;
 
       e.preventDefault();
@@ -103,7 +109,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const navbarH = nav.offsetHeight || 80;
       const heroH = hero.offsetHeight || 0;
 
-      // Cambia a blanco cuando ya pasaste el hero (un poco antes)
       const trigger = Math.max(10, heroH - navbarH);
       const scrolled = window.scrollY >= trigger;
 

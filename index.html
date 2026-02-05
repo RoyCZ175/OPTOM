@@ -9,14 +9,16 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/index.css">
+
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-3">
-  <div class="container">
+<nav id="mainNav" class="navbar navbar-expand-lg py-3">
+  <div class="container-fluid nav-wide">
     <a class="navbar-brand" href="index.html">
-      <img src="img/logos/optom.png" alt="OPTOM" style="height: 120px; width: auto;">
+      <img src="img/logos/optom.png" alt="OPTOM" class="nav-logo">
     </a>
 
     <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navOptom" aria-controls="navOptom" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,21 +27,13 @@
 
     <div class="collapse navbar-collapse" id="navOptom">
       <ul class="navbar-nav ms-auto align-items-center fw-bold">
-        <li class="nav-item">
-          <a class="nav-link px-3" href="index.html">Inicio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link px-3" href="servicios.html">Servicios</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link px-3" href="nosotros.html#nosotros">Nosotros</a>
-        </li>
+        <li class="nav-item"><a class="nav-link px-3" href="index.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="servicios.html">Servicios</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="nosotros.html#nosotros">Nosotros</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="marcas.html">Marcas</a></li>
 
-        <li class="nav-item">
-          <a class="nav-link px-3" href="marcas.html">Marcas</a>
-        </li>
         <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
-          <a class="nav-link btn btn-warning text-dark px-4 shadow-sm w-100" href="contacto.html">
+          <a class="btn btn-warning text-dark px-4 shadow-sm w-100 nav-cta" href="contacto.html">
             <i class="fas fa-headset me-2"></i>Contacto
           </a>
         </li>
@@ -48,33 +42,30 @@
   </div>
 </nav>
 
-<header class="hero-nuevo py-5 bg-gradient-light">
-  <div class="container py-lg-5">
-    <div class="row align-items-center g-5">
-      <div class="col-lg-7" data-aos="fade-right">
-        <h1 class="display-3 fw-bold text-dark mb-4">Integración, Innovación y Vanguardia</h1>
-        <p class="lead fw-bold text-secondary mb-5">
-          Liderando el camino hacia la revolución digital. Especialistas en <span class="text-primary">Misión Crítica</span> para su Empresa.
-        </p>
-        <div class="d-flex flex-wrap gap-3">
-          <a href="servicios.html" class="btn btn-primary btn-lg fw-bold px-5 shadow">Nuestras Soluciones</a>
-          <a href="nosotros.html" class="btn btn-outline-dark btn-lg fw-bold px-5">Nosotros</a>
-          <a href="contacto.html" class="btn btn-outline-dark btn-lg fw-bold px-5">Cotizar Ahora</a>
-        </div>
-      </div>
+<header id="heroIndex" class="hero-ms">
+  <div class="hero-ms__bg" aria-hidden="true" style="background-image:url('img/index/portada.jpg')"></div>
+  <div class="container hero-ms__content">
+    <div class="hero-ms__text" data-aos="fade-right">
+      <h1 class="hero-ms__title">Integración, Innovación y Vanguardia</h1>
 
-      <div class="col-lg-5" data-aos="zoom-in">
-        <div class="position-relative">
-          <img src="img/servicios/engranajes-tec.jpg" alt="Innovación" class="img-fluid rounded-4 shadow-lg border-5 border-white border">
-          <div class="position-absolute bottom-0 end-0 bg-warning p-3 rounded-start shadow fw-bold">
-            +11 Años de Experiencia
-          </div>
-        </div>
-      </div>
+      <p class="hero-ms__subtitle">
+        Liderando el camino hacia la revolución digital. Especialistas en
+        <span class="hero-ms__highlight">Misión Crítica</span> para su Empresa.
+      </p>
 
+      <div class="hero-ms__actions">
+        <a href="servicios.html" class="btn btn-primary btn-lg fw-bold px-5 shadow">Nuestras Soluciones</a>
+        <a href="nosotros.html" class="btn btn-outline-light btn-lg fw-bold px-5">Nosotros</a>
+        <a href="contacto.html" class="btn btn-outline-light btn-lg fw-bold px-5">Cotizar Ahora</a>
+      </div>
+    </div>
+
+    <div class="hero-ms__badge" data-aos="zoom-in">
+      <span>+11 Años de Experiencia</span>
     </div>
   </div>
 </header>
+
 
 <section class="py-5 bg-white border-top">
   <div class="container">
@@ -127,79 +118,6 @@
       <a href="servicios.html" class="btn btn-primary btn-lg fw-bold px-5 shadow">
         Explorar todos los servicios
       </a>
-    </div>
-  </div>
-</section>
-
-<section id="esencia" class="py-5 bg-white border-top">
-  <div class="container">
-    <div class="row g-5 align-items-center text-center text-md-start">
-      <div class="col-md-6" data-aos="fade-up">
-        <h2 class="section-title mb-4">Nuestra Esencia</h2>
-        <p class="lead text-secondary">Garantizamos la continuidad operativa de su infraestructura estratégica.</p>
-        <p>Integramos soluciones de vanguardia en las áreas Eléctrica, Electrónica, Telecomunicaciones y TI en todo el territorio ecuatoriano.</p>
-
-        <div class="row g-3 mt-4">
-          <div class="col-6" data-aos="fade-up" data-aos-delay="50">
-            <div class="stat-box">
-              <div class="stat-number">24/7</div>
-              <div class="stat-label">Soporte Misión Crítica</div>
-            </div>
-          </div>
-          <div class="col-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="stat-box">
-              <div class="stat-number">+11</div>
-              <div class="stat-label">Años de experiencia</div>
-            </div>
-          </div>
-          <div class="col-6" data-aos="fade-up" data-aos-delay="150">
-            <div class="stat-box">
-              <div class="stat-number">EC</div>
-              <div class="stat-label">Cobertura nacional</div>
-            </div>
-          </div>
-          <div class="col-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="stat-box">
-              <div class="stat-number">OEM</div>
-              <div class="stat-label">Respaldo de fábrica</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6" data-aos="fade-left">
-        <div class="card-mision-pro p-4 bg-light border-start border-primary border-5 shadow-sm rounded-3 mb-4">
-          <h4 class="text-primary fw-bold mb-3">
-            <i class="fas fa-bullseye me-2"></i>Nuestra Misión
-          </h4>
-          <p class="mb-0 text-dark italic">
-            "Integramos soluciones tecnológicas innovadoras que garantizan la eficiencia, el cumplimiento de estándares y la sostenibilidad para el éxito de nuestros clientes."
-          </p>
-        </div>
-
-        <div class="card-mision-pro p-4 bg-light border-start border-primary border-5 shadow-sm rounded-3 mb-4">
-          <h4 class="text-primary fw-bold mb-3">
-            <i class="fas fa-eye me-2"></i>Nuestra Visión
-          </h4>
-          <p class="mb-0 text-dark italic">
-            "Ser la empresa líder y el referente a nivel nacional en infraestructura tecnológica, reconocida por nuestra calidad y mejora continua."
-          </p>
-        </div>
-
-        <div class="card-mision-pro p-4 bg-light border-start border-primary border-5 shadow-sm rounded-3">
-          <h4 class="text-primary fw-bold mb-3">
-            <i class="fas fa-gem me-2"></i>Valores
-          </h4>
-          <ul class="mb-0 text-dark ps-3">
-            <li>Liderazgo</li>
-            <li>Actitud Positiva</li>
-            <li>Comunicación Efectiva</li>
-            <li>Responsabilidad</li>
-            <li>Integridad</li>
-            <li>Trabajo en Equipo</li>
-          </ul>
-        </div>
-      </div>
     </div>
   </div>
 </section>
