@@ -191,3 +191,187 @@
   height:60px;
   width:auto;
 }
+/* ==============================
+   SUPPORT STRIP (Index) - dark pro (badge simple + hover WhatsApp)
+   ============================== */
+.support-strip{
+  position: relative;
+  border-radius: 34px;
+  padding: 44px 44px;
+  color: #fff;
+
+  background: radial-gradient(1200px 300px at 35% 0%,
+      rgba(255,255,255,.08) 0%,
+      rgba(255,255,255,0) 60%),
+    linear-gradient(180deg, #2a2a2a 0%, #1f1f1f 100%);
+
+  border-left: 10px solid #B6D313;
+  box-shadow: 0 28px 60px rgba(0,0,0,.18);
+  overflow: hidden;
+}
+
+/* BADGE "Soporte..." sin card */
+.support-strip .badge{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+
+  color: rgba(255,255,255,.85) !important;
+  font-weight: 700;
+  font-size: .95rem;
+}
+
+/* título + texto */
+.support-strip h3{
+  color: #fff;
+  font-weight: 900;
+  letter-spacing: -.2px;
+}
+.support-strip p{ color: rgba(255,255,255,.82); }
+
+/* botones */
+.support-strip .btn{
+  border-radius: 14px;
+  padding: 14px 20px;
+}
+
+/* botón principal (rojo del manual) */
+.support-strip .btn.btn-warning{
+  background: #FF0000;
+  border-color: #FF0000;
+  color: #fff !important;
+  box-shadow: 0 14px 30px rgba(0,0,0,.25);
+}
+.support-strip .btn.btn-warning:hover{
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+/* botón WhatsApp: hover verde */
+.support-strip .btn.btn-outline-light{
+  background: transparent;
+  border-color: rgba(255,255,255,.35) !important;
+  color: #fff !important;
+  transition: background-color .2s ease, border-color .2s ease, transform .2s ease;
+}
+.support-strip .btn.btn-outline-light:hover{
+  background: #B6D313 !important;
+  border-color: #B6D313 !important;
+  color: #111 !important;
+  transform: translateY(-1px);
+}
+
+/* responsive */
+@media (max-width: 991px){
+  .support-strip{
+    padding: 30px 22px;
+    border-radius: 26px;
+  }
+}
+/* ==============================
+   SOCIAL ICONS (Index) MARCAS VERTIV,EATON,KSTAR ETC
+   ============================== */
+
+   /* --- Variables --- */
+:root {
+    --brand-lime: #B6D313;
+    --text-light: rgba(255, 255, 255, 0.85);
+}
+
+.partners-section {
+    background: radial-gradient(circle at center, #1a1f25 0%, #0a0a0a 100%);
+    padding: 100px 0;
+    position: relative;
+}
+
+/* --- Título Pro --- */
+.partners-section h2 {
+    font-size: clamp(2.5rem, 5vw, 4rem); 
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    background: linear-gradient(180deg, #ffffff 0%, #a0a0a0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1.5rem;
+}
+
+/* --- Contenedor de Logos (Más grandes) --- */
+.partner-logo-box {
+    height: 140px; /* Más espacio para los logos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+/* El círculo de Vertiv (Protagonista) */
+.logo-circle {
+    width: 110px;
+    height: 110px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    transition: all 0.4s ease;
+    filter: grayscale(1) opacity(0.6);
+}
+
+/* Logos de texto (Eaton, Kstar, etc) */
+.logo-standard {
+    max-width: 200px; /* Más ancho */
+    max-height: 85px;  /* Más alto */
+    filter: grayscale(1) brightness(2) opacity(0.5);
+    transition: all 0.4s ease;
+    object-fit: contain;
+}
+
+/* --- Efectos Hover --- */
+.partner-item:hover .logo-circle,
+.partner-item:hover .logo-standard {
+    filter: grayscale(0) brightness(1) opacity(1);
+    transform: scale(1.1);
+}
+
+.partner-item:hover .logo-circle {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+/* --- Textos y Divisor (Más legibles) --- */
+.divider-lime {
+    width: 60px; /* Más larga */
+    height: 4px; /* Más gruesa */
+    background-color: var(--brand-lime);
+    margin: 15px auto;
+    border: none;
+    border-radius: 10px;
+    opacity: 0.8;
+    box-shadow: 0 0 15px rgba(182, 211, 19, 0.4);
+    transition: all 0.3s;
+}
+
+.partner-item:hover .divider-lime {
+    opacity: 1;
+    box-shadow: 0 0 20px var(--brand-lime);
+    width: 80px;
+}
+
+.partner-item h5 {
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.4rem; /* Más grande */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 15px;
+}
+
+.partner-item p {
+    color: var(--text-light); /* Blanco más fuerte */
+    font-size: 1.05rem; /* Tamaño de lectura pro */
+    line-height: 1.6;
+    max-width: 260px;
+    margin: 0 auto;
+}

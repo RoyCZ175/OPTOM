@@ -63,3 +63,22 @@
   // ✅ al salir vuelve el autoplay
   slider.addEventListener("mouseleave", start);
 })();
+function showSlide(index) {
+    // 1. Quitar clase active de todos los slides
+    const slides = document.querySelectorAll('.essence-slide');
+    const buttons = document.querySelectorAll('.nav-btn');
+    
+    slides.forEach(slide => slide.classList.remove('active'));
+    buttons.forEach(btn => btn.classList.remove('active'));
+    
+    // 2. Activar el seleccionado
+    document.getElementById(`slide-${index}`).classList.add('active');
+    buttons[index].classList.add('active');
+}
+
+// Opcional: Auto-cambio cada 6 segundos
+let currentEssenceSlide = 0;
+setInterval(() => {
+    currentEssenceSlide = (currentEssenceSlide + 1) % 3;
+    showSlide(currentEssenceSlide);
+}, 6000);
