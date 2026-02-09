@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Energía y Respaldo - OPTOM</title>
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- ✅ GLOBAL -->
+  <link rel="stylesheet" href="../css/style.css" />
+  <!-- ✅ SOLO ENERGÍA -->
+  <link rel="stylesheet" href="../css/styleservicios/energia.css" />
+</head>
+
+<body class="bg-light">
+
+  <!-- NAV (reusa tu nav) -->
+  <nav id="mainNav" class="navbar navbar-expand-lg site-nav navbar-dark fixed-top py-3 nav-glass">
+    <div class="container">
+      <a class="navbar-brand" href="../index.html">
+        <img src="../img/logos/optom.png" alt="OPTOM" style="height: 60px;">
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navOptom">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navOptom">
+        <ul class="navbar-nav ms-auto align-items-center fw-bold">
+          <li class="nav-item"><a class="nav-link px-3" href="../index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link px-3 active" href="../servicios.html">Servicios</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="../nosotros.html#nosotros">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link px-3" href="../marcas.html">Marcas</a></li>
+          <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+            <a class="nav-link btn btn-warning text-dark px-4 shadow-sm w-100" href="../contacto.html">
+              <i class="fas fa-headset me-2"></i>Contacto
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO BANNER -->
+  <header class="en-hero">
+    <!-- ✅ CAMBIA ESTA RUTA CUANDO TENGAS TU IMAGEN -->
+    <div class="en-hero__bg" style="background-image:url('../img/servicios/energia-hero.jpg');"></div>
+    <div class="en-hero__overlay"></div>
+
+    <div class="container en-hero__content">
+      <div class="en-hero__badge" data-aos="fade-down" data-aos-duration="700">
+        Alta disponibilidad • Continuidad operativa • Protección
+      </div>
+
+      <h1 class="en-hero__title" data-aos="fade-up" data-aos-duration="800">
+        Sistemas De Energía De Misión Crítica
+      </h1>
+
+      <p class="en-hero__desc" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+        UPS, distribución eléctrica, baterías, tableros y generación para entornos que no pueden detenerse.
+      </p>
+
+      <div class="en-hero__actions" data-aos="fade-up" data-aos-delay="200">
+        <a class="btn btn-warning px-4 fw-bold" href="#ups">
+          <i class="fa-solid fa-bolt me-2"></i>Ver soluciones
+        </a>
+        <a class="btn btn-outline-light px-4 fw-bold" href="../contacto.html">
+          <i class="fa-solid fa-headset me-2"></i>Hablar con un asesor
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECCIÓN 1: UPS (layout tipo DC: panel + imagen) -->
+  <section id="ups" class="en-section">
+    <div class="en-section__bg" style="background-image:url('../img/servicios/energia-bg-1.jpg');"></div>
+    <div class="en-section__shade"></div>
+
+    <div class="container">
+      <div class="row g-0 align-items-stretch en-card">
+        <div class="col-lg-6 en-card__panel" data-aos="fade-right">
+          <h2 class="en-card__title">UPS Online (1 KVA – 1000 KVA)</h2>
+          <div class="en-card__meta">
+            Diseño • Implementación • Puesta en marcha • Mantenimiento
+          </div>
+
+          <p class="en-card__p">
+            Protección continua ante cortes, microcortes y variaciones de voltaje, asegurando estabilidad para cargas críticas.
+          </p>
+          <p class="en-card__p">
+            Ideal para data centers, telecomunicaciones, banca, industria y salas técnicas con operación 24/7.
+          </p>
+
+          <div class="en-card__actions">
+            <a class="btn btn-optom" href="mailto:info@optom.com?subject=Información%20UPS%20Online">
+              ENVIAR EMAIL
+            </a>
+            <a class="btn btn-optom-outline" target="_blank"
+               href="https://wa.me/593000000000?text=Hola%20OPTOM,%20quiero%20información%20sobre%20UPS%20Online">
+              ENVIAR WHATSAPP
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-6 en-card__image" data-aos="fade-left">
+          <div class="en-card__img" style="background-image:url('../img/servicios/energia-ups.jpg');"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2: rPDU (caja centrada sobre fondo, como tu captura) -->
+  <section id="rpdu" class="en-section en-section--center">
+    <div class="en-section__bg" style="background-image:url('../img/servicios/energia-bg-2.jpg');"></div>
+    <div class="en-section__shade"></div>
+
+    <div class="container">
+      <div class="en-float" data-aos="zoom-in">
+        <h2 class="en-float__title">Unidades de Distribución de Energía – rPDU</h2>
+        <p class="en-float__p">
+          Distribución confiable en rack con medición, monitoreo y control (según modelo). Optimiza gestión energética y
+          reduce riesgos por sobrecargas.
+        </p>
+        <p class="en-float__p">
+          Adecuado para: centros de datos, cuartos de servidores, telecomunicaciones, banca, gobierno y empresas.
+        </p>
+
+        <div class="en-float__actions">
+          <a class="btn btn-optom" href="mailto:info@optom.com?subject=Información%20rPDU">
+            ENVIAR EMAIL
+          </a>
+          <a class="btn btn-optom-outline" target="_blank"
+             href="https://wa.me/593000000000?text=Hola%20OPTOM,%20quiero%20información%20sobre%20rPDU">
+            ENVIAR WHATSAPP
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3: Baterías -->
+  <section id="baterias" class="en-section en-section--alt">
+    <div class="en-section__bg" style="background-image:url('../img/servicios/energia-bg-3.jpg');"></div>
+    <div class="en-section__shade"></div>
+
+    <div class="container">
+      <div class="row g-0 align-items-stretch en-card en-card--reverse">
+        <div class="col-lg-6 en-card__image" data-aos="fade-right">
+          <div class="en-card__img" style="background-image:url('../img/servicios/energia-baterias.jpg');"></div>
+        </div>
+
+        <div class="col-lg-6 en-card__panel" data-aos="fade-left">
+          <h2 class="en-card__title">Baterías (Ácido-Plomo • Litio)</h2>
+          <div class="en-card__meta">
+            Dimensionamiento • Bancos • Autonomía • Reemplazo planificado
+          </div>
+
+          <p class="en-card__p">
+            Soluciones de almacenamiento para respaldo UPS, continuidad y estabilidad de la infraestructura eléctrica.
+          </p>
+          <p class="en-card__p">
+            Implementación con foco en seguridad, vida útil y tiempos de recarga, según criticidad del sitio.
+          </p>
+
+          <div class="en-card__actions">
+            <a class="btn btn-optom" href="mailto:info@optom.com?subject=Información%20Baterías">
+              ENVIAR EMAIL
+            </a>
+            <a class="btn btn-optom-outline" target="_blank"
+               href="https://wa.me/593000000000?text=Hola%20OPTOM,%20quiero%20información%20sobre%20Baterías%20para%20UPS">
+              ENVIAR WHATSAPP
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4: Grupos electrógenos (centrado) -->
+  <section id="generadores" class="en-section en-section--center">
+    <div class="en-section__bg" style="background-image:url('../img/servicios/energia-bg-4.jpg');"></div>
+    <div class="en-section__shade"></div>
+
+    <div class="container">
+      <div class="en-float" data-aos="zoom-in">
+        <h2 class="en-float__title">Grupos Electrógenos</h2>
+        <p class="en-float__p">
+          Respaldo de potencia para operación continua. Selección, instalación y pruebas para asegurar arranque automático,
+          transferencia y estabilidad bajo carga.
+        </p>
+
+        <div class="en-float__actions">
+          <a class="btn btn-optom" href="mailto:info@optom.com?subject=Información%20Grupos%20Electrógenos">
+            ENVIAR EMAIL
+          </a>
+          <a class="btn btn-optom-outline" target="_blank"
+             href="https://wa.me/593000000000?text=Hola%20OPTOM,%20quiero%20información%20sobre%20Grupos%20Electrógenos">
+            ENVIAR WHATSAPP
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 5: Tableros eléctricos (panel + imagen) -->
+  <section id="tableros" class="en-section en-section--alt">
+    <div class="en-section__bg" style="background-image:url('../img/servicios/energia-bg-5.jpg');"></div>
+    <div class="en-section__shade"></div>
+
+    <div class="container">
+      <div class="row g-0 align-items-stretch en-card">
+        <div class="col-lg-6 en-card__panel" data-aos="fade-right">
+          <h2 class="en-card__title">Tableros Eléctricos (Diseño y Construcción)</h2>
+          <div class="en-card__meta">
+            Ingeniería • Protecciones • Selectividad • Puesta a tierra
+          </div>
+
+          <p class="en-card__p">
+            Diseño y fabricación de tableros para distribución segura, control y protección. Enfoque en normativas,
+            confiabilidad y mantenibilidad.
+          </p>
+
+          <div class="en-card__actions">
+            <a class="btn btn-optom" href="mailto:info@optom.com?subject=Información%20Tableros%20Eléctricos">
+              ENVIAR EMAIL
+            </a>
+            <a class="btn btn-optom-outline" target="_blank"
+               href="https://wa.me/593000000000?text=Hola%20OPTOM,%20quiero%20información%20sobre%20Tableros%20Eléctricos">
+              ENVIAR WHATSAPP
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-6 en-card__image" data-aos="fade-left">
+          <div class="en-card__img" style="background-image:url('../img/servicios/energia-tableros.jpg');"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="en-cta">
+    <div class="container text-center">
+      <h3 class="en-cta__title" data-aos="zoom-in">¿Listo para asegurar tu infraestructura eléctrica?</h3>
+      <p class="en-cta__p" data-aos="zoom-in" data-aos-delay="80">
+        Coordinemos una evaluación técnica y una propuesta con alcance, arquitectura y cronograma.
+      </p>
+      <div class="en-cta__actions" data-aos="zoom-in" data-aos-delay="160">
+        <a href="../contacto.html" class="btn btn-warning px-4 fw-bold">
+          <i class="fa-solid fa-paper-plane me-2"></i>Solicitar propuesta
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="../js/jsservicios/energia.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
