@@ -82,3 +82,31 @@ setInterval(() => {
     currentEssenceSlide = (currentEssenceSlide + 1) % 3;
     showSlide(currentEssenceSlide);
 }, 6000);
+
+/* =========================================================
+   LÓGICA ESPECÍFICA PARA EL NAV DE NOSOTROS
+   ========================================================= */
+document.addEventListener("DOMContentLoaded", () => {
+    const nav = document.getElementById("mainNav");
+    // Usamos el ID "nosotros" que es tu Header Hero
+    const hero = document.getElementById("nosotros"); 
+    
+    if (!nav || !hero) return;
+
+    const actualizarNav = () => {
+        // Obtenemos la posición del final del hero
+        const heroBottom = hero.offsetTop + hero.offsetHeight;
+        
+        // Si el scroll no ha llegado al final del hero (menos un margen de 80px)
+        if (window.scrollY < (heroBottom - 80)) {
+            nav.classList.add("nav-on-hero");
+            nav.classList.remove("nav-scrolled");
+        } else {
+            nav.classList.add("nav-scrolled");
+            nav.classList.remove("nav-on-hero");
+        }
+    };
+
+    window.addEventListener("scroll", actualizarNav, { passive: true });
+    actualizarNav(); // Ejecución inicial
+});

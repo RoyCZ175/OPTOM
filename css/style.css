@@ -221,3 +221,157 @@ body{
   }
 }
 
+/* =========================================================
+   AJUSTE FINAL: BOTÓN CONTACTO (SIN LÍNEA Y COLOR CORRECTO)
+   ========================================================= */
+
+/* 1. Quitamos la línea verde animada solo al botón */
+.site-nav .navbar-nav .nav-link.btn-warning::after {
+    display: none !important;
+}
+
+/* 2. Estilo del botón tipo "Pill" (píldora) */
+.site-nav .navbar-nav .nav-link.btn-warning {
+    background-color: var(--brand-lime) !important; /* Uso de tu variable lime */
+    color: var(--brand-black) !important;          /* Texto negro */
+    border-radius: 50px !important;                 /* Bordes bien redondeados */
+    padding: 10px 25px !important;                 /* Más gordito */
+    border: none !important;
+    font-weight: 700 !important;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* 3. Efecto al pasar el mouse */
+.site-nav .navbar-nav .nav-link.btn-warning:hover {
+    transform: translateY(-2px) scale(1.03);
+    background-color: #c4f518 !important; /* Un poco más brillante */
+    box-shadow: 0 6px 15px rgba(168, 215, 19, 0.4);
+    color: var(--brand-black) !important;
+}
+
+/* 4. Ajuste para que en móviles no se pegue a los lados */
+@media (max-width: 991px) {
+    .site-nav .navbar-nav .nav-item .btn-warning {
+        margin: 10px 0;
+        display: inline-block;
+        width: auto;
+    }
+}
+/* =========================
+   NAVBAR (GLOBAL) - #mainNav (Index + páginas que lo usen)
+   - Transparente sobre hero: .nav-on-hero
+   - Glass al bajar: .nav-scrolled
+   ========================= */
+#mainNav{
+  position: fixed;
+  top:0; left:0; right:0;
+  z-index: 1050;
+  transition: background-color .25s ease, box-shadow .25s ease, backdrop-filter .25s ease;
+}
+
+/* Arriba: transparente */
+#mainNav.nav-on-hero{
+  background: transparent;
+  box-shadow: none;
+  border: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+#mainNav.nav-on-hero .nav-link{
+  color:#fff !important;
+  text-shadow: 0 2px 12px rgba(0,0,0,.65);
+}
+
+#mainNav.nav-on-hero .navbar-brand{
+  filter: drop-shadow(0 2px 10px rgba(0,0,0,.55));
+}
+
+#mainNav.nav-on-hero .navbar-toggler{
+  border-color: rgba(255,255,255,.35) !important;
+}
+#mainNav.nav-on-hero .navbar-toggler-icon{
+  filter: invert(1) brightness(2);
+}
+
+/* Scroll: glass */
+#mainNav.nav-scrolled{
+  background: var(--glass-white);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.10);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+
+#mainNav.nav-scrolled .nav-link{
+  color: var(--brand-black) !important;
+  text-shadow:none;
+}
+#mainNav.nav-scrolled .navbar-toggler-icon{ filter:none; }
+
+/* underline -> LIME */
+#mainNav .nav-link{
+  position: relative;
+}
+#mainNav .nav-link::after{
+  content:'';
+  position:absolute;
+  left:50%;
+  bottom:4px;
+  width:0;
+  height:2px;
+  transform:translateX(-50%);
+  transition: width .25s ease;
+  background: var(--brand-lime);
+  opacity: .95;
+}
+#mainNav .nav-link:hover::after{ width:70%; }
+
+/* Container padding */
+.nav-wide{ padding-left:18px; padding-right:18px; }
+@media (min-width: 992px){
+  .nav-wide{ padding-left:28px; padding-right:28px; }
+}
+
+/* Logo del nav */
+.nav-logo{
+  height:60px;
+  width:auto;
+}
+
+/* =========================================================
+   NAV CTA (GLOBAL) - funciona con #mainNav + .nav-cta
+   ========================================================= */
+
+/* Asegura que el botón no herede estilos de link/underline */
+#mainNav .nav-cta{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+
+  background: var(--brand-lime) !important;
+  border: none !important;
+  color: var(--brand-black) !important;
+
+  border-radius: 999px !important;
+  padding: 10px 22px !important;
+  font-weight: 800 !important;
+
+  transition: transform .25s ease, filter .25s ease, box-shadow .25s ease;
+  box-shadow: 0 6px 16px rgba(0,0,0,.12);
+  text-decoration: none !important;
+}
+
+/* Hover del botón */
+#mainNav .nav-cta:hover{
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+  box-shadow: 0 10px 26px rgba(168,215,19,.30);
+}
+
+/* Por si algún día le pones nav-link por error al botón */
+#mainNav .nav-cta::after{ display:none !important; }

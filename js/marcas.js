@@ -1,86 +1,64 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const items = Array.from(document.querySelectorAll(".mv-item"));
-  if (!items.length) return;
+/**
+ * Lógica para la sección de Marcas Verificadas - OPTOM
+ * - Corrige clase activa: usa .is-active (como en tu CSS)
+ * - Actualiza el panel derecho (logo, nombre, descripción, link)
+ */
+document.addEventListener('DOMContentLoaded', () => {
+  const items = document.querySelectorAll('.mv-item');
+  const previewImg = document.getElementById('mvPreviewImg');
+  const previewName = document.getElementById('mvPreviewName');
+  const previewDesc = document.getElementById('mvPreviewDesc');
+  const previewLink = document.getElementById('mvPreviewLink');
 
-  const img  = document.getElementById("mvPreviewImg");
-  const name = document.getElementById("mvPreviewName");
-  const desc = document.getElementById("mvPreviewDesc");
-  const link = document.getElementById("mvPreviewLink");
+  if (!items.length || !previewImg || !previewName || !previewDesc || !previewLink) return;
 
-  const setActive = (el) => {
-    items.forEach(btn => {
-      btn.classList.remove("is-active");
-      btn.setAttribute("aria-selected", "false");
+  const updatePreview = (element) => {
+    // 1) Quitar activo a todos
+    items.forEach(i => {
+      i.classList.remove('is-active');
+      i.setAttribute('aria-selected', 'false');
     });
 
-    el.classList.add("is-active");
-    el.setAttribute("aria-selected", "true");
+    // 2) Activar el seleccionado
+    element.classList.add('is-active');
+    element.setAttribute('aria-selected', 'true');
 
-    const dataName = el.dataset.name || "Marca";
-    const dataLogo = el.dataset.logo || "";
-    const dataDesc = el.dataset.desc || "";
-    const dataSite = el.dataset.site || "#";
+    // 3) Datos desde data-attrs
+    const name = element.getAttribute('data-name') || '';
+    const logo = element.getAttribute('data-logo') || '';
+    const desc = element.getAttribute('data-desc') || '';
+    const site = element.getAttribute('data-site') || '';
 
-    if (name) name.textContent = dataName;
-    if (desc) desc.textContent = dataDesc;
+    // 4) Fade out (panel derecho)
+    if (previewImg.parentElement) previewImg.parentElement.style.opacity = '0';
+    previewName.style.opacity = '0';
+    previewDesc.style.opacity = '0';
 
-    if (link) {
-      link.href = dataSite;
-      link.innerHTML = `Ver sitio oficial <span aria-hidden="true">↗</span>`;
-    }
+    setTimeout(() => {
+      // 5) Cambiar contenido
+      if (logo) previewImg.src = logo;
+      previewImg.alt = name || 'Logo';
 
-    // Fade suave del logo grande
-    if (img && dataLogo) {
-      img.style.opacity = "0";
-      img.style.transform = "scale(0.98)";
+      previewName.textContent = name;
+      previewDesc.textContent = desc;
 
-      const pre = new Image();
-      pre.onload = () => {
-        img.src = dataLogo;
-        img.alt = `Logo de ${dataName}`;
+      // Link visible solo si existe una URL real
+      previewLink.href = site || '#';
+      previewLink.style.display = (!site || site === '#') ? 'none' : 'inline-flex';
 
-        requestAnimationFrame(() => {
-          img.style.opacity = "1";
-          img.style.transform = "scale(1)";
-        });
-      };
-      pre.src = dataLogo;
-    }
+      // 6) Fade in
+      if (previewImg.parentElement) previewImg.parentElement.style.opacity = '1';
+      previewName.style.opacity = '1';
+      previewDesc.style.opacity = '1';
+    }, 150);
   };
 
-  // Hover + focus + click
-  items.forEach((el) => {
-    el.addEventListener("mouseenter", () => setActive(el));
-    el.addEventListener("focus", () => setActive(el));
-    el.addEventListener("click", () => setActive(el));
+  // Eventos (click + hover)
+  items.forEach(item => {
+    item.addEventListener('click', () => updatePreview(item));
+    item.addEventListener('mouseenter', () => updatePreview(item));
   });
 
-  // Teclado: ↑ ↓ y Enter/Espacio
-  items.forEach((el, idx) => {
-    el.addEventListener("keydown", (e) => {
-      const key = e.key;
-
-      if (key === "ArrowDown") {
-        e.preventDefault();
-        const next = items[idx + 1] || items[0];
-        next.focus();
-        setActive(next);
-      }
-
-      if (key === "ArrowUp") {
-        e.preventDefault();
-        const prev = items[idx - 1] || items[items.length - 1];
-        prev.focus();
-        setActive(prev);
-      }
-
-      if (key === "Enter" || key === " ") {
-        e.preventDefault();
-        setActive(el);
-      }
-    });
-  });
-
-  // Inicial
-  setActive(items[0]);
+  // Inicializa con la primera marca (y actualiza preview)
+  updatePreview(items[0]);
 });

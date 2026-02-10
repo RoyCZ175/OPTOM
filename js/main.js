@@ -1,5 +1,5 @@
 /* =========================================================
-   MAIN.JS - Social Float (WhatsApp) + Navbar Index
+   MAIN.JS - Social Float (WhatsApp) + Navbar Global
    Estados navbar:
    - nav-on-hero (arriba, transparente)
    - nav-scrolled (scroll, glass blanco)
@@ -41,14 +41,26 @@
   }
 
   // =========================
-  // Navbar SOLO INDEX
+  // Navbar GLOBAL (Index + páginas que tengan #mainNav)
+  // Detecta hero por clases:
+  // - Index: .hero-ms (tu header)
+  // - Nosotros/Servicios: .about-hero
+  // - Marcas: .nav-hero (tu header de marcas)
   // =========================
   document.addEventListener("DOMContentLoaded", () => {
     const nav = document.getElementById("mainNav");
-    const hero = document.getElementById("heroIndex");
-    if (!nav || !hero) return;
+    if (!nav) return;
+
+    const hero = document.querySelector(".hero-ms, .about-hero, .nav-hero");
 
     const setNav = () => {
+      // Si NO hay hero, se queda siempre en modo scrolled (glass)
+      if (!hero) {
+        nav.classList.remove("nav-on-hero");
+        nav.classList.add("nav-scrolled");
+        return;
+      }
+
       const navH = nav.offsetHeight || 0;
       const heroBottom = hero.offsetTop + hero.offsetHeight;
 
