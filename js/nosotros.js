@@ -110,3 +110,62 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", actualizarNav, { passive: true });
     actualizarNav(); // Ejecución inicial
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.infra-slide');
+    const dots = document.querySelectorAll('.dot');
+    const progressBar = document.getElementById('progressBar');
+    const sliderBox = document.getElementById('mainSlider');
+    
+    let current = 0;
+    let progressInterval;
+    let autoPlayTimer;
+    const duration = 4000; // 4 segundos
+
+    function updateSlide(index) {
+        slides.forEach(s => s.classList.remove('active'));
+        dots.forEach(d => d.classList.remove('active'));
+        
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        resetProgressBar();
+    }
+
+    function resetProgressBar() {
+        progressBar.style.transition = 'none';
+        progressBar.style.width = '0%';
+        setTimeout(() => {
+            progressBar.style.transition = `width ${duration}ms linear`;
+            progressBar.style.width = '100%';
+        }, 50);
+    }
+
+    function startCycle() {
+        autoPlayTimer = setInterval(() => {
+            current = (current + 1) % slides.length;
+            updateSlide(current);
+        }, duration);
+        resetProgressBar();
+    }
+
+    function stopCycle() {
+        clearInterval(autoPlayTimer);
+        progressBar.style.transition = 'none';
+        progressBar.style.width = '0%';
+    }
+
+    // Eventos de Mouse
+    sliderBox.addEventListener('mouseenter', stopCycle);
+    sliderBox.addEventListener('mouseleave', startCycle);
+
+    // Clic en dots
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            current = i;
+            updateSlide(current);
+        });
+    });
+
+    // Iniciar
+    updateSlide(0);
+    startCycle();
+});

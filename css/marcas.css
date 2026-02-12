@@ -1,258 +1,127 @@
-/* ========================= 
-   Marcas Verificadas (Apple-like)
-   Depurado + Opción 1 (logo arriba, texto abajo)
-   ========================= */
-
-:root{
-  --mv-ink: #0f172a;
-  --mv-muted: #64748b;
-  --mv-border: rgba(15, 23, 42, .12);
-  --mv-soft: rgba(15, 23, 42, .06);
-  --mv-card: #ffffff;
-  --mv-primary: #003366; /* tu azul */
-  --mv-accent: #FFCC00;  /* tu amarillo */
+:root {
+    /* PALETA OFICIAL OPTOM */
+    --brand-lime: #A8D713;
+    --brand-red: #FF0000;
+    --brand-gray: #4D4D4D;
+    --brand-black: #000000;
+    
+    /* AJUSTES DE INTERFAZ */
+    --dark-bg: #05080a;
+    --panel-bg: rgba(13, 18, 24, 0.95);
+    --glass-border: rgba(168, 215, 19, 0.15); /* Lime sutil */
+    --text-muted: rgba(255, 255, 255, 0.6);
 }
 
-/* Contenedor general */
-.mv-shell{
-  border: 1px solid var(--mv-border);
-  border-radius: 18px;
-  background: linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,.95));
-  box-shadow: 0 16px 48px rgba(0,0,0,.08);
-  overflow: hidden;
+/* ESTILO CARDS ALIANZAS - MISSION CRITICAL */
+.tech-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 25px;
+    height: 100%;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    will-change: transform, background;
 }
 
-/* Columna izquierda */
-.mv-panel{
-  height: 100%;
-  background: var(--mv-card);
-  border-right: 1px solid var(--mv-border);
-  min-width: 0; /* evita que empuje el layout */
+.tech-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--brand-lime);
+    background: rgba(168, 215, 19, 0.05); /* Fondo Lima muy sutil al hover */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(168, 215, 19, 0.1);
 }
 
-.mv-panel-header{
-  width: 100%;
-  border: 0;
-  background: var(--mv-card);
-  padding: 18px 18px 12px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* CONTENEDOR DE LOGO: Sin fondo blanco, efecto flotante */
+.brand-logo-box {
+    background: transparent; /* Eliminado el fondo blanco */
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    margin-bottom: 20px;
+    transition: all 0.4s ease;
 }
 
-.mv-panel-title{
-  font-weight: 800;
-  color: var(--mv-ink);
-  letter-spacing: .2px;
+/* LOGO: Opaco/Gris por defecto, Color al hover */
+.brand-logo-box img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    /* Efecto inicial */
+    filter: grayscale(100%) brightness(0.7); 
+    opacity: 0.5;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.mv-panel-icon{
-  width: 10px;
-  height: 10px;
-  border-right: 2px solid var(--mv-muted);
-  border-bottom: 2px solid var(--mv-muted);
-  transform: rotate(45deg);
-  margin-left: 12px;
-  opacity: .7;
+/* ACTIVACIÓN DE COLOR AL PASAR EL MOUSE POR LA CARD */
+.tech-card:hover .brand-logo-box img {
+    filter: grayscale(0%) brightness(1);
+    opacity: 1;
+    transform: scale(1.05);
 }
 
-/* Lista con scroll */
-.mv-list{
-  padding: 10px;
-  display: grid;
-  gap: 10px;
-
-  max-height: 520px;
-  overflow: auto;
-  padding-right: 6px;
+.card-info h3 {
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 10px;
 }
 
-/* Scrollbar (Chromium) */
-.mv-list::-webkit-scrollbar{ width: 10px; }
-.mv-list::-webkit-scrollbar-thumb{
-  background: rgba(15,23,42,.16);
-  border-radius: 999px;
-  border: 2px solid transparent;
-  background-clip: padding-box;
-}
-.mv-list::-webkit-scrollbar-track{ background: transparent; }
-
-/* Item de marca */
-.mv-item{
-  width: 100%;
-  text-align: left;
-  border: 1px solid var(--mv-border);
-  background: #fff;
-  border-radius: 14px;
-  padding: 10px 12px;
-  display: grid;
-  grid-template-columns: 46px 1fr;
-  gap: 12px;
-  align-items: center;
-  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
-  cursor: pointer;
+.card-info p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    flex-grow: 1;
 }
 
-.mv-item:hover{
-  transform: translateY(-1px);
-  box-shadow: 0 10px 22px rgba(0,0,0,.08);
+.tech-tag {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--brand-lime); /* Cambiado de amarillo a Lima */
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
 }
 
-.mv-item:focus{
-  outline: 3px solid rgba(0, 51, 102, .25);
-  outline-offset: 2px;
+.card-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 700;
+    border-bottom: 1px solid var(--brand-lime); /* Cambiado a Lima */
+    padding-bottom: 3px;
+    transition: 0.3s;
 }
 
-.mv-item.is-active{
-  border-color: rgba(0, 51, 102, .45);
-  box-shadow: 0 14px 26px rgba(0,0,0,.10);
+.card-link:hover {
+    color: var(--brand-lime);
+    letter-spacing: 1px;
+    border-bottom-color: var(--brand-red); /* Detalle en rojo al hover */
 }
 
-.mv-item-mini{
-  width: 46px;
-  height: 46px;
-  border-radius: 12px;
-  background: var(--mv-soft);
-  border: 1px solid var(--mv-border);
-  display: grid;
-  place-items: center;
-  overflow: hidden;
+/* Esquinas de detalle técnico con color LIMA */
+.card-corner-tl, .card-corner-tr {
+    position: absolute; 
+    width: 12px; 
+    height: 12px; 
+    border: 2px solid var(--brand-lime);
+    transition: 0.3s;
 }
 
-.mv-item-mini img{
-  max-width: 80%;
-  max-height: 80%;
-  object-fit: contain;
-  display: block;
-}
+.card-corner-tl { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+.card-corner-tr { top: 0; right: 0; border-left: 0; border-bottom: 0; }
 
-.mv-item-text{
-  display: grid;
-  gap: 2px;
-}
-
-.mv-item-name{
-  font-weight: 800;
-  color: var(--mv-ink);
-  line-height: 1.2;
-}
-
-.mv-item-sub{
-  font-size: .88rem;
-  color: var(--mv-muted);
-}
-
-/* Columna derecha (preview) */
-.mv-grid{ align-items: stretch; }
-
-.mv-preview{
-  height: 100%;
-  padding: 18px;
-  min-width: 0; /* evita que empuje el layout */
-  background:
-    radial-gradient(1200px 500px at 70% 10%, rgba(0, 51, 102, .10), transparent 55%),
-    radial-gradient(800px 400px at 20% 80%, rgba(255, 204, 0, .12), transparent 55%),
-    #fff;
-}
-
-.mv-preview-top{
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 12px;
-}
-
-.mv-preview-badge{
-  font-size: .85rem;
-  font-weight: 700;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(255, 204, 0, .25);
-  color: #1f2937;
-  border: 1px solid rgba(255, 204, 0, .45);
-}
-
-/* =========================
-   OPCIÓN 1: Logo arriba, texto abajo
-   ========================= */
-.mv-preview-body{
-  display: grid;
-  grid-template-columns: 1fr; /* una sola columna */
-  gap: 18px;
-  align-items: start;
-}
-
-.mv-preview-logo{
-  border: 1px solid var(--mv-border);
-  border-radius: 18px;
-  background: rgba(15, 23, 42, .03);
-  min-height: 360px;          /* logo protagonista */
-  display: grid;
-  place-items: center;
-  padding: 18px;
-}
-
-.mv-preview-logo img{
-  width: 100%;
-  height: 320px;
-  object-fit: contain;
-  padding: 20px;
-  display: block;
-  transition: opacity .18s ease, transform .18s ease;
-}
-
-.mv-preview-info{
-  max-width: 620px;
-}
-
-.mv-preview-name{
-  font-weight: 900;
-  color: var(--mv-ink);
-  margin: 0 0 8px;
-}
-
-.mv-preview-desc{
-  color: var(--mv-muted);
-  margin: 0 0 12px;
-  max-width: 56ch;
-}
-
-.mv-preview-link{
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 800;
-  text-decoration: none;
-  color: var(--mv-primary);
-  padding: 10px 12px;
-  border-radius: 12px;
-  border: 1px solid rgba(0, 51, 102, .22);
-  background: rgba(0, 51, 102, .06);
-}
-
-.mv-preview-link:hover{
-  background: rgba(0, 51, 102, .10);
-}
-
-.mv-preview-footer{
-  margin-top: 14px;
-  color: var(--mv-muted);
-  border-top: 1px solid var(--mv-border);
-  padding-top: 12px;
-  opacity: .75; /* más discreto */
-}
-
-/* Responsive */
-@media (max-width: 991px){
-  .mv-panel{
-    border-right: 0;
-    border-bottom: 1px solid var(--mv-border);
-  }
-  .mv-list{ max-height: 380px; }
-  .mv-preview-logo{
-    min-height: 240px;
-  }
-  .mv-preview-logo img{
-    height: 200px;
-    padding: 16px;
-  }
+.tech-card:hover .card-corner-tl,
+.tech-card:hover .card-corner-tr {
+    width: 20px;
+    height: 20px;
+    border-color: var(--brand-red); /* Cambia a rojo al interactuar */
 }
