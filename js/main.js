@@ -76,3 +76,4 @@
     window.addEventListener("resize", setNav);
   });
 })();
+
