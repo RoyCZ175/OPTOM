@@ -99,7 +99,14 @@
 /* =========================================================
    3. INFRAESTRUCTURA - LIBRE, GRANDE Y CON ESQUINAS MOCHAS
    ========================================================= */
-.infra-section {
+/* Línea divisora */
+.infra-section { 
+    border-top: 3px solid #4D4D4D;
+    background-color: #05080a; /* Asegúrate de que tenga el fondo oscuro de tu web */
+    padding: 80px 0;           /* Un buen padding para que no se pegue al borde */
+}
+
+   .infra-section {
     background: #05080a;
     padding: 80px 0;
     text-align: center;

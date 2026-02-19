@@ -23,8 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* =========================================================
-       2. NUESTRA ESENCIA (FLIP SLIDER & CONTENT)
+       2. NUESTRA ESENCIA (LA QUE NO CAMBIABA)
        ========================================================= */
+    // Definimos la función globalmente para que el 'onclick' del HTML la encuentre
     window.showSlide = function(index) {
         const essenceSlides = document.querySelectorAll('.essence-slide');
         const navBtns = document.querySelectorAll('.nav-btn');
@@ -33,22 +34,30 @@ document.addEventListener("DOMContentLoaded", () => {
             essenceSlides.forEach(s => s.classList.remove('active'));
             navBtns.forEach(b => b.classList.remove('active'));
             
+            // Usamos el ID o la posición
             const target = document.getElementById(`slide-${index}`);
             if (target) target.classList.add('active');
             if (navBtns[index]) navBtns[index].classList.add('active');
+            
+            // Actualizamos el índice del auto-play para que no salte raro
+            essenceIndex = index;
         }
     };
 
     let essenceIndex = 0;
-    setInterval(() => {
+    let essenceInterval = setInterval(() => {
         essenceIndex = (essenceIndex + 1) % 3;
         showSlide(essenceIndex);
-    }, 6000);
+    }, 3500);
 
+    /* =========================================================
+       3. FLIP SLIDER (INTERACTIVO AL MOUSE)
+       ========================================================= */
     const flipSlider = document.getElementById("nosotrosFlipSlider");
     if (flipSlider) {
         const slides = Array.from(flipSlider.querySelectorAll(".flip-slide"));
-        let currentIndex = slides.findIndex(s => s.classList.contains("is-active")) || 0;
+        let currentIndex = slides.findIndex(s => s.classList.contains("is-active"));
+        if (currentIndex === -1) currentIndex = 0;
         let flipTimer;
 
         const nextFlip = () => {
@@ -61,16 +70,24 @@ document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => current.classList.remove("is-exit"), 750);
         };
 
-        const startFlip = () => flipTimer = setInterval(nextFlip, 4000);
+        const startFlip = () => {
+            clearInterval(flipTimer);
+            flipTimer = setInterval(nextFlip, 4000);
+        };
+
         const stopFlip = () => clearInterval(flipTimer);
 
-        flipSlider.addEventListener("mouseenter", () => { stopFlip(); });
+        flipSlider.addEventListener("mouseenter", () => { 
+            nextFlip(); 
+            stopFlip(); 
+        });
+
         flipSlider.addEventListener("mouseleave", startFlip);
         startFlip();
     }
 
     /* =========================================================
-       3. NUESTRA INFRAESTRUCTURA (SLIDER SIN BARRA - FIX)
+       4. NUESTRA INFRAESTRUCTURA (EL DE LOS PUNTITOS)
        ========================================================= */
     const infraSlides = document.querySelectorAll('.infra-slide');
     const infraDots = document.querySelectorAll('.dot');
@@ -79,21 +96,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (infraBox && infraSlides.length > 0) {
         let infraCurrent = 0;
         let infraAutoPlay;
-        const duration = 3000; // 3 segundos de cambio
+        const duration = 2000; 
 
         function updateInfra(index) {
-            // Sincronizamos el índice global con el recibido
             infraCurrent = index; 
-
             infraSlides.forEach(s => s.classList.remove('active'));
             infraDots.forEach(d => d.classList.remove('active'));
-            
             infraSlides[infraCurrent].classList.add('active');
             if (infraDots[infraCurrent]) infraDots[infraCurrent].classList.add('active');
         }
 
         const startInfra = () => {
-            // Limpiamos cualquier intervalo previo para no duplicar velocidad
             clearInterval(infraAutoPlay); 
             infraAutoPlay = setInterval(() => {
                 let nextIndex = (infraCurrent + 1) % infraSlides.length;
@@ -101,23 +114,16 @@ document.addEventListener("DOMContentLoaded", () => {
             }, duration);
         };
 
-        const stopInfra = () => {
-            clearInterval(infraAutoPlay);
-        };
-
-        // Pausa y Reanuda
-        infraBox.addEventListener('mouseenter', stopInfra);
+        infraBox.addEventListener('mouseenter', () => clearInterval(infraAutoPlay));
         infraBox.addEventListener('mouseleave', startInfra);
 
-        // Click en dots
         infraDots.forEach((dot, i) => {
             dot.addEventListener('click', () => {
                 updateInfra(i);
-                startInfra(); // Reinicia el timer al hacer click manual
+                startInfra();
             });
         });
 
-        // Inicio oficial
         updateInfra(0);
         startInfra();
     }
