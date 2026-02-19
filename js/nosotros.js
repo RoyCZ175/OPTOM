@@ -1,171 +1,124 @@
-/* =========================
-   FLIP SLIDER (Eje Y)
-   - autoplay cada 4s
-   - al pasar el mouse => cambia a la siguiente
-   ========================= */
-(function () {
-  "use strict";
-
-  const slider = document.getElementById("nosotrosFlipSlider");
-  if (!slider) return;
-
-  const slides = Array.from(slider.querySelectorAll(".flip-slide"));
-  if (slides.length < 2) return;
-
-  let index = slides.findIndex(s => s.classList.contains("is-active"));
-  if (index < 0) index = 0;
-
-  const intervalMs = 4000; // ✅ 3000 o 5000 si quieres
-  let timer = null;
-
-  function show(nextIndex) {
-    const current = slides[index];
-    const next = slides[nextIndex];
-    if (current === next) return;
-
-    // fuerza repaint para que NO se congele
-    current.getBoundingClientRect();
-
-    current.classList.remove("is-active");
-    current.classList.add("is-exit");
-
-    next.classList.remove("is-exit");
-    next.classList.add("is-active");
-
-    setTimeout(() => current.classList.remove("is-exit"), 750);
-
-    index = nextIndex;
-  }
-
-  function nextSlide() {
-    show((index + 1) % slides.length);
-  }
-
-  function start() {
-    stop();
-    timer = setInterval(nextSlide, intervalMs);
-  }
-
-  function stop() {
-    if (timer) clearInterval(timer);
-    timer = null;
-  }
-
-  // ✅ autoplay
-  start();
-
-  // ✅ hover = cambia UNA vez al entrar con el mouse
-  slider.addEventListener("mouseenter", () => {
-    nextSlide();   // cambia inmediato al pasar el mouse
-    stop();        // pausa mientras está encima (opcional)
-  });
-
-  // ✅ al salir vuelve el autoplay
-  slider.addEventListener("mouseleave", start);
-})();
-function showSlide(index) {
-    // 1. Quitar clase active de todos los slides
-    const slides = document.querySelectorAll('.essence-slide');
-    const buttons = document.querySelectorAll('.nav-btn');
-    
-    slides.forEach(slide => slide.classList.remove('active'));
-    buttons.forEach(btn => btn.classList.remove('active'));
-    
-    // 2. Activar el seleccionado
-    document.getElementById(`slide-${index}`).classList.add('active');
-    buttons[index].classList.add('active');
-}
-
-// Opcional: Auto-cambio cada 6 segundos
-let currentEssenceSlide = 0;
-setInterval(() => {
-    currentEssenceSlide = (currentEssenceSlide + 1) % 3;
-    showSlide(currentEssenceSlide);
-}, 6000);
-
-/* =========================================================
-   LÓGICA ESPECÍFICA PARA EL NAV DE NOSOTROS
-   ========================================================= */
 document.addEventListener("DOMContentLoaded", () => {
-    const nav = document.getElementById("mainNav");
-    // Usamos el ID "nosotros" que es tu Header Hero
-    const hero = document.getElementById("nosotros"); 
-    
-    if (!nav || !hero) return;
+    "use strict";
 
-    const actualizarNav = () => {
-        // Obtenemos la posición del final del hero
-        const heroBottom = hero.offsetTop + hero.offsetHeight;
+    /* =========================================================
+       1. NAVEGACIÓN DINÁMICA
+       ========================================================= */
+    const nav = document.getElementById("mainNav");
+    const hero = document.getElementById("nosotros"); 
+
+    if (nav && hero) {
+        const actualizarNav = () => {
+            const heroBottom = hero.offsetTop + hero.offsetHeight;
+            if (window.scrollY < (heroBottom - 80)) {
+                nav.classList.add("nav-on-hero");
+                nav.classList.remove("nav-scrolled");
+            } else {
+                nav.classList.add("nav-scrolled");
+                nav.classList.remove("nav-on-hero");
+            }
+        };
+        window.addEventListener("scroll", actualizarNav, { passive: true });
+        actualizarNav();
+    }
+
+    /* =========================================================
+       2. NUESTRA ESENCIA (FLIP SLIDER & CONTENT)
+       ========================================================= */
+    window.showSlide = function(index) {
+        const essenceSlides = document.querySelectorAll('.essence-slide');
+        const navBtns = document.querySelectorAll('.nav-btn');
         
-        // Si el scroll no ha llegado al final del hero (menos un margen de 80px)
-        if (window.scrollY < (heroBottom - 80)) {
-            nav.classList.add("nav-on-hero");
-            nav.classList.remove("nav-scrolled");
-        } else {
-            nav.classList.add("nav-scrolled");
-            nav.classList.remove("nav-on-hero");
+        if (essenceSlides.length > 0) {
+            essenceSlides.forEach(s => s.classList.remove('active'));
+            navBtns.forEach(b => b.classList.remove('active'));
+            
+            const target = document.getElementById(`slide-${index}`);
+            if (target) target.classList.add('active');
+            if (navBtns[index]) navBtns[index].classList.add('active');
         }
     };
 
-    window.addEventListener("scroll", actualizarNav, { passive: true });
-    actualizarNav(); // Ejecución inicial
-});
-document.addEventListener('DOMContentLoaded', function() {
-    const slides = document.querySelectorAll('.infra-slide');
-    const dots = document.querySelectorAll('.dot');
-    const progressBar = document.getElementById('progressBar');
-    const sliderBox = document.getElementById('mainSlider');
+    let essenceIndex = 0;
+    setInterval(() => {
+        essenceIndex = (essenceIndex + 1) % 3;
+        showSlide(essenceIndex);
+    }, 6000);
+
+    const flipSlider = document.getElementById("nosotrosFlipSlider");
+    if (flipSlider) {
+        const slides = Array.from(flipSlider.querySelectorAll(".flip-slide"));
+        let currentIndex = slides.findIndex(s => s.classList.contains("is-active")) || 0;
+        let flipTimer;
+
+        const nextFlip = () => {
+            const current = slides[currentIndex];
+            currentIndex = (currentIndex + 1) % slides.length;
+            const next = slides[currentIndex];
+            current.classList.remove("is-active");
+            current.classList.add("is-exit");
+            next.classList.add("is-active");
+            setTimeout(() => current.classList.remove("is-exit"), 750);
+        };
+
+        const startFlip = () => flipTimer = setInterval(nextFlip, 4000);
+        const stopFlip = () => clearInterval(flipTimer);
+
+        flipSlider.addEventListener("mouseenter", () => { stopFlip(); });
+        flipSlider.addEventListener("mouseleave", startFlip);
+        startFlip();
+    }
+
+    /* =========================================================
+       3. NUESTRA INFRAESTRUCTURA (SLIDER SIN BARRA - FIX)
+       ========================================================= */
+    const infraSlides = document.querySelectorAll('.infra-slide');
+    const infraDots = document.querySelectorAll('.dot');
+    const infraBox = document.getElementById('mainSlider');
     
-    let current = 0;
-    let progressInterval;
-    let autoPlayTimer;
-    const duration = 4000; // 4 segundos
+    if (infraBox && infraSlides.length > 0) {
+        let infraCurrent = 0;
+        let infraAutoPlay;
+        const duration = 3000; // 3 segundos de cambio
 
-    function updateSlide(index) {
-        slides.forEach(s => s.classList.remove('active'));
-        dots.forEach(d => d.classList.remove('active'));
-        
-        slides[index].classList.add('active');
-        dots[index].classList.add('active');
-        resetProgressBar();
-    }
+        function updateInfra(index) {
+            // Sincronizamos el índice global con el recibido
+            infraCurrent = index; 
 
-    function resetProgressBar() {
-        progressBar.style.transition = 'none';
-        progressBar.style.width = '0%';
-        setTimeout(() => {
-            progressBar.style.transition = `width ${duration}ms linear`;
-            progressBar.style.width = '100%';
-        }, 50);
-    }
+            infraSlides.forEach(s => s.classList.remove('active'));
+            infraDots.forEach(d => d.classList.remove('active'));
+            
+            infraSlides[infraCurrent].classList.add('active');
+            if (infraDots[infraCurrent]) infraDots[infraCurrent].classList.add('active');
+        }
 
-    function startCycle() {
-        autoPlayTimer = setInterval(() => {
-            current = (current + 1) % slides.length;
-            updateSlide(current);
-        }, duration);
-        resetProgressBar();
-    }
+        const startInfra = () => {
+            // Limpiamos cualquier intervalo previo para no duplicar velocidad
+            clearInterval(infraAutoPlay); 
+            infraAutoPlay = setInterval(() => {
+                let nextIndex = (infraCurrent + 1) % infraSlides.length;
+                updateInfra(nextIndex);
+            }, duration);
+        };
 
-    function stopCycle() {
-        clearInterval(autoPlayTimer);
-        progressBar.style.transition = 'none';
-        progressBar.style.width = '0%';
-    }
+        const stopInfra = () => {
+            clearInterval(infraAutoPlay);
+        };
 
-    // Eventos de Mouse
-    sliderBox.addEventListener('mouseenter', stopCycle);
-    sliderBox.addEventListener('mouseleave', startCycle);
+        // Pausa y Reanuda
+        infraBox.addEventListener('mouseenter', stopInfra);
+        infraBox.addEventListener('mouseleave', startInfra);
 
-    // Clic en dots
-    dots.forEach((dot, i) => {
-        dot.addEventListener('click', () => {
-            current = i;
-            updateSlide(current);
+        // Click en dots
+        infraDots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                updateInfra(i);
+                startInfra(); // Reinicia el timer al hacer click manual
+            });
         });
-    });
 
-    // Iniciar
-    updateSlide(0);
-    startCycle();
+        // Inicio oficial
+        updateInfra(0);
+        startInfra();
+    }
 });

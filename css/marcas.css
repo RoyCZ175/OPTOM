@@ -7,121 +7,147 @@
     
     /* AJUSTES DE INTERFAZ */
     --dark-bg: #05080a;
-    --panel-bg: rgba(13, 18, 24, 0.95);
-    --glass-border: rgba(168, 215, 19, 0.15); /* Lime sutil */
+    --glass-border: rgba(168, 215, 19, 0.15);
     --text-muted: rgba(255, 255, 255, 0.6);
 }
 
-/* ESTILO CARDS ALIANZAS - MISSION CRITICAL */
+/* --- ESTRUCTURA DE ENLACE GLOBAL --- */
+.card-anchor {
+    text-decoration: none !important;
+    display: block;
+    height: 100%;
+    color: inherit;
+    transition: transform 0.3s ease;
+}
+
+/* --- ESTILO CARDS ALIANZAS: CLEAN NEON --- */
 .tech-card {
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid var(--glass-border);
-    border-radius: 15px;
-    padding: 25px;
+    border-radius: 20px;
+    padding: 30px;
     height: 100%;
     position: relative;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     display: flex;
     flex-direction: column;
     overflow: hidden;
     backdrop-filter: blur(10px);
-    will-change: transform, background;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.tech-card:hover {
-    transform: translateY(-10px);
+.card-anchor:hover .tech-card {
+    transform: translateY(-12px);
     border-color: var(--brand-lime);
-    background: rgba(168, 215, 19, 0.05); /* Fondo Lima muy sutil al hover */
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(168, 215, 19, 0.1);
+    background: rgba(168, 215, 19, 0.04);
+    /* Brillo Neón real */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 
+                0 0 25px rgba(168, 215, 19, 0.2);
 }
 
-/* CONTENEDOR DE LOGO: Sin fondo blanco, efecto flotante */
+/* --- LOGOS: TRATAMIENTO PROFESIONAL --- */
 .brand-logo-box {
-    background: transparent; /* Eliminado el fondo blanco */
     height: 100px;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
-    margin-bottom: 20px;
-    transition: all 0.4s ease;
+    margin-bottom: 25px;
 }
 
-/* LOGO: Opaco/Gris por defecto, Color al hover */
 .brand-logo-box img {
-    max-height: 100%;
-    max-width: 100%;
+    max-height: 85%;
+    max-width: 90%;
     object-fit: contain;
-    /* Efecto inicial */
-    filter: grayscale(100%) brightness(0.7); 
+    filter: grayscale(100%) brightness(0.6); 
     opacity: 0.5;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.5s ease;
 }
 
-/* ACTIVACIÓN DE COLOR AL PASAR EL MOUSE POR LA CARD */
-.tech-card:hover .brand-logo-box img {
-    filter: grayscale(0%) brightness(1);
+.card-anchor:hover .brand-logo-box img {
+    filter: grayscale(0%) brightness(1.1);
     opacity: 1;
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
+/* --- TEXTOS INTERNOS --- */
 .card-info h3 {
     color: #fff;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     font-weight: 800;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .card-info p {
     color: var(--text-muted);
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-bottom: 15px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
     flex-grow: 1;
 }
 
 .tech-tag {
-    display: block;
+    display: inline-block;
     font-size: 0.7rem;
     font-weight: 700;
-    color: var(--brand-lime); /* Cambiado de amarillo a Lima */
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-}
-
-.card-link {
-    color: #fff;
-    text-decoration: none;
-    font-size: 0.8rem;
-    font-weight: 700;
-    border-bottom: 1px solid var(--brand-lime); /* Cambiado a Lima */
-    padding-bottom: 3px;
-    transition: 0.3s;
-}
-
-.card-link:hover {
     color: var(--brand-lime);
-    letter-spacing: 1px;
-    border-bottom-color: var(--brand-red); /* Detalle en rojo al hover */
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-left: 2px solid var(--brand-lime);
+    padding-left: 10px;
 }
 
-/* Esquinas de detalle técnico con color LIMA */
-.card-corner-tl, .card-corner-tr {
-    position: absolute; 
-    width: 12px; 
-    height: 12px; 
-    border: 2px solid var(--brand-lime);
-    transition: 0.3s;
+/* --- SECCIÓN HERO MARCAS --- */
+.nav-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('../img/logos/marcashero.jpg'); 
+    background-size: cover;
+    background-position: center;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid #333333;
 }
 
-.card-corner-tl { top: 0; left: 0; border-right: 0; border-bottom: 0; }
-.card-corner-tr { top: 0; right: 0; border-left: 0; border-bottom: 0; }
+.hero-content-wrapper {
+    max-width: 900px;
+}
 
-.tech-card:hover .card-corner-tl,
-.tech-card:hover .card-corner-tr {
-    width: 20px;
-    height: 20px;
-    border-color: var(--brand-red); /* Cambia a rojo al interactuar */
+.title-with-bar {
+    display: flex;
+    align-items: stretch; /* Hace que la barra crezca con el texto */
+    gap: 25px;            /* Espacio entre barra y letras */
+    margin-bottom: 10px;
+}
+
+.side-bar-lime {
+    width: 10px;          /* Grosor de la barra */
+    background-color: var(--brand-lime);
+    box-shadow: 0 0 20px rgba(168, 215, 19, 0.8); /* Brillo neón */
+    border-radius: 2px;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 0.9;
+    color: #ffffff;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: #ffffff;
+    font-weight: 400;
+    margin-left: 35px;    /* Alineación exacta: ancho barra + gap */
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+}
+
+/* Ajuste móvil */
+@media (max-width: 768px) {
+    .title-with-bar { gap: 15px; }
+    .side-bar-lime { width: 6px; }
+    .hero-subtitle { margin-left: 21px; font-size: 1rem; }
 }
