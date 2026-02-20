@@ -96,146 +96,124 @@
     .about-hero h1 span { font-size: 3rem !important; }
 }
 
-/* =========================================================
-   3. INFRAESTRUCTURA - LIBRE, GRANDE Y CON ESQUINAS MOCHAS
-   ========================================================= */
-/* Línea divisora */
-.infra-section { 
-    border-top: 3px solid #4D4D4D;
-    background-color: #05080a; /* Asegúrate de que tenga el fondo oscuro de tu web */
-    padding: 80px 0;           /* Un buen padding para que no se pegue al borde */
+/* =========================
+   3 DC SHOWCASE (Nosotros) INFRAESTRUCTURA Y ESTILO GENERAL
+========================= */
+.dc-showcase{
+  background: radial-gradient(1200px 600px at 20% 0%, rgba(0,255,170,.10), transparent 60%),
+              radial-gradient(900px 500px at 90% 30%, rgba(0,180,255,.10), transparent 55%),
+              linear-gradient(180deg, #071821 0%, #07141b 100%);
+  color: #eaf6ff;
+  position: relative;
+  overflow: hidden;
 }
 
-   .infra-section {
-    background: #05080a;
-    padding: 80px 0;
-    text-align: center;
+.dc-head .dc-kicker{
+  display: inline-block;
+  padding: .35rem .75rem;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 999px;
+  background: rgba(255,255,255,.06);
+  font-weight: 700;
+  letter-spacing: .2px;
+  margin-bottom: 12px;
 }
 
-/* EL TÍTULO QUE NO SE TOCA */
-.main-title {
-    font-size: 3.5rem;
-    font-weight: 800;
-    color: #ffffff;
-    margin: 0;
+.dc-title{
+  font-weight: 900;
+  margin: 0;
+  font-size: clamp(1.7rem, 2.5vw, 2.4rem);
+}
+.dc-accent{ color: var(--brand-lime, #b7ff00); }
+.dc-subtitle{
+  max-width: 760px;
+  color: rgba(234,246,255,.78);
+  margin-top: 10px;
 }
 
-.main-title span {
-    color: #ffc107; /* Amarillo original */
+.dc-block{ padding: 24px 0; }
+
+.dc-media{
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
 }
 
-/* El subtítulo dorado de abajo */
-.top-tag {
-    display: block;
-    color: #ffc107;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    font-size: 0.9rem;
-    font-weight: 700;
-    margin-top: 10px;
-    margin-bottom: 50px;
+.dc-img{
+  width: 100%;
+  display: block;
+  transform: scale(1.01);
 }
 
-/* CONTENEDOR SIN MARCO AMARILLO */
-.infra-slider-box {
-    position: relative;
-    width: 95%;
-    max-width: 1250px;
-    height: 700px; /* Imagen bien grande para que luzca */
-    margin: 0 auto;
-    background: transparent;
-    border: none; /* Marco amarillo eliminado */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.dc-card{
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.06);
+  box-shadow: 0 18px 50px rgba(0,0,0,.35);
+  padding: 22px 22px;
+  backdrop-filter: blur(10px);
 }
 
-.infra-slide {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.8s ease-in-out;
+.dc-badge{
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .45rem .8rem;
+  border-radius: 999px;
+  background: rgba(0,255,170,.10);
+  border: 1px solid rgba(0,255,170,.22);
+  color: #c9ffe9;
+  font-weight: 800;
+  margin-bottom: 12px;
 }
 
-.infra-slide.active {
-    opacity: 1;
+.dc-h3{
+  font-weight: 900;
+  margin: 0 0 10px 0;
+  font-size: 1.35rem;
+}
+.dc-p{
+  margin: 0 0 14px 0;
+  color: rgba(234,246,255,.80);
 }
 
-/* LA CLAVE: IMAGEN CON ESQUINAS REDONDEADAS (MOCHAS) */
-/* --- IMAGEN CON MARCO VERDE NEÓN BRILLANTE --- */
-.infra-slide img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    
-    /* Esquinas mochas */
-    border-radius: 40px; 
-
-    /* 1. El marco verde sólido */
-    border: 3px solid #39FF14; /* Verde neón puro */
-
-    /* 2. El efecto de brillo (Neón) */
-    /* El primer shadow es el resplandor interno, el segundo el externo pegado, el tercero el brillo difuso */
-    box-shadow: 
-        inset 0 0 15px rgba(57, 255, 20, 0.5), 
-        0 0 15px rgba(57, 255, 20, 0.7), 
-        0 0 30px rgba(57, 255, 20, 0.4),
-        0 15px 50px rgba(0, 0, 0, 0.8); /* Sombra negra para que no flote feo */
-
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.dc-list{
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px 0;
+  display: grid;
+  gap: 10px;
+}
+.dc-list li{
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: rgba(234,246,255,.88);
+}
+.dc-list i{
+  margin-top: 3px;
+  color: var(--brand-lime, #b7ff00);
 }
 
-/* Opcional: Que brille más cuando pasas el mouse */
-.infra-slide img:hover {
-    box-shadow: 
-        inset 0 0 20px rgba(57, 255, 20, 0.6), 
-        0 0 25px rgba(57, 255, 20, 0.9), 
-        0 0 50px rgba(57, 255, 20, 0.6);
-    transform: scale(1.01);
+.dc-actions{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
 }
 
-/* Estilo de los puntos de navegación si los usas */
-.infra-dots {
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
+.dc-btn-outline{
+  border-color: rgba(255,255,255,.18) !important;
+  color: rgba(255,255,255,.92) !important;
+}
+.dc-btn-outline:hover{
+  border-color: rgba(255,255,255,.35) !important;
+  background: rgba(255,255,255,.06) !important;
 }
 
-/* --- NAVEGACIÓN (PUNTITOS) --- */
-.infra-dots {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 30px;
-    position: relative;
-    z-index: 10;
-}
 
-.dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3); /* Blanco transparente */
-    border: 1px solid rgba(255, 193, 7, 0.5); /* Borde amarillo suave */
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.dot.active {
-    background: #ffc107; /* Amarillo cuando está activo */
-    transform: scale(1.3);
-    box-shadow: 0 0 10px rgba(255, 193, 7, 0.8);
-}
-
-.dot:hover {
-    background: rgba(255, 193, 7, 0.6);
-}
 /* --- 4. NUESTRA ESENCIA (GRID IZQUIERDO) --- */
 .feature-card-new {
     padding: 25px;

@@ -86,45 +86,4 @@ document.addEventListener("DOMContentLoaded", () => {
         startFlip();
     }
 
-    /* =========================================================
-       4. NUESTRA INFRAESTRUCTURA (EL DE LOS PUNTITOS)
-       ========================================================= */
-    const infraSlides = document.querySelectorAll('.infra-slide');
-    const infraDots = document.querySelectorAll('.dot');
-    const infraBox = document.getElementById('mainSlider');
-    
-    if (infraBox && infraSlides.length > 0) {
-        let infraCurrent = 0;
-        let infraAutoPlay;
-        const duration = 2000; 
-
-        function updateInfra(index) {
-            infraCurrent = index; 
-            infraSlides.forEach(s => s.classList.remove('active'));
-            infraDots.forEach(d => d.classList.remove('active'));
-            infraSlides[infraCurrent].classList.add('active');
-            if (infraDots[infraCurrent]) infraDots[infraCurrent].classList.add('active');
-        }
-
-        const startInfra = () => {
-            clearInterval(infraAutoPlay); 
-            infraAutoPlay = setInterval(() => {
-                let nextIndex = (infraCurrent + 1) % infraSlides.length;
-                updateInfra(nextIndex);
-            }, duration);
-        };
-
-        infraBox.addEventListener('mouseenter', () => clearInterval(infraAutoPlay));
-        infraBox.addEventListener('mouseleave', startInfra);
-
-        infraDots.forEach((dot, i) => {
-            dot.addEventListener('click', () => {
-                updateInfra(i);
-                startInfra();
-            });
-        });
-
-        updateInfra(0);
-        startInfra();
-    }
 });

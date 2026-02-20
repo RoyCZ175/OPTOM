@@ -1,79 +1,74 @@
-/* =========================================================
-   MAIN.JS - Social Float (WhatsApp) + Navbar Global
-   Estados navbar:
-   - nav-on-hero (arriba, transparente)
-   - nav-scrolled (scroll, glass blanco)
-   ========================================================= */
 (() => {
-  "use strict";
+    "use strict";
 
-  // =========================
-  // WhatsApp
-  // =========================
-  const whatsappBtn = document.querySelector(".social-icon.whatsapp");
-  if (whatsappBtn) {
-    const container = document.querySelector(".social-float-container");
+    document.addEventListener("DOMContentLoaded", () => {
+        
+        // 1. WHATSAPP FLOAT
+        const whatsappBtn = document.querySelector(".social-icon.whatsapp");
+        if (whatsappBtn) {
+            const container = document.querySelector(".social-float-container");
+            const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
 
-    const isTouch =
-      "ontouchstart" in window ||
-      navigator.maxTouchPoints > 0 ||
-      window.matchMedia("(pointer: coarse)").matches;
-
-    if (!isTouch) {
-      whatsappBtn.addEventListener("mouseenter", () => whatsappBtn.classList.add("is-open"));
-      whatsappBtn.addEventListener("mouseleave", () => whatsappBtn.classList.remove("is-open"));
-    } else {
-      whatsappBtn.addEventListener("click", (e) => {
-        const isOpen = whatsappBtn.classList.contains("is-open");
-        if (!isOpen) {
-          e.preventDefault();
-          e.stopPropagation();
-          whatsappBtn.classList.add("is-open");
+            if (!isTouch) {
+                whatsappBtn.addEventListener("mouseenter", () => whatsappBtn.classList.add("is-open"));
+                whatsappBtn.addEventListener("mouseleave", () => whatsappBtn.classList.remove("is-open"));
+            } else {
+                whatsappBtn.addEventListener("click", (e) => {
+                    if (!whatsappBtn.classList.contains("is-open")) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        whatsappBtn.classList.add("is-open");
+                    }
+                });
+                document.addEventListener("click", (e) => {
+                    if (container && !container.contains(e.target)) whatsappBtn.classList.remove("is-open");
+                });
+            }
         }
-        // si ya está abierto, el 2do tap navega normal
-      });
 
-      document.addEventListener("click", (e) => {
-        const clickedInside = container && container.contains(e.target);
-        if (!clickedInside) whatsappBtn.classList.remove("is-open");
-      });
-    }
-  }
+        // 2. NAVBAR GLOBAL (Scroll & Glass effect)
+        const nav = document.getElementById("mainNav");
+        const hero = document.querySelector(".hero-ms, .about-hero, .nav-hero");
 
-  // =========================
-  // Navbar GLOBAL (Index + páginas que tengan #mainNav)
-  // Detecta hero por clases:
-  // - Index: .hero-ms (tu header)
-  // - Nosotros/Servicios: .about-hero
-  // - Marcas: .nav-hero (tu header de marcas)
-  // =========================
-  document.addEventListener("DOMContentLoaded", () => {
-    const nav = document.getElementById("mainNav");
-    if (!nav) return;
+        const setNav = () => {
+            if (!nav) return;
+            if (!hero) {
+                nav.classList.add("nav-scrolled");
+                return;
+            }
+            const navH = nav.offsetHeight || 0;
+            const heroBottom = hero.offsetTop + hero.offsetHeight;
+            const inHero = window.scrollY + navH < heroBottom - 20;
 
-    const hero = document.querySelector(".hero-ms, .about-hero, .nav-hero");
+            nav.classList.toggle("nav-on-hero", inHero);
+            nav.classList.toggle("nav-scrolled", !inHero);
+        };
 
-    const setNav = () => {
-      // Si NO hay hero, se queda siempre en modo scrolled (glass)
-      if (!hero) {
-        nav.classList.remove("nav-on-hero");
-        nav.classList.add("nav-scrolled");
-        return;
-      }
+        window.addEventListener("scroll", setNav, { passive: true });
+        window.addEventListener("resize", setNav);
+        setNav();
 
-      const navH = nav.offsetHeight || 0;
-      const heroBottom = hero.offsetTop + hero.offsetHeight;
+        // 3. EFECTO TILT 3D (Solo una vez, configurado suave)
+        const cards = document.querySelectorAll('.solution-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                // Divisor en 20 para un movimiento elegante y no brusco
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+            });
 
-      // "en hero" hasta pasar el final del hero (considerando alto del nav)
-      const inHero = window.scrollY + navH < heroBottom - 20;
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
+            });
+        });
 
-      nav.classList.toggle("nav-on-hero", inHero);
-      nav.classList.toggle("nav-scrolled", !inHero);
-    };
-
-    setNav();
-    window.addEventListener("scroll", setNav, { passive: true });
-    window.addEventListener("resize", setNav);
-  });
+    }); // Fin DOMContentLoaded
 })();
-
