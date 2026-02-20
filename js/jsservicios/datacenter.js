@@ -5,12 +5,16 @@ document.addEventListener("DOMContentLoaded", () => {
     offset: 80
   });
 
-  // Navbar más sólida al hacer scroll
+  // Navbar más sólida al hacer scroll (conexión al CSS global)
   const nav = document.getElementById("mainNav");
   const onScroll = () => {
     if (!nav) return;
-    nav.classList.toggle("nav-glass--scrolled", window.scrollY > 10);
+
+    // Cambiar entre las clases 'nav-on-hero' y 'nav-scrolled' según el scroll
+    nav.classList.toggle("nav-scrolled", window.scrollY > 10);
+    nav.classList.toggle("nav-on-hero", window.scrollY <= 10);
   };
+
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
 

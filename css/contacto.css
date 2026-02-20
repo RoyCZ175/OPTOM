@@ -1,0 +1,186 @@
+/* =========================================
+   CONTACT FAB (Bottom-Left) — OPTOM
+========================================= */
+:root{
+  --fab-bg:#1f2429;
+  --panel-bg:#14181c;
+  --brand-yellow:#f4b400;
+  --text:#fff;
+  --muted:rgba(255,255,255,.75);
+  --border:rgba(255,255,255,.08);
+  --shadow:0 18px 55px rgba(0,0,0,.35);
+}
+
+.contact-fab{
+  position:fixed;
+  left:18px;
+  bottom:18px;
+  z-index:9999;
+  display:grid;
+  gap:10px;
+}
+
+/* Botón */
+.contact-fab__btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 14px;
+  border:0;
+  border-radius:999px;
+  background:var(--fab-bg);
+  color:var(--text);
+  cursor:pointer;
+  user-select:none;
+  box-shadow:0 14px 35px rgba(0,0,0,.25);
+  transition:transform .2s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.contact-fab__btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 18px 40px rgba(0,0,0,.28);
+  filter:brightness(1.03);
+}
+
+.contact-fab__icon{
+  width:40px;
+  height:40px;
+  border-radius:999px;
+  display:grid;
+  place-items:center;
+  background:var(--brand-yellow);
+  color:#14181c;
+}
+
+.contact-fab__label{
+  font-weight:900;
+  letter-spacing:.2px;
+  white-space:nowrap;
+}
+
+/* Panel */
+.contact-fab__panel{
+  width:340px;
+  max-width:calc(100vw - 36px);
+  background:var(--panel-bg);
+  color:var(--text);
+  border-radius:18px;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  padding:14px;
+  transform-origin:bottom left;
+
+  opacity:0;
+  transform:translateY(10px) scale(.98);
+  pointer-events:none;
+  transition:opacity .18s ease, transform .18s ease;
+}
+
+/* Mostrar panel: hover PC + click mobile */
+.contact-fab:hover .contact-fab__panel,
+.contact-fab:focus-within .contact-fab__panel,
+.contact-fab.is-open .contact-fab__panel{
+  opacity:1;
+  transform:translateY(0) scale(1);
+  pointer-events:auto;
+}
+
+.contact-fab__header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:10px;
+}
+
+.contact-fab__title{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-weight:900;
+  font-size:16px;
+  color:var(--brand-yellow);
+}
+
+.contact-fab__close{
+  border:0;
+  background:transparent;
+  color:var(--muted);
+  cursor:pointer;
+  font-size:18px;
+  padding:6px 8px;
+  border-radius:10px;
+  transition:background .15s ease, color .15s ease;
+}
+
+.contact-fab__close:hover{
+  background:rgba(255,255,255,.06);
+  color:var(--text);
+}
+
+.contact-fab__content{
+  display:grid;
+  gap:10px;
+}
+
+.contact-fab__item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 10px;
+  border-radius:14px;
+  background:rgba(255,255,255,.04);
+}
+
+.contact-fab__item i{
+  width:18px;
+  text-align:center;
+  color:var(--brand-yellow);
+}
+
+.contact-fab__item a{
+  color:var(--text);
+  text-decoration:none;
+  font-weight:800;
+}
+
+.contact-fab__item a:hover{
+  text-decoration:underline;
+}
+
+.contact-fab__badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  border-radius:14px;
+  border:1px solid rgba(244,180,0,.35);
+  background:rgba(244,180,0,.08);
+  font-weight:800;
+  color:rgba(255,255,255,.92);
+}
+
+.contact-fab__cta{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  width:100%;
+  padding:12px 14px;
+  border-radius:14px;
+  background:var(--brand-yellow);
+  color:#14181c;
+  text-decoration:none;
+  font-weight:900;
+  transition:transform .15s ease, filter .15s ease;
+}
+
+.contact-fab__cta:hover{
+  transform:translateY(-1px);
+  filter:brightness(1.02);
+}
+
+@media (max-width:420px){
+  .contact-fab__label{ display:none; }
+  .contact-fab__btn{ padding:10px; }
+}

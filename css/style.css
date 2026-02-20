@@ -63,11 +63,12 @@ body{
    NAVBAR (GLOBAL) - SOLO si usas .site-nav
    (Esto evita que el index se pise)
    ========================= */
-.site-nav{
-  background: var(--glass-white);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(0,0,0,.06);
+.site-nav {
+  background: transparent !important;   /* Asegura que no haya un fondo aplicado */
+  backdrop-filter: none !important;      /* Desactiva cualquier filtro de desenfoque */
+  -webkit-backdrop-filter: none !important;
+  border-bottom: none !important;       /* Elimina cualquier borde inferior */
+  box-shadow: none !important;           /* Elimina cualquier sombra */
 }
 
 .site-nav .nav-link{
@@ -375,3 +376,249 @@ body{
 
 /* Por si algún día le pones nav-link por error al botón */
 #mainNav .nav-cta::after{ display:none !important; }
+
+
+/* =========================================================
+   CONTACT FAB (Burbuja de Datos) - GLOBAL OPTOM
+   - Abajo izquierda SIEMPRE
+   - Panel abre hacia ARRIBA
+   - Estilo verde (como botón "Contacto" del navbar)
+   ========================================================= */
+
+/* Ajusta estos verdes si quieres igualarlo EXACTO a tu navbar */
+:root{
+  --contact-green: #a8d100;        /* verde lima */
+  --contact-green-dark: #86ad00;   /* verde hover */
+  --contact-panel: #14181c;        /* fondo panel */
+  --contact-text: #ffffff;
+  --contact-muted: rgba(255,255,255,.78);
+  --contact-border: rgba(255,255,255,.10);
+  --contact-shadow: 0 18px 55px rgba(0,0,0,.35);
+}
+
+/* =========================
+   CONTENEDOR FIJO
+   ========================= */
+.contact-fab{
+  position: fixed;
+  left: 18px;
+  bottom: 18px;
+  top: auto;
+  right: auto;
+
+  z-index: 9999;
+  display: grid;
+  gap: 12px;
+}
+
+/* =========================
+   BOTÓN (BURBUJA)
+   ========================= */
+.contact-fab__btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  
+
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 999px;
+
+  background-color: var(--contact-green);
+  color: #101316;
+
+  cursor: pointer;
+  user-select: none;
+
+  box-shadow: 0 14px 35px rgba(0,0,0,.25);
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease, background-color .18s ease;
+}
+
+.contact-fab__btn:hover{
+  transform: translateY(-2px);
+  background-color: var(--contact-green-dark);
+  box-shadow: 0 20px 45px rgba(0,0,0,.32);
+  filter: brightness(1.02);
+}
+
+.contact-fab__icon{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  background: rgba(0,0,0,.16);
+  color: #0d1012;
+  font-size: 18px;
+}
+
+.contact-fab__label{
+  font-weight: 900;
+  letter-spacing: .3px;
+  white-space: nowrap;
+}
+
+/* =========================
+   PANEL (DESPLEGABLE)
+   - Se abre hacia ARRIBA
+   ========================= */
+.contact-fab__panel{
+  width: 340px;
+  max-width: calc(100vw - 40px);
+
+  background: var(--contact-panel);
+  color: var(--contact-text);
+
+  border-radius: 18px;
+  border: 1px solid var(--contact-border);
+  box-shadow: var(--contact-shadow);
+
+  padding: 16px;
+
+  /* IMPORTANTE: panel sobre el botón (no empuja a media pantalla) */
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 10px);
+
+  transform-origin: bottom left;
+
+  opacity: 0;
+  transform: translateY(10px) scale(.96);
+  pointer-events: none;
+
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+/* Mostrar panel: hover PC + .is-open (móvil) */
+.contact-fab:hover .contact-fab__panel,
+.contact-fab.is-open .contact-fab__panel{
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* =========================
+   HEADER PANEL
+   ========================= */
+.contact-fab__header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.contact-fab__title{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  font-weight: 900;
+  font-size: 16px;
+  color: var(--contact-green);
+}
+
+.contact-fab__close{
+  border: 0;
+  background: transparent;
+  color: var(--contact-muted);
+  cursor: pointer;
+  font-size: 18px;
+  padding: 6px 8px;
+  border-radius: 10px;
+  transition: background-color .15s ease, color .15s ease;
+}
+
+.contact-fab__close:hover{
+  background: rgba(255,255,255,.06);
+  color: var(--contact-text);
+}
+
+/* =========================
+   CUERPO PANEL
+   ========================= */
+.contact-fab__content{
+  display: grid;
+  gap: 10px;
+}
+
+.contact-fab__item{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 12px;
+  border-radius: 14px;
+
+  background: rgba(255,255,255,.05);
+}
+
+.contact-fab__item i{
+  color: var(--contact-green);
+  width: 18px;
+  text-align: center;
+}
+
+.contact-fab__item a{
+  color: var(--contact-text);
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.contact-fab__item a:hover{
+  text-decoration: underline;
+}
+
+/* =========================
+   BADGE 24/7
+   ========================= */
+.contact-fab__badge{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 12px;
+  border-radius: 14px;
+
+  border: 1px solid rgba(168,209,0,.45);
+  background: rgba(168,209,0,.10);
+
+  font-weight: 800;
+  color: rgba(255,255,255,.92);
+}
+
+/* =========================
+   CTA WHATSAPP
+   ========================= */
+.contact-fab__cta{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+
+  background: var(--contact-green);
+  color: #101316;
+  text-decoration: none;
+  font-weight: 900;
+
+  transition: transform .15s ease, filter .15s ease, background-color .15s ease;
+}
+
+.contact-fab__cta:hover{
+  transform: translateY(-1px);
+  background: var(--contact-green-dark);
+  filter: brightness(1.02);
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 480px){
+  .contact-fab__label{ display: none; }
+  .contact-fab__btn{ padding: 10px; }
+}

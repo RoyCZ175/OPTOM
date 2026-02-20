@@ -1,15 +1,32 @@
 /* =========================
    NAV GLASS (oscuro elegante)
    ========================= */
-.nav-glass{
-  background: rgba(8, 12, 18, .35) !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255,255,255,.10);
+.nav-glass {
+  background: transparent !important; /* Asegura que el fondo sea completamente transparente */
+  backdrop-filter: none !important;   /* Elimina cualquier filtro de desenfoque */
+  -webkit-backdrop-filter: none !important;
+  border-bottom: none !important;    /* Elimina cualquier borde que esté añadiendo color */
+  box-shadow: none !important;        /* Elimina cualquier sombra que pueda crear un tinte gris */
 }
 
-.nav-glass .nav-link{ color:#fff !important; }
-.nav-glass .navbar-toggler-icon{ filter: invert(1) brightness(2); }
+.nav-glass .nav-link {
+  color: #000 !important;  /* Color negro por defecto */
+}
+
+.nav-glass .navbar-toggler-icon {
+  filter: invert(1) brightness(2); /* Asegúrate de que el icono sea visible */
+}
+
+/* =========================
+   NAVBAR SCROLLED (cuando se hace scroll)
+   ========================= */
+#mainNav.nav-scrolled .nav-link {
+  color: #fff !important;  /* Cambia las letras a blanco cuando hace scroll */
+}
+
+#mainNav.nav-scrolled .nav-link:hover {
+  color: #fff !important;  /* Asegura que las letras sigan siendo blancas al hacer hover */
+} 
 
 /* =========================
    HERO

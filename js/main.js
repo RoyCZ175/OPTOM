@@ -28,7 +28,8 @@
 
         // 2. NAVBAR GLOBAL (Scroll & Glass effect)
         const nav = document.getElementById("mainNav");
-        const hero = document.querySelector(".hero-ms, .about-hero, .nav-hero");
+        // Aquí unificamos todas las clases de hero que tú y tu amigo agregaron
+        const hero = document.querySelector(".hero-ms, .about-hero, .nav-hero, .cl-hero, .dc-hero, .en-hero");
 
         const setNav = () => {
             if (!nav) return;
@@ -48,7 +49,7 @@
         window.addEventListener("resize", setNav);
         setNav();
 
-        // 3. EFECTO TILT 3D (Solo una vez, configurado suave)
+        // 3. EFECTO TILT 3D
         const cards = document.querySelectorAll('.solution-card');
         cards.forEach(card => {
             card.addEventListener('mousemove', (e) => {
@@ -58,7 +59,6 @@
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
                 
-                // Divisor en 20 para un movimiento elegante y no brusco
                 const rotateX = (y - centerY) / 20;
                 const rotateY = (centerX - x) / 20;
                 
@@ -69,6 +69,60 @@
                 card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
             });
         });
+
+        // 4. CONTACT BUBBLE (Async)
+        (async () => {
+            try {
+                if (document.getElementById("contactFab")) return;
+                const res = await fetch("/partials/contact-fab.html", { cache: "no-store" });
+                if (!res.ok) return;
+
+                const html = await res.text();
+                document.body.insertAdjacentHTML("beforeend", html);
+
+                const fab = document.getElementById("contactFab");
+                const btn = fab?.querySelector(".contact-fab__btn");
+                const closeBtn = fab?.querySelector(".contact-fab__close");
+                if (!fab || !btn || !closeBtn) return;
+
+                const setExpanded = (open) => btn.setAttribute("aria-expanded", String(open));
+
+                btn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    const open = fab.classList.toggle("is-open");
+                    setExpanded(open);
+                });
+
+                closeBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    fab.classList.remove("is-open");
+                    setExpanded(false);
+                });
+
+                document.addEventListener("click", (e) => {
+                    if (!fab.classList.contains("is-open")) return;
+                    if (fab.contains(e.target)) return;
+                    fab.classList.remove("is-open");
+                    setExpanded(false);
+                });
+
+                document.addEventListener("keydown", (e) => {
+                    if (e.key !== "Escape") return;
+                    fab.classList.remove("is-open");
+                    setExpanded(false);
+                });
+
+                document.addEventListener("click", (e) => {
+                    const trigger = e.target.closest("[data-open-contact]");
+                    if (!trigger) return;
+                    e.preventDefault();
+                    fab.classList.add("is-open");
+                    setExpanded(true);
+                });
+            } catch (err) {
+                console.warn("Contact FAB not loaded:", err);
+            }
+        })();
 
     }); // Fin DOMContentLoaded
 })();

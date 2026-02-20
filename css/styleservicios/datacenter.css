@@ -9,22 +9,24 @@
   border-bottom: 1px solid rgba(255,255,255,.08);
 }
 
-/* HERO */
-.dc-hero{
+/* HERO - Ajustado para que la imagen suba hasta el tope */
+.dc-hero {
   position: relative;
-  min-height: 62vh;
+  min-height: 80vh; /* Aumenté un poco el alto para que luzca mejor */
   display: grid;
   place-items: center;
-  padding-top: 90px; /* deja espacio por navbar fixed */
+  padding-top: 0; /* ELIMINAMOS los 90px para que la imagen suba */
   overflow: hidden;
   color: #fff;
 }
-.dc-hero__bg{
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  transform: scale(1.05);
+
+/* Ajustamos el contenido para que no choque con el logo */
+.dc-hero__content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 120px 0 48px; /* Agregamos el padding aquí en lugar de arriba */
+  max-width: 980px;
 }
 .dc-hero__overlay{
   position: absolute;
