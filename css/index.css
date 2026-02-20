@@ -259,3 +259,399 @@
     font-size: 1.1rem;
 }
 
+/* --- CONFIGURACIÓN DE COLORES Y SECCIÓN --- */
+.dc-comparison-section {
+    background-color: #0d0f11; /* Fondo de la sección aún más oscuro */
+    padding: 80px 0;
+}
+
+.text-lime { color: #8efc00; } /* Ajusta a tu verde exacto */
+.text-danger-light { color: #ff6b6b; }
+.bg-lime-soft { background: rgba(142, 252, 0, 0.1); }
+.bg-danger-soft { background: rgba(220, 53, 69, 0.1); }
+
+.divider-center {
+    width: 80px;
+    height: 4px;
+    background: #8efc00;
+    margin: 0 auto;
+    border-radius: 2px;
+}
+
+/* --- TARJETAS (CARDS) --- */
+.compare-card {
+    background: #1a1d20; /* Gris oscuro de fondo */
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 40px 30px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.compare-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    border-color: rgba(255,255,255,0.15);
+}
+
+/* Bordes superiores de colores */
+.traditional-card { border-top: 5px solid #dc3545; }
+.modern-card { border-top: 5px solid #8efc00; }
+
+/* --- CABECERA DE TARJETA --- */
+.card-header-custom {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.icon-box {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    border-radius: 50%;
+    border: 2px solid;
+    margin: 0 auto 15px;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.02);
+}
+
+.card-title-main {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- IMÁGENES --- */
+.image-placeholder {
+    width: 100%;
+    height: 220px;
+    background: #25282c;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: 0.5s;
+}
+
+.compare-card:hover .image-placeholder img {
+    opacity: 1;
+    scale: 1.05;
+}
+
+/* --- LISTADO DE CARACTERÍSTICAS --- */
+.feature-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    align-items: flex-start;
+}
+
+.feature-item i {
+    font-size: 1.2rem;
+    padding-top: 5px;
+}
+
+.feature-item h5 {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.feature-item p {
+    color: #a0a0a0;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+
+/* --- FOOTER DE TARJETA --- */
+.card-footer-custom {
+    text-align: center;
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+/* --- BADGE VS CENTRAL --- */
+.vs-badge {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: #8efc00;
+    color: #000;
+    font-weight: 900;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    box-shadow: 0 0 20px rgba(142, 252, 0, 0.4);
+    border: 5px solid #0d0f11;
+}
+
+@media (max-width: 991px) {
+    .vs-badge { display: none; }
+}
+
+/* --- SECCIÓN SOLAR --- */
+.solar-smart-section {
+    background: radial-gradient(circle at top right, #1a1d20, #000000);
+    color: #ffffff;
+    overflow: hidden;
+    position: relative;
+}
+
+.solar-title {
+    font-weight: 800;
+    font-size: 2.8rem;
+    line-height: 1.2;
+}
+
+.solar-title .highlight {
+    color: var(--brand-lime);
+    text-shadow: 0 0 15px rgba(168, 215, 19, 0.3);
+}
+
+.badge-solar {
+    display: inline-block;
+    padding: 5px 15px;
+    background: rgba(168, 215, 19, 0.15);
+    color: var(--brand-lime);
+    border: 1px solid var(--brand-lime);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* --- CARDS CON EFECTO CRISTAL --- */
+.solar-info-card {
+    display: flex;
+    gap: 20px;
+    background: rgba(77, 77, 77, 0.2); /* Usando brand-gray con transparencia */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.solar-info-card:hover {
+    background: rgba(168, 215, 19, 0.05);
+    border-color: var(--brand-lime);
+    transform: translateX(10px);
+}
+
+.solar-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--brand-lime);
+    color: var(--brand-black);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.solar-text h4 {
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.solar-text p {
+    color: #cccccc;
+    margin-bottom: 0;
+    font-size: 0.95rem;
+}
+
+/* --- IMAGEN Y DECORACIÓN --- */
+.solar-image-wrapper {
+    position: relative;
+    padding: 20px;
+}
+
+.main-solar-img {
+    border-radius: 30px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+}
+
+.glass-deco {
+    position: absolute;
+    top: -10%;
+    right: -10%;
+    width: 80%;
+    height: 80%;
+    background: var(--brand-lime);
+    filter: blur(120px);
+    opacity: 0.15;
+    z-index: 1;
+}
+
+.floating-eco-badge {
+    position: relative; /* Cambiado de absolute a relative */
+    margin: -30px auto 0; /* Sube un poco para solaparse con la imagen y se centra */
+    width: fit-content; /* Se ajusta al ancho del texto */
+    background: #fff;
+    color: #000;
+    padding: 15px 25px;
+    border-radius: 15px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Asegura centrado interno */
+    gap: 10px;
+    z-index: 3;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    border: 1px solid var(--brand-lime); /* Un toque extra para que resalte */
+}
+
+.solar-motto {
+    border-left: 4px solid var(--brand-lime);
+    padding-left: 20px;
+}
+
+.solar-motto p {
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #eee;
+    margin: 0;
+}
+
+/* --- SECCIÓN MAPA PREMIUM --- */
+.map-section {
+    background: #0d0f11; /* Fondo oscuro igual que las otras secciones */
+    padding: 100px 0;
+}
+
+.map-container {
+    position: relative;
+    border-radius: 30px;
+    overflow: hidden;
+    border: 1px solid rgba(168, 215, 19, 0.2); /* Borde sutil verde lima */
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+}
+
+.google-map-frame {
+    filter: grayscale(0.5) invert(0.9) hue-rotate(170deg); /* Efecto Dark Map */
+    transition: all 0.5s ease;
+}
+
+.map-container:hover .google-map-frame {
+    filter: grayscale(0); /* Al pasar el mouse se pone a color normal */
+}
+
+/* Botón flotante personalizado */
+.map-overlay-button {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    z-index: 10;
+}
+
+.btn-map-custom {
+    background-color: var(--brand-lime);
+    color: #000;
+    font-weight: 800;
+    padding: 12px 25px;
+    border-radius: 12px;
+    border: none;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.btn-map-custom:hover {
+    background-color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(142, 252, 0, 0.3);
+}
+
+.text-light-50 {
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+}
+
+/* --- ECOSISTEMA ZIG-ZAG --- */
+.ecosystem-zigzag-section {
+    background: #0d0f11;
+    color: #fff;
+    overflow: hidden;
+}
+
+.content-box-eco {
+    padding: 20px;
+}
+
+.icon-circle-eco {
+    width: 60px;
+    height: 60px;
+    background: rgba(168, 215, 19, 0.1);
+    border: 1px solid var(--brand-lime);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: var(--brand-lime);
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(168, 215, 19, 0.2);
+}
+
+.eco-img-container {
+    position: relative;
+    border-radius: 20px;
+    padding: 10px;
+    background: linear-gradient(135deg, var(--brand-lime), transparent);
+}
+
+.eco-image-zigzag {
+    border-radius: 15px;
+    width: 100%;
+    object-fit: cover;
+    height: 350px; /* Ajusta según tus fotos */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    display: block;
+}
+
+/* Efecto Hover en las cajas de texto */
+.content-box-eco h3 {
+    transition: color 0.3s ease;
+}
+
+.content-box-eco:hover h3 {
+    color: var(--brand-lime);
+}
+
+/* Ajuste para que en móviles el orden sea lógico (Imagen arriba, texto abajo) */
+@media (max-width: 991px) {
+    .flex-lg-row-reverse {
+        flex-direction: column-reverse !important;
+    }
+    .eco-image-zigzag {
+        height: 250px;
+    }
+}
