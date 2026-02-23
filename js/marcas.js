@@ -1,38 +1,147 @@
 /**
- * OPTOM - Gestión de Interacción para Alianzas Estratégicas
- * Maneja el brillo dinámico y la carga de tarjetas
+ * OPTOM - Marcas & Clientes
+ * - Filtro por categorías (3 + Todos)
+ * - Dropdown por marca (click)
+ * - Marquee continuo para clientes
  */
 document.addEventListener('DOMContentLoaded', () => {
-    const techCards = document.querySelectorAll('.tech-card');
 
-    techCards.forEach(card => {
-        // 1. EFECTO DE BRILLO NEÓN (MouseMove)
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            
-            // Calculamos posición exacta del mouse respecto a la card
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+  /* =========================================================
+     1) FILTRO MARCAS
+     ========================================================= */
+  const filterButtons = document.querySelectorAll('.filter-pill');
+  const brandTiles = document.querySelectorAll('#brandsGrid .brand-tile');
+  const brandsGrid = document.getElementById('brandsGrid');
 
-            // Pasamos las coordenadas al CSS
-            card.style.setProperty('--mouse-x', `${x}px`);
-            card.style.setProperty('--mouse-y', `${y}px`);
-            
-            // Aplicamos el gradiente radial usando el color Lima OPTOM
-            // Esto crea el efecto de linterna que sigue al puntero
-            card.style.background = `radial-gradient(800px circle at ${x}px ${y}px, rgba(168, 215, 19, 0.12), transparent 40%)`;
-            card.style.borderColor = "rgba(168, 215, 19, 0.8)";
-        });
+  // Mensaje "sin resultados" (se crea una vez)
+  let emptyState = document.getElementById('brandsEmptyState');
+  if (!emptyState && brandsGrid) {
+    emptyState = document.createElement('div');
+    emptyState.id = 'brandsEmptyState';
+    emptyState.className = 'brands-empty-state';
+    emptyState.innerHTML = `
+      <div class="brands-empty-state__box">
+        <i class="fa-solid fa-circle-info"></i>
+        <div>
+          <h6 class="mb-1">Sin resultados</h6>
+          <p class="mb-0">No hay marcas asociadas a esta categoría por el momento.</p>
+        </div>
+      </div>
+    `;
+    brandsGrid.insertAdjacentElement('afterend', emptyState);
+    emptyState.style.display = 'none';
+  }
 
-        // 2. RESET DE ESTADO (MouseLeave)
-        card.addEventListener('mouseleave', () => {
-            card.style.transition = 'all 0.5s ease';
-            card.style.background = 'rgba(255, 255, 255, 0.02)';
-            card.style.borderColor = 'rgba(168, 215, 19, 0.1)';
-        });
+  const normalize = (txt) => (txt || '').trim().toLowerCase();
+
+  const applyBrandFilter = (filterKey) => {
+    const key = normalize(filterKey);
+    let visibleCount = 0;
+
+    brandTiles.forEach(tile => {
+      const cats = normalize(tile.dataset.cat || '');
+      const catList = cats.split(',').map(s => s.trim()).filter(Boolean);
+
+      const show = (key === 'all') || catList.includes(key);
+      tile.classList.toggle('is-hidden', !show);
+
+      if (show) visibleCount++;
     });
 
-    // 3. LOG DE INICIALIZACIÓN (Consola limpia)
-    console.log("%c OPTOM SYSTEM: Alianzas Estratégicas vinculadas correctamente ", 
-                "color: #A8D713; background: #05080a; font-weight: bold; border-left: 4px solid #A8D713; padding: 5px;");
+    if (emptyState) emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+  };
+
+  if (filterButtons.length && brandTiles.length) {
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        applyBrandFilter(btn.dataset.filter || 'all');
+
+        // opcional: al filtrar cerramos cualquier dropdown abierto
+        brandTiles.forEach(t => t.classList.remove('is-open'));
+      });
+    });
+
+    // Estado inicial: Todos
+    const defaultBtn = document.querySelector('.filter-pill[data-filter="all"]') || filterButtons[0];
+    if (defaultBtn) {
+      filterButtons.forEach(b => b.classList.remove('active'));
+      defaultBtn.classList.add('active');
+      applyBrandFilter(defaultBtn.dataset.filter || 'all');
+    }
+
+    console.log(
+      "%c OPTOM SYSTEM: Filtro de marcas listo ",
+      "color:#A8D713;background:#05080a;font-weight:bold;border-left:4px solid #A8D713;padding:6px;"
+    );
+  } else {
+    console.warn("OPTOM: No se encontró filtro o tiles de marcas (#brandsGrid .brand-tile).");
+  }
+
+  /* =========================================================
+     2) DROPDOWN POR MARCA (CLICK)
+     ========================================================= */
+  if (brandTiles.length) {
+    brandTiles.forEach(tile => {
+      tile.addEventListener('click', (e) => {
+        // Ctrl/Cmd click: deja abrir el link en otra pestaña (no interferimos)
+        if (e.ctrlKey || e.metaKey) return;
+
+        // Evita navegar para permitir desplegar
+        e.preventDefault();
+
+        // Cierra otros (acordeón)
+        brandTiles.forEach(t => { if (t !== tile) t.classList.remove('is-open'); });
+
+        // Toggle del actual
+        tile.classList.toggle('is-open');
+      });
+    });
+
+    console.log(
+      "%c OPTOM SYSTEM: Dropdown de marcas OK ",
+      "color:#A8D713;background:#05080a;font-weight:bold;border-left:4px solid #A8D713;padding:6px;"
+    );
+  }
+
+  /* =========================================================
+     3) MARQUEE CLIENTES (sin espacios en blanco)
+     ========================================================= */
+  const track = document.getElementById('clientsTrack');
+  if (track) {
+    const marqueeBox = track.parentElement;
+    const original = Array.from(track.children);
+
+    const rebuild = () => {
+      track.innerHTML = '';
+      original.forEach(n => track.appendChild(n.cloneNode(true)));
+
+      let safety = 0;
+      while (track.scrollWidth < marqueeBox.clientWidth * 2.2 && safety < 30) {
+        original.forEach(n => track.appendChild(n.cloneNode(true)));
+        safety++;
+      }
+
+      if (track.children.length < original.length * 2) {
+        original.forEach(n => track.appendChild(n.cloneNode(true)));
+      }
+    };
+
+    rebuild();
+
+    let t;
+    window.addEventListener('resize', () => {
+      clearTimeout(t);
+      t = setTimeout(rebuild, 140);
+    });
+
+    console.log(
+      "%c OPTOM SYSTEM: Marquee de clientes OK ",
+      "color:#A8D713;background:#05080a;font-weight:bold;border-left:4px solid #A8D713;padding:6px;"
+    );
+  } else {
+    console.warn("OPTOM: No se encontró #clientsTrack para el marquee.");
+  }
+
 });
