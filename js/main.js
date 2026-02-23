@@ -74,7 +74,7 @@
         (async () => {
             try {
                 if (document.getElementById("contactFab")) return;
-                const res = await fetch("/partials/contact-fab.html", { cache: "no-store" });
+                const res = await fetch("partials/contact-fab.html", { cache: "no-store" });
                 if (!res.ok) return;
 
                 const html = await res.text();
