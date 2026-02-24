@@ -15,26 +15,7 @@
 </head>
 <body>
 
-<nav id="mainNav" class="navbar navbar-expand-lg py-3">
-  <div class="container-fluid nav-wide">
-    <a class="navbar-brand" href="index.html">
-      <img src="img/logos/optom.png" alt="OPTOM" class="nav-logo">
-    </a>
-
-    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navOptom" aria-controls="navOptom" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navOptom">
-      <ul class="navbar-nav ms-auto align-items-center fw-bold">
-        <li class="nav-item"><a class="nav-link px-3" href="index.html">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link px-3" href="servicios.html">Servicios</a></li>
-        <li class="nav-item"><a class="nav-link px-3" href="nosotros.html#nosotros">Nosotros</a></li>
-        <li class="nav-item"><a class="nav-link px-3" href="marcas.html">Marcas</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<div id="navbarMount"></div>
 
 <header id="heroIndex" class="hero-ms">
   <div class="hero-ms__bg" aria-hidden="true" style="background-image:url('img/index/portada.jpg')"></div>
@@ -50,7 +31,7 @@
       <div class="hero-ms__actions">
         <a href="servicios.html" class="btn btn-primary btn-lg fw-bold px-5 shadow">Nuestras Soluciones</a>
         <a href="nosotros.html" class="btn btn-outline-light btn-lg fw-bold px-5">Nosotros</a>
-        <a href="contacto.html" class="btn btn-outline-light btn-lg fw-bold px-5">Cotizar Ahora</a>
+        <a href="#" class="btn btn-outline-light btn-lg fw-bold px-5"data-open-contact>Cotizar Ahora</a>
       </div>
     </div>
 
@@ -153,8 +134,8 @@
           </div>
           <div class="col-lg-4 text-lg-end">
             <div class="d-flex flex-wrap gap-2 justify-content-lg-end">
-              <a href="contacto.html" class="btn btn-danger-pro px-4 py-3 fw-bold shadow">
-                <i class="fas fa-headset me-2"></i>Solicitar soporte
+              <a href="#" class="btn btn-danger-pro px-4 py-3 fw-bold shadow" data-open-contact>
+                <i class="fas fa-headset me-2" ></i>Solicitar soporte
               </a>
               <a href="https://wa.me/593996956854" target="_blank" rel="noopener" class="btn btn-whatsapp-outline px-4 py-3 fw-bold">
                 <i class="fab fa-whatsapp me-2"></i>WhatsApp

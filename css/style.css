@@ -672,3 +672,43 @@ body{
 .contact-info-footer i {
     font-size: 1.1rem;
 }
+/* =========================================
+   DROPDOWN SERVICIOS - HOVER (DESKTOP)
+   No se cierra al bajar (puente hover)
+   ========================================= */
+@media (min-width: 992px){
+
+  /* El <li class="nav-item dropdown"> debe ser el ancla */
+  #mainNav .nav-item.dropdown{
+    position: relative;
+  }
+
+  /* Menú: sin margin que cree hueco */
+  #mainNav .nav-item.dropdown > .dropdown-menu{
+    display: none;                 /* cerrado por defecto */
+    margin-top: 0 !important;
+    top: calc(100% + 8px);         /* separación visual */
+    left: 0;
+  }
+
+  /* Puente invisible entre el link y el menú */
+  #mainNav .nav-item.dropdown::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    height: 12px;                  /* zona que mantiene hover */
+    background: transparent;
+  }
+
+  /* Abre con hover al pasar por el link o el menú */
+  #mainNav .nav-item.dropdown:hover > .dropdown-menu{
+    display: block;
+  }
+
+  /* IMPORTANTE: NO desactives pointer-events del toggle */
+  #mainNav .dropdown-toggle{
+    pointer-events: auto;
+  }
+}
