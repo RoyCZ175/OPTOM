@@ -228,3 +228,92 @@
   .optom-grid-5 { grid-template-columns: 1fr; grid-template-rows: auto; }
   .gcard { min-height: 230px; }
 }
+/* =========================================================
+   CTA SOPORTE - IDENTICO AL PRIMERO (oscuro + línea verde)
+   Aplica a: .cta-integrated .cta-box-modern
+   ========================================================= */
+
+.cta-integrated{
+  margin: 28px 0;
+}
+
+/* Caja igual al primer estilo */
+.cta-integrated .cta-box-modern{
+  border-radius: 18px;
+  overflow: hidden;
+
+  /* fondo oscuro limpio */
+  background: #0b0f14 !important;
+
+  /* línea verde (como el primero) */
+  border-top: 4px solid var(--brand-lime) !important;
+
+  /* resto del borde suave */
+  border-left: 1px solid rgba(255,255,255,.08);
+  border-right: 1px solid rgba(255,255,255,.08);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+
+  box-shadow: 0 18px 55px rgba(0,0,0,.35);
+}
+
+/* Textos idénticos */
+.cta-integrated .cta-box-modern h3{
+  color: #fff !important;
+  font-weight: 900;
+  letter-spacing: .2px;
+}
+
+.cta-integrated .cta-box-modern p{
+  color: rgba(255,255,255,.78) !important;
+  font-weight: 600;
+}
+
+/* Badge igual (sin glow raro) */
+.cta-integrated .badge-soporte{
+  display: inline-flex;
+  align-items: center;
+
+  padding: 8px 14px;
+  border-radius: 999px;
+
+  background: rgba(255,255,255,.06) !important;
+  border: 1px solid rgba(255,255,255,.12) !important;
+
+  color: rgba(255,255,255,.92) !important;
+  font-weight: 800;
+}
+
+/* Botón rojo igual */
+.cta-integrated .btn-danger-pro{
+  background: #ff0000 !important;
+  color: #fff !important;
+  border: 0 !important;
+
+  border-radius: 14px;
+  box-shadow: 0 14px 30px rgba(255,0,0,.25);
+
+  transition: transform .18s ease, filter .18s ease, box-shadow .18s ease;
+}
+
+.cta-integrated .btn-danger-pro:hover{
+  transform: translateY(-2px);
+  filter: brightness(1.05);
+  box-shadow: 0 18px 40px rgba(255,0,0,.33);
+}
+
+/* WhatsApp outline igual */
+.cta-integrated .btn-whatsapp-outline{
+  background: transparent !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,.28) !important;
+
+  border-radius: 14px;
+
+  transition: transform .18s ease, background-color .18s ease, border-color .18s ease;
+}
+
+.cta-integrated .btn-whatsapp-outline:hover{
+  transform: translateY(-2px);
+  background-color: rgba(255,255,255,.08) !important;
+  border-color: rgba(255,255,255,.40) !important;
+}
