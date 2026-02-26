@@ -291,193 +291,139 @@
 }
 
 /* =========================
-   TILE
+   TILE & GRID
    ========================= */
-/* 1. Aseguramos que la card no corte el contenido que sale de ella */
 .brand-tile {
   position: relative;
-  overflow: visible !important; /* CAMBIO CRUCIAL: permite que la ventana "salga" de la card */
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100px;
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(168,215,19,.15);
-  transition: all 0.3s ease;
-  z-index: 1;
+  flex-direction: column;
+  aspect-ratio: 16 / 9;
+  background: #1a1d21;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  overflow: visible; /* Mantiene la ventanilla visible */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 15px;
+  text-decoration: none !important;
+  cursor: pointer;
 }
 
 .brand-tile:hover {
-  z-index: 10; /* Se pone por encima de las otras cards al hacer hover */
-  border-color: var(--brand-lime);
-}
-
-/* ✅ estado abierto (dropdown) */
-.brand-tile.is-open{
-  align-items: stretch;
-  justify-content: flex-start;
-  flex-direction: column;
-
-  padding: 16px;         /* un poco más que cerrado */
-  gap: 10px;              /* ✅ separación logo/panel */
-
-  min-height: auto;
-  overflow: visible;      /* ✅ permite que el panel se vea completo */
+  z-index: 50;
+  border-color: #a8d713; /* Color lime */
+  background: #202429;
 }
 
 /* =========================
-   LOGO
+   LOGOS (Tamaño corregido)
    ========================= */
-/* Ajuste del Logo para que siempre sea visible */
 .brand-tile__logo {
   width: 100%;
-  height: 60px; /* Altura fija para el logo */
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform .3s ease;
+  pointer-events: none;
 }
 
-.brand-tile__logo img{
-  max-width: 82%;
-  max-height: 44px;
+.brand-tile img {
+  max-width: 90%;
+  max-height: 75%;
   object-fit: contain;
-  filter: grayscale(100%) brightness(.85);
-  opacity: .85;
-  transition: transform .2s ease, filter .2s ease, opacity .2s ease;
+  filter: grayscale(0.6) brightness(1.2);
+  transition: all 0.3s ease;
 }
 
-.brand-tile:hover .brand-tile__logo img{
-  filter: grayscale(0%) brightness(1.05);
-  opacity: 1;
-  transform: scale(1.04);
+/* CASO VERTIV: Para que no se vea pequeño por su forma cuadrada */
+.brand-tile.vertiv-fix img {
+  max-width: 95%;
+  max-height: 90%;
+  transform: scale(1.15); /* Compensación de tamaño */
+}
+
+.brand-tile:hover img {
+  filter: grayscale(0) brightness(1);
+  transform: scale(1.08);
+}
+
+.brand-tile.vertiv-fix:hover img {
+  transform: scale(1.25); /* Zoom extra para Vertiv */
 }
 
 /* =========================
-   OVERLAY META (hover resumen)
+   VENTANILLA EMERGENTE (Meta)
    ========================= */
 .brand-tile__meta {
   position: absolute;
-  
-  /* POSICIONAMIENTO A LA IZQUIERDA */
-  right: 105%; /* Se alinea justo donde termina el borde izquierdo de la card */
+  right: calc(100% + 15px);
   top: 50%;
-  transform: translateY(-50%) translateX(-15px); /* Centrado vertical y desfase para efecto */
-  
-  width: 250px; /* Ancho de la ventana */
+  transform: translateY(-50%) translateX(-15px);
+  width: 260px;
   padding: 16px;
-  background: #121518; /* Fondo sólido oscuro */
-  border: 1px solid rgba(168,215,19, 0.4);
+  background: #121518;
+  border: 1px solid rgba(168, 215, 19, 0.5);
   border-radius: 12px;
-  box-shadow: -10px 10px 30px rgba(0,0,0,0.7);
-  
-  /* Estado inicial oculto */
+  box-shadow: -10px 10px 30px rgba(0,0,0,0.8);
   opacity: 0;
   visibility: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 100;
+  pointer-events: none; /* No interfiere con el clic del tile */
   text-align: left;
 }
 
-/* 3. Flechita de la ventana (opcional, para que parezca un mensaje) */
-.brand-tile__meta::after {
-  content: "";
-  position: absolute;
-  right: -6px; /* Pegada al borde derecho de la ventana */
-  top: 50%;
-  margin-top: -6px;
-  width: 12px;
-  height: 12px;
-  background: #121518;
-  border-right: 1px solid rgba(168,215,19, 0.4);
-  border-top: 1px solid rgba(168,215,19, 0.4);
-  transform: rotate(45deg);
-}
-
-/* 4. Mostrar la ventana al hacer Hover */
 .brand-tile:hover .brand-tile__meta {
   opacity: 1;
   visibility: visible;
-  transform: translateX(0);
+  transform: translateY(-50%) translateX(0);
 }
 
-.brand-tile__meta h3 {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 800;
-  color: #fff;
+/* Flecha de la ventanilla */
+.brand-tile__meta::after {
+  content: "";
+  position: absolute;
+  right: -7px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 12px;
+  height: 12px;
+  background: #121518;
+  border-right: 1px solid rgba(168, 215, 19, 0.5);
+  border-top: 1px solid rgba(168, 215, 19, 0.5);
 }
 
-.brand-tile__meta p {
-  margin: 0;
-  font-size: 0.8rem;
-  line-height: 1.3;
-  color: rgba(255,255,255,0.7);
+.brand-tile__meta h3 { 
+  color: #fff; 
+  margin: 0 0 5px; 
+  font-size: 1.1rem; 
+  font-weight: 800; 
 }
 
-.brand-tag{
-  display: inline-block;
-  font-size: .67rem;
+.brand-tile__meta p { 
+  color: rgba(255,255,255,0.7); 
+  font-size: 0.85rem; 
+  margin-bottom: 10px; 
+  line-height: 1.4;
+}
+
+.brand-tag {
+  color: #a8d713;
+  font-size: 0.7rem;
   font-weight: 900;
+  border-left: 2px solid #a8d713;
+  padding-left: 8px;
   text-transform: uppercase;
-  letter-spacing: 1.2px;
-  color: var(--brand-lime);
-  border-left: 2px solid var(--brand-lime);
-  padding-left: 10px;
+  letter-spacing: 0.5px;
 }
 
-/* ✅ cuando está abierto, el hover overlay NO debe estorbar */
-.brand-tile.is-open .brand-tile__meta{
-  opacity: 0 !important;
-  transform: translateY(10px) !important;
-}
-.brand-tile.is-open:hover .brand-tile__meta{
-  opacity: 0 !important;
-}
+/* Oculto por filtro */
+.brand-tile.is-hidden { display: none !important; }
 
-/* =========================
-   DROPDOWN (panel)
-   ========================= */
-.brand-drop{
-  display: none;
-  width: 100%;
-  padding: 12px 12px;
-  border-radius: 14px;
-
-  /* ✅ más legible y con tu lime */
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(168,215,19,.18);
-  color: rgba(255,255,255,.92);
-}
-
-.brand-drop p{ margin: 0 0 8px; line-height: 1.5; }
-.brand-drop ul{
-  margin: 0;
-  padding-left: 18px;
-  color: rgba(255,255,255,.82);
-}
-.brand-drop li{ margin: 4px 0; }
-
-.brand-tile.is-open .brand-drop{ display: block; }
-
-/* oculto por filtro */
-.brand-tile.is-hidden{ display:none !important; }
-
-/* Responsivo: En celulares la ventana sale ARRIBA porque no hay espacio a los lados */
+/* Responsivo Móvil */
 @media (max-width: 768px) {
-  .brand-tile__meta {
-    left: 0;
-    top: auto;
-    bottom: 110%;
-    width: 100%;
-    transform: translateY(10px);
-  }
-  .brand-tile__meta::before {
-    display: none; /* Quitamos la flechita en móvil */
-  }
-  .brand-tile:hover .brand-tile__meta {
-    transform: translateY(0);
-  }
+  .brand-tile__meta { display: none !important; }
 }
 
 /* =========================

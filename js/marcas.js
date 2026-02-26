@@ -1,19 +1,19 @@
 /**
  * OPTOM - Marcas & Clientes
  * - Filtro por categorías (3 + Todos)
- * - Dropdown por marca (click)
+ * - Click directo a sitio oficial (Sin bloqueo)
  * - Marquee continuo para clientes
  */
 document.addEventListener('DOMContentLoaded', () => {
 
   /* =========================================================
-     1) FILTRO MARCAS
+      1) FILTRO MARCAS
      ========================================================= */
   const filterButtons = document.querySelectorAll('.filter-pill');
   const brandTiles = document.querySelectorAll('#brandsGrid .brand-tile');
   const brandsGrid = document.getElementById('brandsGrid');
 
-  // Mensaje "sin resultados" (se crea una vez)
+  // Mensaje "sin resultados"
   let emptyState = document.getElementById('brandsEmptyState');
   if (!emptyState && brandsGrid) {
     emptyState = document.createElement('div');
@@ -57,9 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
         filterButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         applyBrandFilter(btn.dataset.filter || 'all');
-
-        // opcional: al filtrar cerramos cualquier dropdown abierto
-        brandTiles.forEach(t => t.classList.remove('is-open'));
       });
     });
 
@@ -75,39 +72,21 @@ document.addEventListener('DOMContentLoaded', () => {
       "%c OPTOM SYSTEM: Filtro de marcas listo ",
       "color:#A8D713;background:#05080a;font-weight:bold;border-left:4px solid #A8D713;padding:6px;"
     );
-  } else {
-    console.warn("OPTOM: No se encontró filtro o tiles de marcas (#brandsGrid .brand-tile).");
   }
 
   /* =========================================================
-     2) DROPDOWN POR MARCA (CLICK)
-     ========================================================= */
-  if (brandTiles.length) {
-    brandTiles.forEach(tile => {
-      tile.addEventListener('click', (e) => {
-        // Ctrl/Cmd click: deja abrir el link en otra pestaña (no interferimos)
-        if (e.ctrlKey || e.metaKey) return;
-
-        // Evita navegar para permitir desplegar
-        e.preventDefault();
-
-        // Cierra otros (acordeón)
-        brandTiles.forEach(t => { if (t !== tile) t.classList.remove('is-open'); });
-
-        // Toggle del actual
-        tile.classList.toggle('is-open');
-      });
-    });
-
-    console.log(
-      "%c OPTOM SYSTEM: Dropdown de marcas OK ",
-      "color:#A8D713;background:#05080a;font-weight:bold;border-left:4px solid #A8D713;padding:6px;"
-    );
-  }
+      2) COMPORTAMIENTO DE CLIC (LIMPIO)
+      ========================================================= */
+  // Ya no necesitamos e.preventDefault(). 
+  // El <a> del HTML funcionará nativamente llevándote al link oficial.
+  console.log(
+    "%c OPTOM SYSTEM: Navegación directa activada ",
+    "color:#A8D713;background:#05080a;font-weight:bold;border-left:4px solid #A8D713;padding:6px;"
+  );
 
   /* =========================================================
-     3) MARQUEE CLIENTES (sin espacios en blanco)
-     ========================================================= */
+      3) MARQUEE CLIENTES (sin espacios en blanco)
+      ========================================================= */
   const track = document.getElementById('clientsTrack');
   if (track) {
     const marqueeBox = track.parentElement;
@@ -140,8 +119,5 @@ document.addEventListener('DOMContentLoaded', () => {
       "%c OPTOM SYSTEM: Marquee de clientes OK ",
       "color:#A8D713;background:#05080a;font-weight:bold;border-left:4px solid #A8D713;padding:6px;"
     );
-  } else {
-    console.warn("OPTOM: No se encontró #clientsTrack para el marquee.");
   }
-
 });
