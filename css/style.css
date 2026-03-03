@@ -712,3 +712,434 @@ body{
     pointer-events: auto;
   }
 }
+
+
+/* =========================================================
+   PATCH FIX (NO rompe navbar/footer/social/contact)
+   Pegar AL FINAL de css/servicios.css
+   ========================================================= */
+
+/* 1) Fondo base de la página servicios */
+.page-servicios{
+  background:#0b0f14;
+  color:#eaf0ff;
+}
+
+/* 2) NO aplicar overlays globales a TODO (esto arregla lo “dañado”) */
+.page-servicios section{ position: relative; }
+.page-servicios section::before,
+.page-servicios section::after{
+  content:none !important;
+}
+
+/* 3) Creamos un “skin” SOLO para secciones que te interesan
+      (hero-intro + sections de contenido que tú ya usas) */
+.page-servicios .hero-intro,
+.page-servicios .optom-products,
+.page-servicios section.bg-light,
+.page-servicios section.bg-white{
+  background: transparent !important;
+  border-top-color: rgba(255,255,255,.08) !important;
+}
+
+/* Glow + grid sutil SOLO en contenido (no navbar/footer) */
+.page-servicios .hero-intro::before,
+.page-servicios .optom-products::before,
+.page-servicios section.bg-light::before,
+.page-servicios section.bg-white::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(900px 520px at 15% 20%, rgba(183,255,26,.12), transparent 60%),
+    radial-gradient(900px 520px at 85% 80%, rgba(56,189,248,.09), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.03), transparent 45%);
+  pointer-events:none;
+  opacity:.95;
+}
+
+.page-servicios .hero-intro::after,
+.page-servicios .optom-products::after,
+.page-servicios section.bg-light::after,
+.page-servicios section.bg-white::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 46px 46px;
+  pointer-events:none;
+  opacity:.06;
+}
+
+/* Asegura que el contenido quede encima del glow */
+.page-servicios .hero-intro > .container,
+.page-servicios .optom-products > .container,
+.page-servicios section.bg-light > .container,
+.page-servicios section.bg-white > .container{
+  position:relative;
+  z-index:2;
+}
+
+/* 4) Quitar azules / textos raros SOLO en servicios (sin tocar tu footer global) */
+.page-servicios h1,
+.page-servicios h2,
+.page-servicios h3,
+.page-servicios h4,
+.page-servicios h5,
+.page-servicios h6{
+  color:#fff !important;
+}
+
+.page-servicios p,
+.page-servicios .text-secondary,
+.page-servicios .small,
+.page-servicios .lead{
+  color: rgba(255,255,255,.72) !important;
+}
+
+/* Anula los inline style color #003366 */
+.page-servicios h2[style]{ color:#fff !important; }
+
+/* text-primary no azul en servicios */
+.page-servicios .text-primary{ color: var(--brand-lime, #b7ff1a) !important; }
+
+/* 5) NAVBAR: evita logo gigante y banda rara */
+
+/* limita tamaño del logo en navbar (servicios) */
+
+
+/* 6) NO TOCAR footer ni social float: les quitamos cualquier overlay raro */
+.page-servicios footer.footer-optom,
+.page-servicios .social-float-container,
+.page-servicios .social-float-container *{
+  position: relative;
+  z-index: 5;
+}
+
+/* 7) Arreglo del panel flotante (contacto) que se te fue al piso:
+      lo dejamos fijo y encima de todo */
+.page-servicios [data-open-contact],
+.page-servicios .contact-float,
+.page-servicios .contact-widget,
+.page-servicios .contact-panel,
+.page-servicios .contact-modal,
+.page-servicios .contact-box{
+  z-index: 9999 !important;
+}
+
+/* Si tu widget usa position fixed pero se rompe, fuerza esto: */
+.page-servicios .social-float-container{
+  position: fixed !important;
+  right: 18px;
+  bottom: 18px;
+}
+
+/* 8) Ajuste pro en solution tiles (sin cambiar tu estructura) */
+.page-servicios .solution-tile{
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow: 0 18px 60px rgba(0,0,0,.45);
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+.page-servicios .solution-tile:hover{
+  transform: translateY(-4px);
+  border-color: rgba(183,255,26,.55);
+  box-shadow: 0 28px 80px rgba(0,0,0,.55);
+}
+
+/* 9) Cards (energía/soporte) en dark sin romper bootstrap */
+.page-servicios .service-card{
+  background: rgba(255,255,255,.04) !important;
+  border: 1px solid rgba(255,255,255,.10) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 18px 60px rgba(0,0,0,.35) !important;
+}
+.page-servicios .service-card h5{ color:#fff !important; }
+.page-servicios .service-card p{ color: rgba(255,255,255,.72) !important; }
+
+/* 10) Botón warning => lime (solo servicios) */
+.page-servicios .btn.btn-warning{
+  background: var(--brand-lime, #b7ff1a) !important;
+  border: 0 !important;
+  color: #0b0f14 !important;
+}
+/* =========================================================
+   FIX: Bloque blanco "Micro Data Center" legible + sin azules
+   No toca el navbar
+   ========================================================= */
+
+/* 1) Mantener el bloque blanco pero con estilo pro */
+.page-servicios .row.mb-5.shadow.p-4.rounded.bg-white{
+  background:#ffffff !important;
+  border: 1px solid rgba(15,23,42,.10) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 18px 55px rgba(0,0,0,.18) !important;
+}
+
+/* 2) Título verde (pero no azul) */
+.page-servicios .row.mb-5.shadow.p-4.rounded.bg-white h3{
+  color: var(--brand-lime, #b7ff1a) !important;
+  font-weight: 900 !important;
+}
+
+/* 3) Texto dentro del bloque blanco: oscuro y legible */
+.page-servicios .row.mb-5.shadow.p-4.rounded.bg-white p{
+  color: rgba(15,23,42,.82) !important;
+  font-weight: 600;
+}
+
+.page-servicios .row.mb-5.shadow.p-4.rounded.bg-white li{
+  color: rgba(15,23,42,.82) !important;
+  font-weight: 600;
+}
+
+.page-servicios .row.mb-5.shadow.p-4.rounded.bg-white strong{
+  color: rgba(15,23,42,.95) !important;
+}
+
+/* 4) Quitar cualquier azul dentro del bloque blanco */
+.page-servicios .row.mb-5.shadow.p-4.rounded.bg-white .text-primary{
+  color: var(--brand-lime, #b7ff1a) !important;
+}
+
+/* 5) Checks (iconos) */
+.page-servicios .row.mb-5.shadow.p-4.rounded.bg-white .fa-check{
+  color: var(--brand-lime, #b7ff1a) !important;
+}
+
+/* 6) Imagen del bloque: un poco más pro */
+.page-servicios .row.mb-5.shadow.p-4.rounded.bg-white img{
+  border-radius: 14px !important;
+  box-shadow: 0 14px 40px rgba(0,0,0,.18) !important;
+}
+/* =========================================================
+   DYNAMICS PACK (SERVICIOS) - pegar al FINAL
+   No toca el navbar/menu
+   ========================================================= */
+
+:root{
+  --brand-lime: #b7ff1a; /* si ya existe, no pasa nada */
+  --bg-dark: #0b0f14;
+}
+
+/* Smooth */
+.page-servicios *{
+  scroll-margin-top: 90px;
+}
+
+/* --- Scroll progress bar --- */
+#scrollProgress{
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--brand-lime), rgba(56,189,248,.85));
+  z-index: 9998;
+  box-shadow: 0 10px 25px rgba(183,255,26,.18);
+}
+
+/* --- Back to top button --- */
+#backToTop{
+  position: fixed;
+  right: 18px;
+  bottom: 92px; /* arriba del float social */
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(11,15,20,.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 9997;
+  opacity: 0;
+  transform: translateY(10px) scale(.98);
+  transition: opacity .22s ease, transform .22s ease, border-color .22s ease;
+}
+#backToTop.is-visible{
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+#backToTop:hover{
+  border-color: rgba(183,255,26,.55);
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* --- Hero image ken burns + parallax container --- */
+.hero-slide{
+  will-change: transform;
+}
+.hero-slide .hero-img{
+  transform: scale(1.03);
+  transition: transform 1.2s ease, filter .6s ease;
+  will-change: transform;
+}
+.hero-slide.is-active .hero-img{
+  transform: scale(1.10);
+}
+
+/* --- Section titles (underline anim) --- */
+.page-servicios .section-title,
+.page-servicios .hero-intro__h1{
+  position: relative;
+}
+.page-servicios .section-title::after{
+  content:"";
+  display:block;
+  width: 86px;
+  height: 6px;
+  margin: 14px auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--brand-lime), rgba(183,255,26,.10));
+  transform: scaleX(.65);
+  transform-origin: center;
+  transition: transform .35s ease;
+}
+.page-servicios .section-title:hover::after{
+  transform: scaleX(1);
+}
+
+/* --- Premium hover for tiles --- */
+.solution-tile{
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+.solution-tile::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  pointer-events:none;
+  background: radial-gradient(450px 220px at 20% 20%, rgba(183,255,26,.18), transparent 60%);
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+.solution-tile:hover{
+  transform: translateY(-6px);
+  border-color: rgba(183,255,26,.55);
+  box-shadow: 0 28px 80px rgba(0,0,0,.55);
+}
+.solution-tile:hover::after{ opacity: 1; }
+
+/* --- Shine effect on cards --- */
+.gcard, .service-card{
+  position: relative;
+  overflow: hidden;
+}
+.gcard::before, .service-card::before{
+  content:"";
+  position:absolute;
+  top:-40%;
+  left:-60%;
+  width: 60%;
+  height: 180%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.09), transparent);
+  transform: rotate(20deg);
+  opacity: 0;
+  transition: opacity .25s ease, transform .6s ease;
+  pointer-events:none;
+}
+.gcard:hover::before, .service-card:hover::before{
+  opacity: 1;
+  transform: translateX(220%) rotate(20deg);
+}
+
+/* --- Subtle lift on service cards --- */
+.service-card{
+  border-radius: 18px !important;
+  border: 1px solid rgba(255,255,255,.10) !important;
+  background: rgba(255,255,255,.04) !important;
+  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+.service-card:hover{
+  transform: translateY(-4px);
+  border-color: rgba(183,255,26,.45) !important;
+  box-shadow: 0 24px 75px rgba(0,0,0,.45) !important;
+}
+
+/* --- Reveal helper (no choca con AOS) --- */
+.reveal{
+  opacity: 0;
+  transform: translateY(16px);
+  filter: blur(8px);
+  transition: opacity .7s ease, transform .7s ease, filter .7s ease;
+  will-change: opacity, transform, filter;
+}
+.reveal.is-visible{
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+/* --- CTA pulso sutil en botón lime --- */
+.page-servicios .btn.btn-warning{
+  position: relative;
+  overflow: hidden;
+}
+.page-servicios .btn.btn-warning::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background: radial-gradient(260px 120px at 20% 30%, rgba(255,255,255,.18), transparent 60%);
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+.page-servicios .btn.btn-warning:hover::after{ opacity: 1; }
+
+/* Reduce motion safe */
+@media (prefers-reduced-motion: reduce){
+  .hero-slide .hero-img,
+  .solution-tile, .gcard, .service-card,
+  #backToTop{
+    transition: none !important;
+  }
+  .reveal{ transition: none !important; }
+}
+/* Quitar acercamiento / Ken Burns del hero */
+.page-servicios .hero-slide .hero-img{
+  transform: none !important;
+  transition: none !important;
+}
+.page-servicios .hero-slide.is-active .hero-img{
+  transform: none !important;
+}
+
+/* Back to top GLOBAL (no tapa social float) */
+#backToTop{
+  position: fixed;
+  right: 86px;   /* lo mueve a la izquierda del stack de redes */
+  bottom: 22px;
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(11,15,20,.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 9997;
+  opacity: 0;
+  transform: translateY(10px) scale(.98);
+  transition: opacity .22s ease, transform .22s ease, border-color .22s ease;
+}
+#backToTop.is-visible{
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+#backToTop:hover{
+  border-color: rgba(183,255,26,.55);
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* En pantallas pequeñas, que no moleste */
+@media (max-width: 520px){
+  #backToTop{ right: 18px; bottom: 92px; }
+}
