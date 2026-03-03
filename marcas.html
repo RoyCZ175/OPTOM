@@ -150,325 +150,181 @@
 
         <!-- COLUMNA DERECHA: marco con filtro + grid de marcas -->
         <div class="col-lg-6" data-aos="fade-left">
-          <div class="partners-brands-frame">
+  <div class="partners-brands-frame">
 
-            <div class="partners-brands-top">
-              <div class="partners-brands-title">
-                <h4 class="mb-1">Marcas</h4>
-                <p class="mb-0">Filtra por categoría para ver partners relacionados.</p>
-              </div>
+    <div class="partners-brands-top">
+      <div class="partners-brands-title">
+        <h4 class="mb-1">Marcas</h4>
+        <p class="mb-0">Filtra por categoría para ver partners relacionados.</p>
+      </div>
 
-              <!-- FILTRO: máximo 3 categorías + todos -->
-              <div class="brands-filters" role="tablist" aria-label="Filtros de marcas">
-                <button type="button" class="filter-pill active" data-filter="all">Todos</button>
-                <button type="button" class="filter-pill" data-filter="datacenter">Data Centers</button>
-                <button type="button" class="filter-pill" data-filter="energia">Energía</button>
-                <button type="button" class="filter-pill" data-filter="monitoreo">Monitoreo</button>
-              </div>
-            </div>
+      <div class="brands-filters" role="tablist" aria-label="Filtros de marcas">
+        <button type="button" class="filter-pill active" data-filter="all">Todos</button>
+        <button type="button" class="filter-pill" data-filter="datacenter">Data Centers</button>
+        <button type="button" class="filter-pill" data-filter="energia">Energía</button>
+        <button type="button" class="filter-pill" data-filter="monitoreo">Monitoreo</button>
+      </div>
+    </div>
 
-            <!-- GRID COMPACTO EN MARCO -->
-            <div class="brands-grid brands-grid--framed" id="brandsGrid">
+    <div class="brands-grid brands-grid--framed" id="brandsGrid">
 
-              <!-- Vertiv -->
-              <a href="https://www.vertiv.com/" target="_blank" class="brand-tile"
-                 data-brand="vertiv" data-cat="datacenter,monitoreo,energia" aria-label="Vertiv">
-                <div class="brand-tile__logo">
-                  <img src="img/logos/vertiv.png" alt="Vertiv">
-                </div>
-                <div class="brand-tile__meta">
-                  <h3>Vertiv</h3>
-                  <p>Infraestructura digital crítica: energía, refrigeración e integración.</p>
-                  <span class="brand-tag">Continuidad • DC • Cooling</span>
-                </div>
-                <!-- ✅ PANEL DESPLEGABLE (NUEVO) -->
-                <div class="brand-drop">
-                  <p><b>Vertiv</b> provee soluciones integrales para infraestructura crítica (energía, cooling y servicios).</p>
-                  <ul>
-                    <li>UPS, distribución y continuidad</li>
-                    <li>Enfriamiento y gestión térmica</li>
-                    <li>Soluciones integradas para Data Centers</li>
-                  </ul>
-                </div>
-              </a>
-
-              <!-- Eaton -->
-              <a href="https://www.eaton.com/" target="_blank" class="brand-tile"
-                 data-brand="eaton" data-cat="energia,datacenter" aria-label="Eaton">
-                <div class="brand-tile__logo">
-                  <img src="img/logos/eaton.png" alt="Eaton">
-                </div>
-                <div class="brand-tile__meta">
-                  <h3>Eaton</h3>
-                  <p>Gestión y protección de energía: distribución, respaldo y disponibilidad.</p>
-                  <span class="brand-tag">Protección • Respaldo</span>
-                </div>
-                <div class="brand-drop">
-                  <p><b>Eaton</b> se enfoca en protección y administración energética para instalaciones críticas.</p>
-                  <ul>
-                    <li>UPS y respaldo eléctrico</li>
-                    <li>Distribución y protección</li>
-                    <li>Alta disponibilidad y continuidad</li>
-                  </ul>
-                </div>
-              </a>
-
-              <!-- KSTAR -->
-              <a href="https://www.kstar.com/" target="_blank" class="brand-tile"
-                 data-brand="kstar" data-cat="energia" aria-label="KSTAR">
-                <div class="brand-tile__logo">
-                  <img src="img/logos/kstar.png" alt="KSTAR">
-                </div>
-                <div class="brand-tile__meta">
-                  <h3>KSTAR</h3>
-                  <p>UPS y soluciones de energía para continuidad operativa y fotovoltaica.</p>
-                  <span class="brand-tag">UPS • Energía • Solar</span>
-                </div>
-                <div class="brand-drop">
-                  <p><b>KSTAR</b> ofrece UPS, inversores y soluciones para continuidad y energía.</p>
-                  <ul>
-                    <li>UPS para misión crítica</li>
-                    <li>Inversores y soluciones FV</li>
-                    <li>Gestión energética y continuidad</li>
-                  </ul>
-                </div>
-              </a>
-
-              <!-- Circutor -->
-              <a href="https://circutor.com/" target="_blank" class="brand-tile"
-                 data-brand="circutor" data-cat="energia,monitoreo" aria-label="Circutor">
-                <div class="brand-tile__logo">
-                  <img src="img/logos/circutor.png" alt="Circutor">
-                </div>
-                <div class="brand-tile__meta">
-                  <h3>Circutor</h3>
-                  <p>Eficiencia energética, medición, calidad de energía y control.</p>
-                  <span class="brand-tag">Medición • Calidad • Eficiencia</span>
-                </div>
-                <div class="brand-drop">
-                  <p><b>Circutor</b> se especializa en medición, calidad y eficiencia energética.</p>
-                  <ul>
-                    <li>Analizadores y medición eléctrica</li>
-                    <li>Calidad de energía</li>
-                    <li>Control y optimización</li>
-                  </ul>
-                </div>
-              </a>
-
-              <!-- ATTOM -->
-              <a href="https://attom.tech/" target="_blank" class="brand-tile"
-                 data-brand="attom" data-cat="datacenter,monitoreo,energia" aria-label="ATTOM">
-                <div class="brand-tile__logo">
-                  <img src="img/logos/attom.png" alt="ATTOM">
-                </div>
-                <div class="brand-tile__meta">
-                  <h3>ATTOM</h3>
-                  <p>Micro Data Center “plug & play”: rack + energía + cooling + monitoreo.</p>
-                  <span class="brand-tag">Micro DC • Edge</span>
-                </div>
-                <div class="brand-drop">
-                  <p><b>ATTOM</b> integra micro data centers listos para operar (Edge / sucursales).</p>
-                  <ul>
-                    <li>Gabinete + energía + enfriamiento</li>
-                    <li>Monitoreo y seguridad integrados</li>
-                    <li>Implementación rápida “plug & play”</li>
-                  </ul>
-                </div>
-              </a>
-
-              <!-- Frog -->
-              <a href="https://frogengineering.com/" target="_blank" class="brand-tile"
-                 data-brand="frog" data-cat="datacenter" aria-label="Frog Engineering">
-                <div class="brand-tile__logo">
-                  <img src="img/logos/frog.png" alt="Frog Engineering">
-                </div>
-                <div class="brand-tile__meta">
-                  <h3>Frog Engineering</h3>
-                  <p>Soluciones para plataformas de telecom y Data Centers (micro DC).</p>
-                  <span class="brand-tag">Telecom • DC</span>
-                </div>
-                <div class="brand-drop">
-                  <p><b>Frog Engineering</b> ofrece soluciones para telecom y micro data centers.</p>
-                  <ul>
-                    <li>Plataformas para telecom</li>
-                    <li>Micro DC e integración</li>
-                    <li>Implementación en campo / sitios remotos</li>
-                  </ul>
-                </div>
-              </a>
-
-              <!-- Exagate -->
-              <a href="https://www.exagate.com/" target="_blank" class="brand-tile"
-                 data-brand="exagate" data-cat="monitoreo,datacenter" aria-label="Exagate">
-                <div class="brand-tile__logo">
-                  <img src="img/logos/exagate.png" alt="Exagate">
-                </div>
-                <div class="brand-tile__meta">
-                  <h3>Exagate</h3>
-                  <p>PDUs, monitoreo ambiental, BMS y soluciones Smart Data Center.</p>
-                  <span class="brand-tag">PDU • Monitoreo</span>
-                </div>
-                <div class="brand-drop">
-                  <p><b>Exagate</b> habilita data centers inteligentes con PDUs y monitoreo integral.</p>
-                  <ul>
-                    <li>PDUs inteligentes y medición</li>
-                    <li>Monitoreo ambiental (sensores)</li>
-                    <li>Integración con BMS / alertas</li>
-                  </ul>
-                </div>
-              </a>
-
-              <!-- Sinexcel -->
-              <a href="https://www.sinexcel.us/" target="_blank" class="brand-tile"
-                 data-brand="sinexcel" data-cat="energia" aria-label="Sinexcel">
-                <div class="brand-tile__logo">
-                  <img src="img/logos/sinexcel.png" alt="Sinexcel">
-                </div>
-                <div class="brand-tile__meta">
-                  <h3>Sinexcel</h3>
-                  <p>Electrónica de potencia para aplicaciones industriales y energía.</p>
-                  <span class="brand-tag">Potencia • Storage</span>
-                </div>
-                <div class="brand-drop">
-                  <p><b>Sinexcel</b> desarrolla electrónica de potencia para aplicaciones industriales.</p>
-                  <ul>
-                    <li>Conversión y gestión de energía</li>
-                    <li>Soluciones industriales</li>
-                    <li>Soporte para almacenamiento (según aplicación)</li>
-                  </ul>
-                </div>
-              </a>
-
-              <!-- EkkoSense -->
-              <a href="https://www.ekkosense.com/" target="_blank" class="brand-tile"
-                 data-brand="ekkosense" data-cat="monitoreo,datacenter" aria-label="EkkoSense">
-                <div class="brand-tile__logo">
-                  <img src="img/logos/ekkosense.png" alt="EkkoSense">
-                </div>
-                <div class="brand-tile__meta">
-                  <h3>EkkoSense</h3>
-                  <p>Optimización térmica y analítica para reducir riesgos y consumo.</p>
-                  <span class="brand-tag">AI • Cooling</span>
-                </div>
-                <div class="brand-drop">
-                  <p><b>EkkoSense</b> usa analítica para mejorar performance térmico y reducir consumo.</p>
-                  <ul>
-                    <li>Monitoreo térmico</li>
-                    <li>Analítica y optimización</li>
-                    <li>Reducción de riesgos y costos</li>
-                  </ul>
-                </div>
-              </a>
-
-              <!-- Upsite -->
-              <a href="https://www.upsite.com/" target="_blank" class="brand-tile"
-                 data-brand="upsite" data-cat="datacenter" aria-label="Upsite">
-                <div class="brand-tile__logo">
-                  <img src="img/logos/upsite.png" alt="Upsite">
-                </div>
-                <div class="brand-tile__meta">
-                  <h3>Upsite</h3>
-                  <p>Optimización de enfriamiento y manejo de flujo de aire.</p>
-                  <span class="brand-tag">Airflow • Eficiencia</span>
-                </div>
-                <div class="brand-drop">
-                  <p><b>Upsite</b> mejora eficiencia del data center con control de flujo de aire.</p>
-                  <ul>
-                    <li>Gestión de airflow</li>
-                    <li>Mejoras de cooling</li>
-                    <li>Accesorios y optimización</li>
-                  </ul>
-                </div>
-              </a>
-
-              <!-- Bluesun -->
-              <a href="https://www.bluesunpv.com/" target="_blank" class="brand-tile"
-                 data-brand="bluesun" data-cat="energia" aria-label="Bluesun Solar">
-                <div class="brand-tile__logo">
-                  <img src="img/logos/bluesun.png" alt="Bluesun Solar">
-                </div>
-                <div class="brand-tile__meta">
-                  <h3>Bluesun Solar</h3>
-                  <p>Soluciones FV y almacenamiento de energía (paneles y BESS).</p>
-                  <span class="brand-tag">Solar • BESS</span>
-                </div>
-                <div class="brand-drop">
-                  <p><b>Bluesun</b> ofrece soluciones fotovoltaicas y almacenamiento.</p>
-                  <ul>
-                    <li>Paneles solares</li>
-                    <li>BESS / almacenamiento</li>
-                    <li>Soluciones para proyectos FV</li>
-                  </ul>
-                </div>
-              </a>
-
-              <!-- Power-Sonic -->
-              <a href="https://www.power-sonic.com/" target="_blank" class="brand-tile"
-                 data-brand="powersonic" data-cat="energia" aria-label="Power-Sonic">
-                <div class="brand-tile__logo">
-                  <img src="img/logos/powersonic.png" alt="Power-Sonic">
-                </div>
-                <div class="brand-tile__meta">
-                  <h3>Power-Sonic</h3>
-                  <p>Baterías y soluciones de energía para aplicaciones críticas.</p>
-                  <span class="brand-tag">Baterías • UPS</span>
-                </div>
-                <div class="brand-drop">
-                  <p><b>Power-Sonic</b> fabrica baterías para respaldo y aplicaciones críticas.</p>
-                  <ul>
-                    <li>Baterías para UPS</li>
-                    <li>Soluciones de respaldo</li>
-                    <li>Opciones según proyecto</li>
-                  </ul>
-                </div>
-              </a>
-
-              <!-- CSB -->
-              <a href="https://csb-battery.com/" target="_blank" class="brand-tile"
-                 data-brand="csb" data-cat="energia,datacenter" aria-label="CSB Battery">
-                <div class="brand-tile__logo">
-                  <img src="img/logos/csb.png" alt="CSB Battery">
-                </div>
-                <div class="brand-tile__meta">
-                  <h3>CSB Battery</h3>
-                  <p>Baterías VRLA para UPS y aplicaciones estacionarias.</p>
-                  <span class="brand-tag">VRLA • UPS</span>
-                </div>
-                <div class="brand-drop">
-                  <p><b>CSB</b> ofrece baterías VRLA para UPS y respaldo estacionario.</p>
-                  <ul>
-                    <li>VRLA para UPS</li>
-                    <li>Respaldo estacionario</li>
-                    <li>Aplicaciones industriales</li>
-                  </ul>
-                </div>
-              </a>
-
-              <!-- UCell -->
-              <a href="#" class="brand-tile"
-                 data-brand="ucell" data-cat="energia" aria-label="UCell">
-                <div class="brand-tile__logo">
-                  <img src="img/logos/ucell.png" alt="UCell">
-                </div>
-                <div class="brand-tile__meta">
-                  <h3>UCell</h3>
-                  <p>Sistemas de respaldo de energía y baterías de alta eficiencia.</p>
-                  <span class="brand-tag">Respaldo • Energía</span>
-                </div>
-                <div class="brand-drop">
-                  <p><b>UCell</b> entrega sistemas de respaldo y baterías de alta eficiencia.</p>
-                  <ul>
-                    <li>Respaldo de energía</li>
-                    <li>Baterías para continuidad</li>
-                    <li>Soluciones según necesidad</li>
-                  </ul>
-                </div>
-              </a>
-
-            </div>
-
-          </div>
+      <a href="https://www.vertiv.com/" target="_blank" class="brand-tile vertiv-fix" data-brand="vertiv" data-cat="datacenter,monitoreo,energia" aria-label="Vertiv">
+        <div class="brand-tile__logo">
+          <img src="img/logos/vertiv.png" alt="Vertiv">
         </div>
+        <div class="brand-tile__meta">
+          <h3>Vertiv</h3>
+          <p>Infraestructura digital crítica: energía, refrigeración e integración.</p>
+          <span class="brand-tag">Continuidad • DC • Cooling</span>
+        </div>
+      </a>
+
+      <a href="https://www.eaton.com/" target="_blank" class="brand-tile" data-brand="eaton" data-cat="energia,datacenter" aria-label="Eaton">
+        <div class="brand-tile__logo">
+          <img src="img/logos/eaton.png" alt="Eaton">
+        </div>
+        <div class="brand-tile__meta">
+          <h3>Eaton</h3>
+          <p>Gestión y protección de energía: distribución, respaldo y disponibilidad.</p>
+          <span class="brand-tag">Protección • Respaldo</span>
+        </div>
+      </a>
+
+      <a href="https://www.kstar.com/" target="_blank" class="brand-tile" data-brand="kstar" data-cat="energia" aria-label="KSTAR">
+        <div class="brand-tile__logo">
+          <img src="img/logos/kstar.png" alt="KSTAR">
+        </div>
+        <div class="brand-tile__meta">
+          <h3>KSTAR</h3>
+          <p>UPS y soluciones de energía para continuidad operativa y fotovoltaica.</p>
+          <span class="brand-tag">UPS • Energía • Solar</span>
+        </div>
+      </a>
+
+      <a href="https://circutor.com/" target="_blank" class="brand-tile" data-brand="circutor" data-cat="energia,monitoreo" aria-label="Circutor">
+        <div class="brand-tile__logo">
+          <img src="img/logos/circutor.png" alt="Circutor">
+        </div>
+        <div class="brand-tile__meta">
+          <h3>Circutor</h3>
+          <p>Eficiencia energética, medición, calidad de energía y control.</p>
+          <span class="brand-tag">Medición • Calidad • Eficiencia</span>
+        </div>
+      </a>
+
+      <a href="https://attom.tech/" target="_blank" class="brand-tile" data-brand="attom" data-cat="datacenter,monitoreo,energia" aria-label="ATTOM">
+        <div class="brand-tile__logo">
+          <img src="img/logos/attom.png" alt="ATTOM">
+        </div>
+        <div class="brand-tile__meta">
+          <h3>ATTOM</h3>
+          <p>Micro Data Center “plug & play”: rack + energía + cooling + monitoreo.</p>
+          <span class="brand-tag">Micro DC • Edge</span>
+        </div>
+      </a>
+
+      <a href="https://frogengineering.com/" target="_blank" class="brand-tile" data-brand="frog" data-cat="datacenter" aria-label="Frog Engineering">
+        <div class="brand-tile__logo">
+          <img src="img/logos/frog.png" alt="Frog Engineering">
+        </div>
+        <div class="brand-tile__meta">
+          <h3>Frog Engineering</h3>
+          <p>Soluciones para plataformas de telecom y Data Centers (micro DC).</p>
+          <span class="brand-tag">Telecom • DC</span>
+        </div>
+      </a>
+
+      <a href="https://www.exagate.com/" target="_blank" class="brand-tile" data-brand="exagate" data-cat="monitoreo,datacenter" aria-label="Exagate">
+        <div class="brand-tile__logo">
+          <img src="img/logos/exagate.png" alt="Exagate">
+        </div>
+        <div class="brand-tile__meta">
+          <h3>Exagate</h3>
+          <p>PDUs, monitoreo ambiental, BMS y soluciones Smart Data Center.</p>
+          <span class="brand-tag">PDU • Monitoreo</span>
+        </div>
+      </a>
+
+      <a href="https://www.sinexcel.us/" target="_blank" class="brand-tile" data-brand="sinexcel" data-cat="energia" aria-label="Sinexcel">
+        <div class="brand-tile__logo">
+          <img src="img/logos/sinexcel.png" alt="Sinexcel">
+        </div>
+        <div class="brand-tile__meta">
+          <h3>Sinexcel</h3>
+          <p>Electrónica de potencia para aplicaciones industriales y energía.</p>
+          <span class="brand-tag">Potencia • Storage</span>
+        </div>
+      </a>
+
+      <a href="https://www.ekkosense.com/" target="_blank" class="brand-tile" data-brand="ekkosense" data-cat="monitoreo,datacenter" aria-label="EkkoSense">
+        <div class="brand-tile__logo">
+          <img src="img/logos/ekkosense.png" alt="EkkoSense">
+        </div>
+        <div class="brand-tile__meta">
+          <h3>EkkoSense</h3>
+          <p>Optimización térmica y analítica para reducir riesgos y consumo.</p>
+          <span class="brand-tag">AI • Cooling</span>
+        </div>
+      </a>
+
+      <a href="https://www.upsite.com/" target="_blank" class="brand-tile" data-brand="upsite" data-cat="datacenter" aria-label="Upsite">
+        <div class="brand-tile__logo">
+          <img src="img/logos/upsite.png" alt="Upsite">
+        </div>
+        <div class="brand-tile__meta">
+          <h3>Upsite</h3>
+          <p>Optimización de enfriamiento y manejo de flujo de aire.</p>
+          <span class="brand-tag">Airflow • Eficiencia</span>
+        </div>
+      </a>
+
+      <a href="https://www.bluesunpv.com/" target="_blank" class="brand-tile" data-brand="bluesun" data-cat="energia" aria-label="Bluesun Solar">
+        <div class="brand-tile__logo">
+          <img src="img/logos/bluesun.png" alt="Bluesun Solar">
+        </div>
+        <div class="brand-tile__meta">
+          <h3>Bluesun Solar</h3>
+          <p>Soluciones FV y almacenamiento de energía (paneles y BESS).</p>
+          <span class="brand-tag">Solar • BESS</span>
+        </div>
+      </a>
+
+      <a href="https://www.power-sonic.com/" target="_blank" class="brand-tile" data-brand="powersonic" data-cat="energia" aria-label="Power-Sonic">
+        <div class="brand-tile__logo">
+          <img src="img/logos/powersonic.png" alt="Power-Sonic">
+        </div>
+        <div class="brand-tile__meta">
+          <h3>Power-Sonic</h3>
+          <p>Baterías y soluciones de energía para aplicaciones críticas.</p>
+          <span class="brand-tag">Baterías • UPS</span>
+        </div>
+      </a>
+
+      <a href="https://csb-battery.com/" target="_blank" class="brand-tile" data-brand="csb" data-cat="energia,datacenter" aria-label="CSB Battery">
+        <div class="brand-tile__logo">
+          <img src="img/logos/csb.png" alt="CSB Battery">
+        </div>
+        <div class="brand-tile__meta">
+          <h3>CSB Battery</h3>
+          <p>Baterías VRLA para UPS y aplicaciones estacionarias.</p>
+          <span class="brand-tag">VRLA • UPS</span>
+        </div>
+      </a>
+
+      <a href="#" class="brand-tile" data-brand="ucell" data-cat="energia" aria-label="UCell">
+        <div class="brand-tile__logo">
+          <img src="img/logos/ucell.png" alt="UCell">
+        </div>
+        <div class="brand-tile__meta">
+          <h3>UCell</h3>
+          <p>Sistemas de respaldo de energía y baterías de alta eficiencia.</p>
+          <span class="brand-tag">Respaldo • Energía</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</div>
 
       </div>
 
