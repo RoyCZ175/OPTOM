@@ -276,3 +276,136 @@
   .en-card__panel{ padding: 34px 26px; }
   .en-float{ padding: 34px 26px; }
 }
+
+/* === FUTURISTA === */
+.en-section {
+  background: #000;
+}
+
+.en-card {
+  border-radius: 16px !important;
+  border: 1px solid rgba(183, 200, 0, 0.25) !important;
+  box-shadow: 0 0 40px rgba(183,200,0,.08), 0 0 80px rgba(0,0,0,.8) !important;
+  background: transparent !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.en-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #b7c800, transparent);
+  z-index: 10;
+}
+
+.en-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 60px rgba(183,200,0,.2), 0 30px 80px rgba(0,0,0,.6) !important;
+}
+
+.en-card__panel {
+  background: rgba(5, 10, 20, 0.95) !important;
+  border-right: 1px solid rgba(183,200,0,.15);
+}
+
+.en-card__title {
+  color: #fff !important;
+  text-shadow: 0 0 30px rgba(183,200,0,.2);
+}
+
+.en-card__title::after {
+  background: #b7c800 !important;
+  box-shadow: 0 0 10px rgba(183,200,0,.6);
+}
+
+.en-card__meta {
+  color: #b7c800 !important;
+  letter-spacing: .05em;
+}
+
+.en-card__p {
+  color: rgba(200, 210, 220, 0.82) !important;
+}
+
+.en-card__image {
+  background: rgba(8, 15, 30, 0.95) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.en-card__image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(183,200,0,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(183,200,0,.04) 1px, transparent 1px);
+  background-size: 30px 30px;
+  z-index: 0;
+}
+
+.en-card__image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(183,200,0,.08) 0%, transparent 70%);
+  z-index: 1;
+}
+
+.en-card__img,
+.en-card__photo {
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 0 20px rgba(183,200,0,.2));
+}
+
+.en-card__panel .btn-optom {
+  background: transparent !important;
+  border: 1px solid #b7c800 !important;
+  color: #b7c800 !important;
+  transition: all .3s ease;
+}
+
+.en-card__panel .btn-optom:hover {
+  background: #b7c800 !important;
+  color: #000 !important;
+  box-shadow: 0 0 20px rgba(183,200,0,.4);
+}
+
+.en-card__panel .btn-optom-outline {
+  border-color: rgba(183,200,0,.35) !important;
+  color: rgba(183,200,0,.7) !important;
+}
+
+.en-card__panel .btn-optom-outline:hover {
+  border-color: #b7c800 !important;
+  color: #b7c800 !important;
+  background: rgba(183,200,0,.05) !important;
+}
+
+.en-section--center {
+  background: #000;
+  position: relative;
+}
+
+.en-section--center::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(183,200,0,.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  z-index: 1;
+}
+
+.en-float {
+  border-radius: 16px !important;
+  border-top: 3px solid #b7c800 !important;
+  box-shadow: 0 0 40px rgba(183,200,0,.1), 0 30px 80px rgba(0,0,0,.5) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.en-float:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 60px rgba(183,200,0,.2), 0 30px 80px rgba(0,0,0,.6) !important;
+}
